@@ -1,0 +1,44 @@
+﻿doctype html
+html(ng-app="agilogClient")
+    head
+        meta(charset="utf-8")
+        title AgiLog
+        meta(name="viewport", content="width=device-width, initial-scale=1")
+        link(rel="stylesheet", href="./css/app.min.css")
+        script(src="./js/vendor.min.js")
+        script(src="./js/app.min.js")
+        
+    body(ng-controller="RootClientController")
+        div(id="wrapper")
+            div(id="loading", ng-show="root.loading")
+              span(id="loadingIco")
+            div(id="topBanner", ng-show="root.user")
+                form(id="topSearchForm")
+                    input(type="text", placeholder="Rechercher...", required, id="searchValue", name="searchValue")
+                    input(type="submit", value="", title="Lancer la recherche")
+                span(id="pageTitle") {{ root.pageTitle }}
+                div(id="topAddButton", class="menuIco", data-title="Ajouter une nouvelle carte")
+                    span +
+            nav(role="navigation")
+                ul(id="navigationMenu")
+                    li(class="menuIco", data-title="Accueil", menu-ico-dir)
+                        a(href="#/", id="homeIco")
+                            img(src="./images/homeIco.png", alt="homeIco")
+                    li(class="menuIco", data-title="Connexion - Déconnexion", menu-ico-dir)
+                        img(src="./images/loggedIco.png", alt="LoggedIco")
+                        ul(id="hiddenMenuItems")
+                            a(href="#/login", ng-hide="root.user") 
+                                li(class="hiddentMenuItem") Se Connecter
+                            a(href="#/register", ng-hide="root.user")
+                                li(class="hiddentMenuItem") S'enregistrer
+                            a(href="#/", ng-show="root.user")
+                                li(class="hiddentMenuItem", ng-controller="AuthenticationLogoutClientController", ng-click="logout()") Se Déconnecter
+                    li(class="menuIco", data-title="Gestion de votre compte", menu-ico-dir, ng-show="root.user")
+                        a(href="#/account", id="accountIco")
+                            img(src="./images/accountIco.png", alt="accountIco")
+                    li(class="menuIco", data-title="Liste de vos projets", menu-ico-dir, ng-show="root.user")
+                        a(href="#/", id="projectsIco")
+                            img(src="./images/projectsIco.png", alt="projectsIco")
+            notification-client-dir
+            section(id="content")
+                ng-view

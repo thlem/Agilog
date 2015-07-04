@@ -1,0 +1,49 @@
+exports.config = {
+    "paths": {
+        "watched": ["client", "vendor"],
+        "public": "public"
+    },
+    "files": {
+        "stylesheets": {
+            "joinTo": "css/app.min.css"
+        },
+        "javascripts": {
+            "joinTo": {
+                "js/app.min.js": /^client[\\/]app/,
+                "js/vendor.min.js": [
+                    "bower_component/jquery/dist/jquery.js",
+                    "bower_component/angular/angular.js",
+                    "bower_component/angular-cookies/angular-cookies.js",
+                    "bower_component/angular-resource/angular-resource.js",
+                    "bower_component/angular-route/angular-route.js",
+                    "bower_component/angular-sanitize/angular-sanitize.js",
+                    "bower_component/ngstorage/ngStorage.js",
+                ]
+            },
+            "order": {
+                "before": [
+                    "bower_component/jquery/jquery.js",
+                    "bower_component/angular/angular.js",
+                    "bower_component/angular-cookies/angular-cookies.js",
+                    "bower_component/angular-resource/angular-resource.js",
+                    "bower_component/angular-route/angular-route.js",
+                    "bower_component/angular-sanitize/angular-sanitize.js",
+                    "bower_component/ngstorage/ngStorage.js",
+                    "client/app/agilogClient.js"
+                ]
+            }
+        }
+    },
+    "conventions": {
+        "assets": /^client[\\/]static[\\/]/
+    },
+    "plugins": {
+        "on": ["css-brunch", "javascript-brunch", "uglify-js-brunch", "clean-css-brunch"],
+        "off": [],
+        "autoreload": "true"
+    },
+    "modules": {
+        "definition": false,
+        "wrapper": false
+    }
+}

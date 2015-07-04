@@ -1,0 +1,36 @@
+<div class="authForm">
+  
+  <h1 class="moustache">Formulaire d'enregistrement</h1>
+  <form name="registerForm" novalidate register-form-dir>
+
+    <p>
+      <input type="text" id="usrLogin" name="usrLogin" ng-model="user.usrLogin" required input-text/>
+      <label for="usrLogin">Login *</label>
+    </p>
+    <p>
+      <input type="password" id="usrPassword" name="usrPassword" ng-model="user.usrPassword" required input-text/>
+      <label for="usrPassword">Password *</label>
+    </p>
+    <p>
+      <input type="password" id="usrPasswordConfirm" name="usrPasswordConfirm" ng-model="user.usrPasswordConfirm" required input-text/>
+      <label for="usrPasswordConfirm">Password Confirmation *</label>
+    </p>
+    <p>
+      <input type="mail" id="usrMail" name="usrMail" ng-model="user.usrMail" input-text ng-pattern="/^[_a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$/"/>
+      <label for="usrMail">Mail</label>
+    </p>
+    <p>
+      <input type="text" id="usrFirstName" name="usrFirstName" ng-model="user.usrFirstName" input-text/>
+      <label for="usrFirstName">First Name</label>
+    </p>
+    <p>
+      <input type="text" id="usrLastName" name="usrLastName" ng-model="user.usrLastName" input-text/>
+      <label for="usrLastName">Last Name</label>
+    </p>
+    <p>
+      <input type="submit" value="Valider" />
+    </p>
+
+  </form>
+
+</div>
