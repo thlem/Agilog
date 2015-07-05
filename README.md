@@ -2,10 +2,9 @@
 A simple angular/node app
 DON'T WORK WITHOUT LOCAL MYSQL "AGILOG" DB
 ## Installation
-npm install
-brunch build
-
-and start localhost:3131
+npm install (for node_module installation)
+brunch build (for client code build)
+nodemon (for localhost:3131)
 
 ## TODO
 Refactor node/angular code > have clean code
