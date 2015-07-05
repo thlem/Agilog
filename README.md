@@ -1,5 +1,6 @@
 # Agilog
 A simple angular/node app
+DON'T WORK WITHOUT LOCAL MYSQL "AGILOG" DB
 ## Installation
 npm install
 brunch build
