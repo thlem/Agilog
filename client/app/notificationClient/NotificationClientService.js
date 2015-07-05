@@ -1,7 +1,7 @@
 ﻿/**
- * Service offrant les méthodes de manipulation des liste de notifications
- * @Service : notificationServiceClient
- * @param : $timeout : Module externe permettant de manipuler le local-storage
+ * @Type        : Service
+ * @Name        : NotificationClientService
+ * @Description : Service offrant les méthodes de manipulation des liste de notifications
  */
 agilogClient.service('NotificationClientService', ['$timeout', function($timeout) {
     

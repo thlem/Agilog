@@ -59,6 +59,12 @@ module.exports = function(agilogServer, passport){
 
   });
 
+  /**
+   * Route appelée lors de la soumissions du formulaire d'authentification
+   * @param  {HttpRequest} request      La HttpRequest   
+   * @param  {HttpResponse response     La HttpResponse
+   * @return {HttpResponse}             Retourne le code ainsi que le message retournée et/ou le User
+   */
   agilogServer.post("/auth/login/", function(request, response, next){
     console.log("[START][AuthenticationController][login]");
     // Appel du service d'authentification via passport
@@ -101,6 +107,12 @@ module.exports = function(agilogServer, passport){
     })(request, response, next);
   });
 
+  /**
+   * Route appelée lors de la déconnexion utilisateur
+   * @param  {HttpRequest} request      La HttpRequest   
+   * @param  {HttpResponse response     La HttpResponse
+   * @return {HttpResponse}             Retourne le code ainsi que le message retournée
+   */
   agilogServer.get("/auth/logout", function(request, response){
     console.log("[START][AuthenticationController][logout]");
     AuthenticationService.logout(request, function(){

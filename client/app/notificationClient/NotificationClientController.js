@@ -1,8 +1,7 @@
 ﻿/**
- * Controlleur stockant les liste de notifications affichées
- * @Controller : notificationControllerClient
- * @param : NotificationClientService : Service permettant de gérer les notifications
- * @param : $scope : Le Scope local du controller
+ * @Type        : Controller
+ * @Name        : NotificationClientController
+ * @Description : Ce Controlleur stockant les liste de notifications affichées
  */
 agilogClient.controller('NotificationClientController', ['NotificationClientService', '$scope',
 function(NotificationClientService, $scope) {

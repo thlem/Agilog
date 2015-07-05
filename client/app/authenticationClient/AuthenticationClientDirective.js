@@ -1,64 +1,100 @@
+/**
+ * @Type        : Directive
+ * @Name        : registerFormDir
+ * @Usage       : <balise register-form-dir></balise>
+ * @Description : Cette directive gère côté JS les événements 
+ *                utilisateur liés au formulaire d'enregistrement
+ */
 agilogClient.directive("registerFormDir", ["NotificationClientService", "AuthenticationClientService", "$location", "$rootScope",
 function(NotificationClientService, AuthenticationClientService, $location, $rootScope){
 
 	return function(scope, element) {
 
+		// On empêche l'accès à un utilisateur déjà authentifié
 		if($rootScope.root.user){
 			$location.url('/');
 		}
 
 		var registerForm = $(element[0]);
 		var usrLoginInput = $(registerForm).find("#usrLogin");
+
+		// Au premier affichage de la page si une valeur
+		// est déjà présente dans le champ login on met le 
+		// focus sur le champ password
 		if(usrLoginInput.val()){
 			var usrPasswordInput = $(registerForm).find("#usrPassword");
 			usrPasswordInput.focus();
 		}
+		// Sinon on met le focus sur le champ login
 		else{
 			usrLoginInput.focus();
 		}
 
+		// A la soumission du formulaire
 		element.on("submit", function(){
 			$rootScope.startLoading();
 
+			// On supprime la class css d'erreur
 			$(".inputError").removeClass("inputError");
 
+			// Si des erreurs sont présentes dans le formulaire
 			if(!scope.registerForm.$valid){
-				var usrMailLabel = $(registerForm).find("label[for='usrMail']");
+
+				var usrMailLabel = $(this).find("label[for='usrMail']");
 				usrMailLabel.text("Mail");
 				var focusIsSet = false;
-				if(scope.registerForm.usrLogin.$error.required){
-					var usrLoginInput = $(registerForm).find("#usrLogin");
 
+				// Si le login n'est pas présent
+				if(scope.registerForm.usrLogin.$error.required){
+					var usrLoginInput = $(this).find("#usrLogin");
+
+					// On ajoute la class d'erreur
 					usrLoginInput.addClass("inputError");
+					// On met le focus dessus
 					focusIsSet = true;
 					usrLoginInput.focus();
 				}
-				if(scope.registerForm.usrPassword.$error.required){
-					var usrPasswordInput = $(registerForm).find("#usrPassword");
 
+				// Si le password n'est pas présent
+				if(scope.registerForm.usrPassword.$error.required){
+					var usrPasswordInput = $(this).find("#usrPassword");
+					
+					// On ajoute la class d'erreur
 					usrPasswordInput.addClass("inputError");
+					// Si le focus n'a pas été précisé plus haut
 					if(!focusIsSet){
+						// On met le focus dessus
 						focusIsSet = true;
 						usrPasswordInput.focus();
 					}
 				}
-				if(scope.registerForm.usrPasswordConfirm.$error.required){
-					var usrPasswordConfirmInput = $(registerForm).find("#usrPasswordConfirm");
 
+				// Si la confirmation du password n'est pas présente
+				if(scope.registerForm.usrPasswordConfirm.$error.required){
+					var usrPasswordConfirmInput = $(this).find("#usrPasswordConfirm");
+					
+					// On ajoute la class d'erreur
 					usrPasswordConfirmInput.addClass("inputError");
+					// Si le focus n'a pas été précisé plus haut
 					if(!focusIsSet){
+						// On met le focus dessus
 						focusIsSet = true;
 						usrPasswordConfirmInput.focus();
 					}
 				}
+				// Si le format du mail n'est pas bon
 				if(scope.registerForm.usrMail.$error){
-					var usrMailInput = $(registerForm).find("#usrMail");
+					var usrMailInput = $(this).find("#usrMail");
 					if(usrMailInput.val()){
-						var usrMailLabel = $(registerForm).find("label[for='usrMail']");
+						var usrMailLabel = $(this).find("label[for='usrMail']");
 
+						// On ajoute la class d'erreur
 						usrMailInput.addClass("inputError");
+						// On modifie le label pour indiquer l'erreur
 						usrMailLabel.append(" E-mail invalide (example@examp.ex)");
+						// Si le focus n'a pas été précisé plus haut
 						if(!focusIsSet){
+							// On met le focus dessus
 							focusIsSet = true;
 							usrMailInput.focus();
 						}
@@ -66,13 +102,16 @@ function(NotificationClientService, AuthenticationClientService, $location, $roo
 				}
 				$rootScope.endLoading();
 			}
+			// Si le formulaire est valide
 			else{
-				var usrPasswordConfirmInput = $(registerForm).find("#usrPasswordConfirm");
-				var usrPasswordInput = $(registerForm).find("#usrPassword");
+				var usrPasswordConfirmInput = $(this).find("#usrPasswordConfirm");
+				var usrPasswordInput = $(this).find("#usrPassword");
 
-				var password = usrPasswordInput.val();
-				var confirmPassword = usrPasswordConfirmInput.val();
+				var password = scope.user.usrPassword;
+				var confirmPassword = scope.user.usrPasswordConfirm;
 
+				// On vérifie que les password correspondent
+				// Si ils ne correspondent pas
 				if(password !== confirmPassword){
 
 					NotificationClientService.addToErrorMessages("Les mots de passe saisis ne sont pas identiques");
@@ -91,26 +130,33 @@ function(NotificationClientService, AuthenticationClientService, $location, $roo
 					$rootScope.endLoading();
 					scope.$apply();
 				}
+				// Si les password correspondent
 				else{
 
+					// On construit l'objet json transmis
 					var arrayOfUserData = {
-						usrLogin:$(registerForm).find("#usrLogin").val(),
-						usrPassword:$(registerForm).find("#usrPassword").val(),
-						usrMail:$(registerForm).find("#usrMail").val(),
-						usrFirstName:$(registerForm).find("#usrFirstName").val(),
-						usrLastName:$(registerForm).find("#usrLastName").val()
+						usrLogin:scope.user.usrLogin,
+						usrPassword:scope.user.usrPassword,
+						usrMail:scope.user.usrMail,
+						usrFirstName:scope.user.usrFirstName,
+						usrLastName:scope.user.usrLastName
 					}
 					
+					// On soumet les données du formulaire via le service
 					AuthenticationClientService.submitRegisterForm(arrayOfUserData, function(message, user){
+						// Si le user a été retourné
 						if(user){
+							// On l'ajoute au localStorage et au scope Global
 							AuthenticationClientService.addOrUpdateUserInLocalStorage(user);
 							NotificationClientService.addToSuccessMessages(message);
 							$rootScope.endLoading();
+							// On redirige vers l'accueil
 							$location.url('/');
 						}
+						// Sinon une erreur est survenue
 						else{
 							NotificationClientService.addToErrorMessages(message);
-							var usrLoginInput = $(registerForm).find("#usrLogin");
+							var usrLoginInput = $(this).find("#usrLogin");
 							usrLoginInput.focus();
 							$rootScope.endLoading();
 						}
@@ -122,6 +168,13 @@ function(NotificationClientService, AuthenticationClientService, $location, $roo
 
 }]);
 
+/**
+ * @Type        : Directive
+ * @Name        : loginFormDir
+ * @Usage       : <balise login-form-dir></balise>
+ * @Description : Cette directive gère côté JS les événements 
+ *                utilisateur liés au formulaire d'authentification
+ */
 agilogClient.directive("loginFormDir", ["NotificationClientService", "AuthenticationClientService", "$location", "$rootScope",
 function(NotificationClientService, AuthenticationClientService, $location, $rootScope){
 	return function(scope, element) {

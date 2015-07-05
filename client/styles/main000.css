@@ -450,7 +450,7 @@
     border-bottom:1px solid #111725;
   }
   section#content div.authForm form p input.inputError:not([type="submit"]){
-  border-bottom:2px solid #CD0100;
+    border-bottom:2px solid #CD0100;
   }
   section#content div.authForm form p label:not(.moveLabelToBottom):not(.labelOnBottom){
     position:absolute;
@@ -488,6 +488,9 @@
     border-radius:5px;
     border:1px solid #52636B;
     background:#F2F2F2;
+  }
+  section#content div#userAccountManage form input.inputError{
+    border:2px solid #CD0100;
   }
   section#content div#userAccountManage form input:not([type="submit"]):focus{
     box-shadow:0 0 2px black;

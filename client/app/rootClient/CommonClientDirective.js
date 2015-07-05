@@ -2,8 +2,7 @@
  * @Type        : Directive
  * @Name        : menuIcoDir
  * @Usage       : <balise menu-ico-dir></balise>
- * @Param       : function() : Le corps de la directive
- * @Description : Cette directive gère côté les JS les événements 
+ * @Description : Cette directive gère côté JS les événements 
  *                utilisateur liés aux éléments du menu
  */
 agilogClient.directive("menuIcoDir", [function(){

@@ -1,31 +1,31 @@
 <div id="userAccountManage" class="contentWrapper">
 	<div>
-	<form name="userAccountLoginInfo" novalidate usr-account-login-dir>
-		<h2>Vos informations de connexion</h2>
-		<p>
-			<label>Votre identifiant</label>
-			<input type="text" name="usrLogin" id="usrLogin" ng-model="user.usrLogin" />
-		</p>
-		<p>
-			<label>Votre mot de passe</label>
-			<input type="password" name="usrPassword" id="usrPassword" />
-		</p>
-		<p>
-			<label>Confirmation de votre mot de passe</label>
-			<input type="password" name="usrPasswordConfirm" id="usrPasswordConfirm" />
-		</p>
-		<input type="submit" value="Modifier" />
-	</form>
+		<form name="userAccountLoginInfo" novalidate usr-account-login-dir>
+			<h2>Vos informations de connexion</h2>
+			<p>
+				<label for="usrLogin">Votre identifiant</label>
+				<input type="text" name="usrLogin" id="usrLogin" ng-model="user.usrLogin" />
+			</p>
+			<p>
+				<label for="usrPassword">Votre mot de passe</label>
+				<input type="password" name="usrPassword" id="usrPassword" ng-model="user.usrPassword" />
+			</p>
+			<p>
+				<label for="usrPasswordConfirm">Confirmation de votre mot de passe</label>
+				<input type="password" name="usrPasswordConfirm" id="usrPasswordConfirm" ng-model="user.usrPasswordConfirm" />
+			</p>
+			<input type="submit" value="Modifier" />
+		</form>
 
-	<form name="userAccountPersonalInfo" usr-account-personal-dir>
-		<h2>Vos informations personnelles</h2>
-		<label>Votre prénom</label>
-		<input type="text" name="usrFirstName" id="usrFirstName" ng-model="user.usrFirstName" />
-		<label>Votre Nom</label>
-		<input type="text" name="usrLastName" id="usrLastName" ng-model="user.usrLastName" />
-		<label>Votre adresse mail</label>
-		<input type="mail" name="usrMail" id="usrMail" ng-model="user.usrMail" ng-pattern="/^[_a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$/" />
-		<input type="submit" value="Modifier" />
-	</form>
+		<form name="userAccountPersonalInfo" usr-account-personal-dir>
+			<h2>Vos informations personnelles</h2>
+			<label for="usrFirstName">Votre prénom</label>
+			<input type="text" name="usrFirstName" id="usrFirstName" ng-model="user.usrFirstName" />
+			<label for="usrLastName">Votre Nom</label>
+			<input type="text" name="usrLastName" id="usrLastName" ng-model="user.usrLastName" />
+			<label for="usrMail">Votre adresse mail</label>
+			<input type="mail" name="usrMail" id="usrMail" ng-model="user.usrMail" ng-pattern="/^[_a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$/" />
+			<input type="submit" value="Modifier" />
+		</form>
 	</div>
 </div>

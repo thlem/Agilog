@@ -1,3 +1,10 @@
+/**
+ * @Type        : Controller
+ * @Name        : RootClientController
+ * @Description : Ce Controller ne correspond à aucune vue en paritculier
+ *                Il met à disposition les méthode globale utilisées au sein
+ *                de l'applicaiton
+ */
 agilogClient.controller("RootClientController", ['$rootScope', function($rootScope){
 
 	/**
