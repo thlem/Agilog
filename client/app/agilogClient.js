@@ -1,6 +1,6 @@
 'use strict'
 
-var agilogClient = angular.module("agilogClient", ["ngResource", "ngRoute", "ngStorage"]);
+var agilogClient = angular.module("agilogClient", ["ngResource", "ngRoute", "ngStorage", "navigationModule"]);
 
 agilogClient.config(["$routeProvider", "$httpProvider", function ($routeProvider, $httpProvider){
 	$routeProvider
