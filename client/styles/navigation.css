@@ -1,4 +1,4 @@
-﻿nav{
+nav{
 	font-size:14px;
   	font-family:'Times New Roman';
 	background:#111725;
@@ -10,6 +10,7 @@
 	border-top:5px solid #577F7F;
 	height:50px;
 	color:#D5E3E3;
+    
 }
 nav span.navigationn-open-close-button{
 	display:block;
@@ -23,6 +24,7 @@ nav span.navigationn-open-close-button{
 	text-align:center;
 	padding:30px 20px 0 0;
 	font-weight: bold;
+    overflow: visible !important;
 }
 nav span.navigationn-open-close-button:before{
 	content:"Menu";
@@ -48,11 +50,6 @@ nav span.navigationn-open-close-button.navigation-hover{
 }
 nav ul{
 	list-style:none;
-}
-nav ul#navigation-menu{
-	overflow-x:auto;
-	width:3000px;
-
 }
 nav ul#navigation-menu li.navigation-menu-item{
 	display: inline-block;
@@ -97,9 +94,27 @@ nav ul#navigation-menu li.navigation-menu-item.hide-navigation-menu-item-title:a
 nav ul#navigation-menu li.navigation-menu-item img.navigation-menu-item-img{
 	width:45px;
 	height:45px;
-	}
-nav ul#navigation-menu li.navigation-menu-item ul.navigation-main-sub-menu{
-	position:absolute;
+}
+nav ul#navigation-menu li.navigation-menu-item>ul{
+    opacity:0;
+}
+@media only screen and (min-width : 768px){
+    nav div#navigation-sub-menu{
+        width:50%;
+    }
+}
+nav div#navigation-sub-menu ul{
+    display:flex;
+	flex-flow: row wrap;
+}
+nav div#navigation-sub-menu ul li{
+    padding:15px;
+}
+nav div#navigation-sub-menu ul a{
+    color:#D5E3E3;
+	text-decoration:none;
+}
+	/*position:absolute;
 	left:0px;
 	top:50px;
 	padding:5px;
@@ -108,10 +123,9 @@ nav ul#navigation-menu li.navigation-menu-item ul.navigation-main-sub-menu{
 	max-width:700px;
 	max-height:500px;
 	box-shadow:-2px -2px 2px #111725;
-	
+	display:none;
 	display:flex;
 	flex-flow: column wrap;
-	opacity:0;
 }
 nav ul#navigation-menu li.navigation-menu-item ul.navigation-main-sub-menu a{
 	color:#D5E3E3;
@@ -125,4 +139,4 @@ nav ul#navigation-menu li.navigation-menu-item ul.navigation-main-sub-menu li.na
 	border-bottom:1px dotted #D5E3E3;
 	margin:5px;
 	white-space: nowrap;
-}
+}*/
