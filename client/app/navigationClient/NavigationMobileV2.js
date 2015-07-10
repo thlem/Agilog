@@ -7,12 +7,13 @@ var navigationModule = angular.module("navigationModule", []);
 navigationModule.service("NavigationService", [function(){
 
 	this.config = {
-			isMobile       : false,
-			deviceHeight   : $(window).height(),
-			deviceWidth    : $(window).width(),
-			isMenuOpen     : false,
-			bottomPosition : -60,
-			menuHeight     : 50
+			isMobile            : false,
+			deviceHeight        : $(window).height(),
+			deviceWidth         : $(window).width(),
+			isMenuOpen          : false,
+			bottomClosePosition : -61,
+			bottomOpenPosition  : 0,
+			menuHeight          : 55
 		};
 
 	this.menuElements = {
@@ -31,27 +32,29 @@ navigationModule.service("NavigationService", [function(){
  				imgSrc:"./images/loggedIco.png",
  				show:null,
  				hide:null,
- 				subElements:[{
- 					libelle:"Sign in",
- 					link:"#/login",
- 					show:null,
- 					hide:"root.user"
-				},
-				{
-					libelle:"Logout",
- 					link:"#/logout",
- 					show:"root.user",
- 					hide:null
-				},
-				{
-					libelle:"Sign up",
- 					link:"#/register",
- 					show:null,
- 					hide:"root.user"
-				}]
+ 				subElements:[
+	 				{
+	 					libelle:"Sign in",
+	 					link:"#/login",
+	 					show:null,
+	 					hide:"root.user"
+					},
+					{
+						libelle:"Logout",
+	 					link:"#/logout",
+	 					show:"root.user",
+	 					hide:null
+					},
+					{
+						libelle:"Sign up",
+	 					link:"#/register",
+	 					show:null,
+	 					hide:"root.user"
+					}
+				]
 			},
 			{
- 				title:"Your Account",
+ 				title:"My Account",
  				link:"#/account",
  				imgSrc:"./images/accountIco.png",
  				show:"root.user",
@@ -59,89 +62,367 @@ navigationModule.service("NavigationService", [function(){
  				subElements:null
  			},
  			{
- 				title:"Project List",
- 				link:"#/",
+ 				title:"My Projects",
+ 				link:null,
  				imgSrc:"./images/projectsIco.png",
  				show:"root.user",
  				hide:null,
- 				subElements:[{
- 					libelle:"Project 1",
- 					link:"#/",
- 					show:null,
- 					hide:null
-				},
-				{
-					libelle:"Project 2",
- 					link:"#/",
- 					show:null,
- 					hide:null 					
-				},
-				{
-					libelle:"Project 2",
- 					link:"#/",
- 					show:null,
- 					hide:null 					
-				},
-				{
-					libelle:"Project 2",
- 					link:"#/",
- 					show:null,
- 					hide:null 					
-				},
-				{
-					libelle:"Project 2",
- 					link:"#/",
- 					show:null,
- 					hide:null 					
-				},
-				{
-					libelle:"Project 2",
- 					link:"#/",
- 					show:null,
- 					hide:null 					
-				},
-				{
-					libelle:"Project 2",
- 					link:"#/",
- 					show:null,
- 					hide:null 					
-				},
-				{
-					libelle:"Project 2",
- 					link:"#/",
- 					show:null,
- 					hide:null 					
-				},
-				{
-					libelle:"Project 2",
- 					link:"#/",
- 					show:null,
- 					hide:null 					
-				},
-				{
-					libelle:"Project 222222222",
- 					link:"#/",
- 					show:null,
- 					hide:null 					
-				},
-				{
-					libelle:"Project 2",
- 					link:"#/",
- 					show:null,
- 					hide:null 					
-				},
-				{
-					libelle:"Project 2",
- 					link:"#/",
- 					show:null,
- 					hide:null 					
-				},
-				{
-					libelle:"Project 2",
- 					link:"#/",
- 					show:null,
- 					hide:null 					
-				}]
+ 				subElements:[
+	 				{
+	 					libelle:"Project 1",
+	 					link:"#/",
+	 					show:null,
+	 					hide:null
+					},
+					{
+						libelle:"Project 2",
+	 					link:"#/",
+	 					show:null,
+	 					hide:null 					
+					},
+					{
+						libelle:"Project 3",
+	 					link:"#/",
+	 					show:null,
+	 					hide:null 					
+					},
+					{
+						libelle:"Project 4",
+	 					link:"#/",
+	 					show:null,
+	 					hide:null 					
+					},
+					{
+						libelle:"Project 5",
+	 					link:"#/",
+	 					show:null,
+	 					hide:null 					
+					},
+					{
+						libelle:"Project 6",
+	 					link:"#/",
+	 					show:null,
+	 					hide:null 					
+					},
+					{
+						libelle:"Project 7",
+	 					link:"#/",
+	 					show:null,
+	 					hide:null 					
+					},
+					{
+						libelle:"Project 8",
+	 					link:"#/",
+	 					show:null,
+	 					hide:null 					
+					},
+					{
+						libelle:"Project 9",
+	 					link:"#/",
+	 					show:null,
+	 					hide:null 					
+					},
+					{
+						libelle:"Project 10",
+	 					link:"#/",
+	 					show:null,
+	 					hide:null 					
+					},
+					{
+						libelle:"Project 11",
+	 					link:"#/",
+	 					show:null,
+	 					hide:null 					
+					},
+					{
+						libelle:"Project 12",
+	 					link:"#/",
+	 					show:null,
+	 					hide:null 					
+					},
+					{
+						libelle:"Project 13",
+	 					link:"#/",
+	 					show:null,
+	 					hide:null 					
+					},
+					{
+						libelle:"Project 14",
+	 					link:"#/",
+	 					show:null,
+	 					hide:null 					
+					},
+					{
+						libelle:"Project 15",
+	 					link:"#/",
+	 					show:null,
+	 					hide:null 					
+					},
+					{
+						libelle:"Project 16",
+	 					link:"#/",
+	 					show:null,
+	 					hide:null 					
+					},
+					{
+						libelle:"Project 17",
+	 					link:"#/",
+	 					show:null,
+	 					hide:null 					
+					},
+					{
+						libelle:"Project 18",
+	 					link:"#/",
+	 					show:null,
+	 					hide:null 					
+					},
+					{
+						libelle:"Project 19",
+	 					link:"#/",
+	 					show:null,
+	 					hide:null 					
+					},
+					{
+						libelle:"Project 20",
+	 					link:"#/",
+	 					show:null,
+	 					hide:null 					
+					},
+					{
+						libelle:"Project 1",
+	 					link:"#/",
+	 					show:null,
+	 					hide:null 					
+					},
+					{
+						libelle:"Project 22",
+	 					link:"#/",
+	 					show:null,
+	 					hide:null 					
+					},
+					{
+						libelle:"Project 23",
+	 					link:"#/",
+	 					show:null,
+	 					hide:null 					
+					},
+					{
+						libelle:"Project 24",
+	 					link:"#/",
+	 					show:null,
+	 					hide:null 					
+					},
+					{
+						libelle:"Project 25",
+	 					link:"#/",
+	 					show:null,
+	 					hide:null 					
+					},
+					{
+						libelle:"Project 26",
+	 					link:"#/",
+	 					show:null,
+	 					hide:null 					
+					},
+					{
+						libelle:"Project 27",
+	 					link:"#/",
+	 					show:null,
+	 					hide:null 					
+					},
+					{
+						libelle:"Project 26",
+	 					link:"#/",
+	 					show:null,
+	 					hide:null 					
+					},
+					{
+						libelle:"Project 27",
+	 					link:"#/",
+	 					show:null,
+	 					hide:null 					
+					},
+					{
+						libelle:"Project 26",
+	 					link:"#/",
+	 					show:null,
+	 					hide:null 					
+					},
+					{
+						libelle:"Project 27",
+	 					link:"#/",
+	 					show:null,
+	 					hide:null 					
+					},
+					{
+						libelle:"Project 26",
+	 					link:"#/",
+	 					show:null,
+	 					hide:null 					
+					},
+					{
+						libelle:"Project 27",
+	 					link:"#/",
+	 					show:null,
+	 					hide:null 					
+					},
+					{
+						libelle:"Project 26",
+	 					link:"#/",
+	 					show:null,
+	 					hide:null 					
+					},
+					{
+						libelle:"Project 27",
+	 					link:"#/",
+	 					show:null,
+	 					hide:null 					
+					},
+					{
+						libelle:"Project 26",
+	 					link:"#/",
+	 					show:null,
+	 					hide:null 					
+					},
+					{
+						libelle:"Project 27",
+	 					link:"#/",
+	 					show:null,
+	 					hide:null 					
+					},
+					{
+						libelle:"Project 26",
+	 					link:"#/",
+	 					show:null,
+	 					hide:null 					
+					},
+					{
+						libelle:"Project 27",
+	 					link:"#/",
+	 					show:null,
+	 					hide:null 					
+					},
+					{
+						libelle:"Project 26",
+	 					link:"#/",
+	 					show:null,
+	 					hide:null 					
+					},
+					{
+						libelle:"Project 27",
+	 					link:"#/",
+	 					show:null,
+	 					hide:null 					
+					},
+					{
+						libelle:"Project 26",
+	 					link:"#/",
+	 					show:null,
+	 					hide:null 					
+					},
+					{
+						libelle:"Project 27",
+	 					link:"#/",
+	 					show:null,
+	 					hide:null 					
+					},
+					{
+						libelle:"Project 26",
+	 					link:"#/",
+	 					show:null,
+	 					hide:null 					
+					},
+					{
+						libelle:"Project 27",
+	 					link:"#/",
+	 					show:null,
+	 					hide:null 					
+					},
+					{
+						libelle:"Project 26",
+	 					link:"#/",
+	 					show:null,
+	 					hide:null 					
+					},
+					{
+						libelle:"Project 27",
+	 					link:"#/",
+	 					show:null,
+	 					hide:null 					
+					},
+					{
+						libelle:"Project 26",
+	 					link:"#/",
+	 					show:null,
+	 					hide:null 					
+					},
+					{
+						libelle:"Project 27",
+	 					link:"#/",
+	 					show:null,
+	 					hide:null 					
+					},
+					{
+						libelle:"Project 26",
+	 					link:"#/",
+	 					show:null,
+	 					hide:null 					
+					},
+					{
+						libelle:"Project 27",
+	 					link:"#/",
+	 					show:null,
+	 					hide:null 					
+					},
+					{
+						libelle:"Project 26",
+	 					link:"#/",
+	 					show:null,
+	 					hide:null 					
+					},
+					{
+						libelle:"Project 27",
+	 					link:"#/",
+	 					show:null,
+	 					hide:null 					
+					},
+					{
+						libelle:"Project 26",
+	 					link:"#/",
+	 					show:null,
+	 					hide:null 					
+					},
+					{
+						libelle:"Project 48",
+	 					link:"#/",
+	 					show:null,
+	 					hide:null 					
+					}
+				]
+ 			},
+			{
+ 				title:"Home",
+ 				link:"#/",
+ 				imgSrc:"./images/homeIco.png",
+ 				show:null,
+ 				hide:null,
+ 				subElements:null
+ 			},
+ 			{
+ 				title:"Home",
+ 				link:"#/",
+ 				imgSrc:"./images/homeIco.png",
+ 				show:null,
+ 				hide:null,
+ 				subElements:null
+ 			},
+ 			{
+ 				title:"Home",
+ 				link:"#/",
+ 				imgSrc:"./images/homeIco.png",
+ 				show:null,
+ 				hide:null,
+ 				subElements:null
  			}
  		] 		
  	};
@@ -153,11 +434,9 @@ navigationModule.directive("navigationDir", ["NavigationService", function(Navig
 		restrict:"E",
 		link:function(scope, element){
 
-			var mobileWidth = window.matchMedia('(max-width: 768px)'); 
-
- 			if(mobileWidth.matches){
+ 			if(NavigationService.config.isMobile){
 				NavigationService.config.isMobile = true;
-				$("nav#main-navigation").css({"max-height":NavigationService.config.deviceHeight+"px"});
+				$("nav#navigation").css({"max-height":NavigationService.config.deviceHeight+"px"});
 			}
 
 		}
@@ -169,36 +448,28 @@ navigationModule.directive("navigationDir", ["NavigationService", function(Navig
  */
  navigationModule.directive("navigationOpenCloseDir", ["NavigationService", function(NavigationService){
  	return {
- 		restrict: "E",
- 		template: "<span class='navigationn-open-close-button navigation-close'></span>",
+ 		restrict: "A",
+ 		template: "<span>Menu</span>",
  		link: function(scope, element, attrs){
 
- 			var menuOpenCloseButton = $($(element).find("span")[0]);
-
-
- 			if(NavigationService.config.isMobile){
-				menuOpenCloseButton.removeClass("navigation-close");
-			}
+ 			
 
  			element.on("click", function(){
 
  				if(NavigationService.config.isMenuOpen){
- 					NavigationService.config.bottomPosition = -60;
- 					menuOpenCloseButton.addClass("navigation-close").removeClass("navigation-open");
+ 					var position = NavigationService.config.bottomClosePosition
+ 					element.removeClass("open");
  				}
  				else{
- 					NavigationService.config.bottomPosition = 0;
- 					menuOpenCloseButton.addClass("navigation-open").removeClass("navigation-close");
+ 					var position = NavigationService.config.bottomOpenPosition;
+ 					element.addClass("open");
  				}
  				NavigationService.config.isMenuOpen = !NavigationService.config.isMenuOpen;
 
- 				$(this).parent().clearQueue().stop().animate({
- 					bottom : NavigationService.config.bottomPosition+"px"
- 				},500, function(){
- 					$("nav#main-navigation").animate({
-						height:"50px"
-					},500);
- 				});
+ 				$(this).parent().parent().clearQueue().stop().animate({
+ 					bottom : position+"px",
+ 					height:NavigationService.config.menuHeight+"px"
+ 				},500);
  			});
 
  			element.on("mouseenter", function(){
@@ -229,20 +500,20 @@ navigationModule.directive("navigationDir", ["NavigationService", function(Navig
 		//
 		// Declare the current element
 		//
- 		var element = $("<li>", {"class":"navigation-menu-item", "data-title":elementData.title, "navigation-menu-item-dir":""});
+ 		var element = $("<li>", {"class":"navigation-middle-elements", "data-title":elementData.title, "navigation-menu-item-dir":""});
 
  		//
  		// If elementData has a link
  		//
  		if(elementData.link){
- 			element.append($("<a>", {"href":elementData.link}).append($("<img>", {"src":elementData.imgSrc, "class":"navigation-menu-item-img"})));
+ 			element.append($("<a>", {"href":elementData.link}).append($("<img>", {"src":elementData.imgSrc})));
  		}
 
  		//
  		// If elementData has no link, just display the image 
  		//
  		else{
-	 		element.append($("<img>", {"src":elementData.imgSrc, "class":"navigation-menu-item-img"}));
+	 		element.append($("<img>", {"src":elementData.imgSrc}));
 	 	}
 
 	 	//
@@ -253,7 +524,7 @@ navigationModule.directive("navigationDir", ["NavigationService", function(Navig
  			//
  			// Create the sub-menu element
  			//
- 			var subElement = $("<ul>");
+ 			var subElement = $("<ul>", {"class":"navigation-sub-elements"});
 
  			//
  			// for each sub-menu element in elementData.subElements
@@ -281,11 +552,11 @@ navigationModule.directive("navigationDir", ["NavigationService", function(Navig
  		var element = null;
 
  		if(subElement.link){
- 			element = $("<li>", {"class":"navigation-sub-menu-item"});
+ 			element = $("<li>", {"class":"navigation-sub-middle-elements"});
  			element.append($("<a>", {"href":subElement.link, "html":subElement.libelle}));
  		}
  		else{
- 			element = $("<li>", {"class":"navigation-sub-menu-item"});
+ 			element = $("<li>", {"class":"navigation-sub-middle-elements"});
  			element.append(subElement.libelle);
  		}
 
@@ -293,30 +564,32 @@ navigationModule.directive("navigationDir", ["NavigationService", function(Navig
  	};
 
  	return {
- 		restrict: "E",
+ 		restrict: "A",
 		link: function(scope, element, attrs){
 
-			var nav = $("<nav>", {"role":"navigation", "id":"main-navigation"});
-			var navOpenClose = $("<navigation-open-close-dir>");
+			var nav = $("<nav>", {"role":"navigation", "id":"navigation"});
+			var navOpenClose = $("<div>", {"id":"navigation-open-close-button", "class":"close", "navigation-open-close-dir":""});
 			nav.append(navOpenClose);
 
-			var menu = $("<ul>", {"id":"navigation-menu"});
-
-			var li = $("<li>", {"class":"navigation-menu-item", "data-title":"hide", "navigation-menu-item-dir":""});
-			var img = $("<img>", {"src":"./images/accountIco.png", "class":"navigation-menu-item-img"});
-			li.append(img);
-			menu.append(li);
+			var menu = $("<ul>", {"id":"navigation-elements"});			
 
 	 		$.each(NavigationService.menuElements.elements, function(){
 	 			menu.append(getMenuElement(this));
 	 		});
 
 			nav.append(menu);
-            
-            nav.append($("<div>", {"id":"navigation-sub-menu"}));
 
 			nav = $compile(nav)(scope);
 			element.append(nav);
+			element.append($("<nav>", {"id":"navigation-sub"}));
+
+			element.find("a").on("click", function(){
+				NavigationService.config.isMenuOpen = !NavigationService.config.isMenuOpen;
+				$("div#navigation-bottom-wrapper").clearQueue().stop().animate({
+ 					bottom : NavigationService.config.bottomClosePosition+"px",
+ 					height:NavigationService.config.menuHeight+"px"
+ 				},500);
+			});
 		}
  	}
  }]);
@@ -337,7 +610,6 @@ navigationModule.directive("navigationDir", ["NavigationService", function(Navig
 		//
 		var menuItem = $(menuItemObject[0]);
 		var navigationMainSubMenu = $(menuItem).find(".navigation-main-sub-menu");
-		var finalTopPosition = 0;
 		
 		if(!NavigationService.config.isMobile){
 			//
@@ -373,31 +645,40 @@ navigationModule.directive("navigationDir", ["NavigationService", function(Navig
 		// On Icon Click
 		//
 		menuItem.on("click", function(){
-            var visibleSubMenu = $("div#navigation-sub-menu");
-            visibleSubMenu.find("ul").remove();
+			var navSubMenu = $("nav#navigation-sub");
+            navSubMenu.find("ul").remove();
             
 			//
 			// Add the class that makes the Tooltip hidden
 			//
 			menuItem.addClass("hide-navigation-menu-item-title");
-            
-            var hiddenSubMenu = $($(this).find("ul"));
 
-			if(hiddenSubMenu !== null){
-                visibleSubMenu.append(hiddenSubMenu.clone());
-                visibleSubMenu.find("ul").show();
-				var height = NavigationService.config.menuHeight + visibleSubMenu.height();
+            var subMenuElements = $($(this).find("ul").first());
+
+			if(subMenuElements.length > 0){
+                navSubMenu.append(subMenuElements.clone());
+                navSubMenu.find("ul").show();
+
+                navSubMenu.find("a").on("click", function(){
+                	NavigationService.config.isMenuOpen = !NavigationService.config.isMenuOpen;
+					$("div#navigation-bottom-wrapper").clearQueue().stop().animate({
+	 					bottom : NavigationService.config.bottomClosePosition+"px",
+	 					height:NavigationService.config.menuHeight+"px"
+	 				},500);
+				});
+
+				var height = NavigationService.config.menuHeight + navSubMenu.height() + 30;
 
 				if(height >= NavigationService.config.deviceHeight -100){
 					height -= 100;
 				}
 
-				$("nav#main-navigation").animate({
+				$("div#navigation-bottom-wrapper").animate({
 					height:height+"px"
 				},500);
 			}
 			else{
-				$("nav#main-navigation").animate({
+				$("div#navigation-bottom-wrapper").animate({
 					height:NavigationService.config.menuHeight+"px"
 				},500);
 			}
