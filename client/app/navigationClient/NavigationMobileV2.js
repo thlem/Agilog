@@ -253,7 +253,7 @@ navigationModule.directive("navigationDir", ["NavigationService", function(Navig
  			//
  			// Create the sub-menu element
  			//
- 			var subElement = $("<ul>", {"class":"navigation-main-sub-menu"});
+ 			var subElement = $("<ul>");
 
  			//
  			// for each sub-menu element in elementData.subElements
@@ -267,6 +267,7 @@ navigationModule.directive("navigationDir", ["NavigationService", function(Navig
  			//
  			// Append the sub-menu to the main-menu
  			//
+            subElement.hide();
  			element.append(subElement);
  		}
 
@@ -280,11 +281,11 @@ navigationModule.directive("navigationDir", ["NavigationService", function(Navig
  		var element = null;
 
  		if(subElement.link){
- 			element = $("<li>", {"class":"navigation-all-sub-menu-item"});
+ 			element = $("<li>", {"class":"navigation-sub-menu-item"});
  			element.append($("<a>", {"href":subElement.link, "html":subElement.libelle}));
  		}
  		else{
- 			element = $("<li>", {"class":"navigation-all-sub-menu-item"});
+ 			element = $("<li>", {"class":"navigation-sub-menu-item"});
  			element.append(subElement.libelle);
  		}
 
@@ -311,6 +312,8 @@ navigationModule.directive("navigationDir", ["NavigationService", function(Navig
 	 		});
 
 			nav.append(menu);
+            
+            nav.append($("<div>", {"id":"navigation-sub-menu"}));
 
 			nav = $compile(nav)(scope);
 			element.append(nav);
@@ -370,25 +373,24 @@ navigationModule.directive("navigationDir", ["NavigationService", function(Navig
 		// On Icon Click
 		//
 		menuItem.on("click", function(){
-			
-			$.each($(".navigation-main-sub-menu"), function(){
-				$(this).css("opacity","0");
-			});
-
+            var visibleSubMenu = $("div#navigation-sub-menu");
+            visibleSubMenu.find("ul").remove();
+            
 			//
 			// Add the class that makes the Tooltip hidden
 			//
 			menuItem.addClass("hide-navigation-menu-item-title");
+            
+            var hiddenSubMenu = $($(this).find("ul"));
 
-			if(navigationMainSubMenu.height() !== null){
-				var height = NavigationService.config.menuHeight + navigationMainSubMenu.height() + 30;
+			if(hiddenSubMenu !== null){
+                visibleSubMenu.append(hiddenSubMenu.clone());
+                visibleSubMenu.find("ul").show();
+				var height = NavigationService.config.menuHeight + visibleSubMenu.height();
 
 				if(height >= NavigationService.config.deviceHeight -100){
 					height -= 100;
 				}
-
-				var width = NavigationService.config.deviceWidth / 2;
-				navigationMainSubMenu.css({"opacity":"1","width":width+"px"});
 
 				$("nav#main-navigation").animate({
 					height:height+"px"
