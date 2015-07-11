@@ -34,7 +34,7 @@ agilogServer.use(function(req, res, next) {
     next();
 });
 
-
+/*
 var sequelizeConnection = require("./server/technical/database/DataBaseConnection.js").sequelizeConnection;
 sequelizeConnection.sync();
 agilogServer.set("models", require("./server/model/Models.js"));
@@ -43,7 +43,7 @@ agilogServer.set("models", require("./server/model/Models.js"));
 require('./server/business/AuthenticationService.js').passportRules(agilogServer, passport, localStrategy);
 
 require("./server/controller/AuthenticationController.js")(agilogServer, passport);
-require("./server/controller/AccountManageController.js")(agilogServer);
+require("./server/controller/AccountManageController.js")(agilogServer);*/
 require("./server/controller/RootController.js")(agilogServer);
 
 agilogServer.listen(3131, function(){

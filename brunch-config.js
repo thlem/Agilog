@@ -1,11 +1,17 @@
 exports.config = {
     "paths": {
-        "watched": ["client", "vendor"],
+        "watched": ["client"],
         "public": "public"
     },
     "files": {
         "stylesheets": {
-            "joinTo": "css/app.min.css"
+            "joinTo":
+                "css/app.min.css",
+            "order": {
+                "before": [
+                    "client/styles/main001.css"
+                ]
+            }
         },
         "javascripts": {
             "joinTo": {
@@ -17,7 +23,7 @@ exports.config = {
                     "bower_component/angular-resource/angular-resource.js",
                     "bower_component/angular-route/angular-route.js",
                     "bower_component/angular-sanitize/angular-sanitize.js",
-                    "bower_component/ngstorage/ngStorage.js",
+                    "bower_component/ngstorage/ngStorage.js"
                 ]
             },
             "order": {
