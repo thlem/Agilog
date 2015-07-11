@@ -2,6 +2,7 @@
  - [CURRENT] Navigation Menu
  - [NEXT]    CSS Refactor
  -           Create / Join / Leave a project
+ 
 # Agilog
 A simple angular/node app
 
