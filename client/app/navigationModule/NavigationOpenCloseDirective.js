@@ -15,7 +15,6 @@
 	function navigationOpenCloseDir(NavigationService){
 		return {
 	 		restrict: "A",
-	 		template: "<span>Menu</span>",
 	 		link: function(scope, element, attrs){
 	 			// On the menu open/close button click
 	 			element.on("click", function(){

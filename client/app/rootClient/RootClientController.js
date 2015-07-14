@@ -26,7 +26,7 @@ angular.module("agilogClient").controller("RootClientController", ['$rootScope',
         if($rootScope.root.loadingQueue < 0){
             $rootScope.root.loadingQueue = 0;
         }
-        if($rootScope.root.loadingQueue == 0) {
+        if($rootScope.root.loadingQueue === 0) {
             $rootScope.root.loading = false;
         }
     };
