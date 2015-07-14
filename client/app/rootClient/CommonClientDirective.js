@@ -1,3 +1,5 @@
+(function(){
+	'use strict';
 /**
  * @Type        : Directive
  * @Name        : menuIcoDir
@@ -5,7 +7,7 @@
  * @Description : Cette directive gère côté JS les événements 
  *                utilisateur liés aux éléments du menu
  */
-agilogClient.directive("menuIcoDir", [function(){
+angular.module("agilogClient").directive("menuIcoDir", [function(){
 	/**
 	 * @Type  : function
 	 * @Param : scope   : Le scope de la directive
@@ -65,7 +67,7 @@ agilogClient.directive("menuIcoDir", [function(){
  * @Description : Cette directive gère côté les JS les événements 
  *                utilisateur liés aux champs formulaire
  */
-agilogClient.directive("inputText", [function(){
+angular.module("agilogClient").directive("inputText", [function(){
 	return function(scope, element){
 
 		// Récupération dans une variable jQuery du champ courant
@@ -103,3 +105,4 @@ agilogClient.directive("inputText", [function(){
 		});
 	}
 }]);
+})();

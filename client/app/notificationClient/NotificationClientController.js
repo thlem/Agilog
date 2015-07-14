@@ -1,9 +1,11 @@
-﻿/**
+﻿(function(){
+    'use strict';
+/**
  * @Type        : Controller
  * @Name        : NotificationClientController
  * @Description : Ce Controlleur stockant les liste de notifications affichées
  */
-agilogClient.controller('NotificationClientController', ['NotificationClientService', '$scope',
+angular.module("agilogClient").controller('NotificationClientController', ['NotificationClientService', '$scope',
 function(NotificationClientService, $scope) {
     
     // Définition des liste de notification du controller
@@ -30,3 +32,4 @@ function(NotificationClientService, $scope) {
     }, true);
     
 }]);
+})();

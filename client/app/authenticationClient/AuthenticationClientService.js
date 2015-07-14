@@ -1,10 +1,12 @@
+(function(){
+	'use strict';
 /**
  * @Type        : Service
  * @Name        : AuthenticationClientService
  * @Description : Ce service offre les méthodes relatives à l'authentification
  *                utilisateur
  */
-agilogClient.service("AuthenticationClientService", ['$localStorage', '$rootScope', "$http",
+angular.module("agilogClient").service("AuthenticationClientService", ['$localStorage', '$rootScope', "$http",
 function($localStorage, $rootScope, $http){
 
 	/**
@@ -67,3 +69,4 @@ function($localStorage, $rootScope, $http){
     }
 
 }]);
+})();

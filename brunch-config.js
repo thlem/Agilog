@@ -45,8 +45,8 @@ exports.config = {
         "assets": /^client[\\/]static[\\/]/
     },
     "plugins": {
-        "on": ["css-brunch", "javascript-brunch", "uglify-js-brunch", "clean-css-brunch"],
-        "off": [],
+        "on": ["css-brunch", "javascript-brunch"],
+        "off": ["uglify-js-brunch", "clean-css-brunch"],
         "autoreload": "true"
     },
     "modules": {

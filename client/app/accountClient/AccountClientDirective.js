@@ -1,3 +1,5 @@
+(function(){
+	'use strict';
 /**
  * @Type        : Directive
  * @Name        : usrAccountLoginDir
@@ -6,7 +8,7 @@
  *                utilisateur liés au formulaire de modification des
  *				  informations de connexion du compte
  */
-agilogClient.directive("usrAccountLoginDir", ["NotificationClientService", "AccountClientService", "AuthenticationClientService", "$location", "$rootScope",
+angular.module("agilogClient").directive("usrAccountLoginDir", ["NotificationClientService", "AccountClientService", "AuthenticationClientService", "$location", "$rootScope",
 function(NotificationClientService, AccountClientService, AuthenticationClientService, $location, $rootScope){
 		return function(scope, element) {
 
@@ -70,7 +72,7 @@ function(NotificationClientService, AccountClientService, AuthenticationClientSe
  *                utilisateur liés au formulaire de modification des
  *				  informations de connexion du compte
  */
-agilogClient.directive("usrAccountPersonalDir", ["NotificationClientService", "AccountClientService", "AuthenticationClientService", "$location", "$rootScope",
+angular.module("agilogClient").directive("usrAccountPersonalDir", ["NotificationClientService", "AccountClientService", "AuthenticationClientService", "$location", "$rootScope",
 function(NotificationClientService, AccountClientService, AuthenticationClientService, $location, $rootScope){
 		return function(scope, element) {
 			element.on("submit", function(){
@@ -114,3 +116,4 @@ function(NotificationClientService, AccountClientService, AuthenticationClientSe
 			});
 		}
 }]);
+})();

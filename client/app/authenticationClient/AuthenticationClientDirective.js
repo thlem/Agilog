@@ -1,3 +1,5 @@
+(function(){
+	'use strict';
 /**
  * @Type        : Directive
  * @Name        : registerFormDir
@@ -5,7 +7,7 @@
  * @Description : Cette directive gère côté JS les événements 
  *                utilisateur liés au formulaire d'enregistrement
  */
-agilogClient.directive("registerFormDir", ["NotificationClientService", "AuthenticationClientService", "$location", "$rootScope",
+angular.module("agilogClient").directive("registerFormDir", ["NotificationClientService", "AuthenticationClientService", "$location", "$rootScope",
 function(NotificationClientService, AuthenticationClientService, $location, $rootScope){
 
 	return function(scope, element) {
@@ -175,7 +177,7 @@ function(NotificationClientService, AuthenticationClientService, $location, $roo
  * @Description : Cette directive gère côté JS les événements 
  *                utilisateur liés au formulaire d'authentification
  */
-agilogClient.directive("loginFormDir", ["NotificationClientService", "AuthenticationClientService", "$location", "$rootScope",
+angular.module("agilogClient").directive("loginFormDir", ["NotificationClientService", "AuthenticationClientService", "$location", "$rootScope",
 function(NotificationClientService, AuthenticationClientService, $location, $rootScope){
 	return function(scope, element) {
 
@@ -245,3 +247,4 @@ function(NotificationClientService, AuthenticationClientService, $location, $roo
 		});
 	}
 }]);
+})();

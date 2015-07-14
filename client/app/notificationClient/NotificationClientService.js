@@ -1,9 +1,11 @@
-﻿/**
+﻿(function(){
+    'use strict';
+/**
  * @Type        : Service
  * @Name        : NotificationClientService
  * @Description : Service offrant les méthodes de manipulation des liste de notifications
  */
-agilogClient.service('NotificationClientService', ['$timeout', function($timeout) {
+angular.module("agilogClient").service('NotificationClientService', ['$timeout', function($timeout) {
     
     // Liste des messages d'erreur
     var errorMessages = [];
@@ -108,3 +110,4 @@ agilogClient.service('NotificationClientService', ['$timeout', function($timeout
     };
     
 }]);
+})();

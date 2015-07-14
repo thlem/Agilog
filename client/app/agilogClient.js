@@ -1,8 +1,9 @@
-'use strict'
+(function(){
+    'use strict';
 
-var agilogClient = angular.module("agilogClient", ["ngResource", "ngRoute", "ngStorage", "navigationModule"]);
+angular.module("agilogClient", ["ngResource", "ngRoute", "ngStorage", "NavigationModule"]);
 
-agilogClient.config(["$routeProvider", "$httpProvider", function ($routeProvider, $httpProvider){
+angular.module("agilogClient").config(["$routeProvider", "$httpProvider", function ($routeProvider, $httpProvider){
 	$routeProvider
 	.when("/", {
 		templateUrl: "partials/accueil.html",
@@ -77,7 +78,7 @@ agilogClient.config(["$routeProvider", "$httpProvider", function ($routeProvider
 
 }]);
 
-agilogClient.run(["$rootScope", "$localStorage", function($rootScope, $localStorage){
+angular.module("agilogClient").run(["$rootScope", "$localStorage", function($rootScope, $localStorage){
  	$rootScope.root = {};
 	$rootScope.root.loading = null;
     $rootScope.root.loadingQueue = 0;
@@ -89,3 +90,4 @@ agilogClient.run(["$rootScope", "$localStorage", function($rootScope, $localStor
         $rootScope.root.user = $localStorage.user;
     }
 }]);
+})();

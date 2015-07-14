@@ -1,3 +1,5 @@
+(function(){
+    'use strict';
 /**
  * @Type        : Controller
  * @Name        : RootClientController
@@ -5,7 +7,7 @@
  *                Il met à disposition les méthode globale utilisées au sein
  *                de l'applicaiton
  */
-agilogClient.controller("RootClientController", ['$rootScope', function($rootScope){
+angular.module("agilogClient").controller("RootClientController", ['$rootScope', function($rootScope){
 
 	/**
      * Méthode permettant d'afficher la fenêtre de Loading
@@ -30,3 +32,4 @@ agilogClient.controller("RootClientController", ['$rootScope', function($rootSco
     };
 
 }]);
+})();

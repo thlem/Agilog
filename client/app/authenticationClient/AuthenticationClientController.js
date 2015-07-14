@@ -1,10 +1,12 @@
+(function(){
+	'use strict';
 /**
  * @Type        : Controller
  * @Name        : AuthenticationRegisterClientController
  * @Description : Ce Controller correspond à la vue du formulaire d'enregistrement
  *				  Il met à disposition dans le scope l'objet json user
  */
-agilogClient.controller("AuthenticationRegisterClientController", ["$scope", "$location", "$rootScope", "AuthenticationClientService",
+angular.module("agilogClient").controller("AuthenticationRegisterClientController", ["$scope", "$location", "$rootScope", "AuthenticationClientService",
 	function($scope, $location, $rootScope, AuthenticationClientService){
 		$scope.user = {};
 
@@ -16,7 +18,7 @@ agilogClient.controller("AuthenticationRegisterClientController", ["$scope", "$l
  * @Description : Ce Controller correspond à la vue du formulaire de connexion
  *				  Il met à disposition dans le scope l'objet json user
  */
-agilogClient.controller("AuthenticationLoginClientController", ["$scope", "$location", "$rootScope", "AuthenticationClientService",
+angular.module("agilogClient").controller("AuthenticationLoginClientController", ["$scope", "$location", "$rootScope", "AuthenticationClientService",
 	function($scope, $location, $rootScope, AuthenticationClientService){
 		$scope.user = {};
 
@@ -28,7 +30,7 @@ agilogClient.controller("AuthenticationLoginClientController", ["$scope", "$loca
  * @Description : Ce Controller ne correspond à aucune vue en paritculier
  *				  Il met à disposition la méthode de logout
  */
-agilogClient.controller("AuthenticationLogoutClientController", ["$scope", "$location", "$rootScope", "AuthenticationClientService", "NotificationClientService",
+angular.module("agilogClient").controller("AuthenticationLogoutClientController", ["$scope", "$location", "$rootScope", "AuthenticationClientService", "NotificationClientService",
 	function($scope, $location, $rootScope, AuthenticationClientService, NotificationClientService){
 
 		/**
@@ -52,3 +54,4 @@ agilogClient.controller("AuthenticationLogoutClientController", ["$scope", "$loc
 		};
 
 }]);
+})();

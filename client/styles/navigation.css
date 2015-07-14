@@ -58,7 +58,6 @@ div#navigation-bottom-wrapper nav#navigation li{
     cursor:pointer;
 }
 div#navigation-bottom-wrapper nav#navigation ul#navigation-elements{
-    position:relative;
     white-space: nowrap;
     overflow-x:auto;
 }
@@ -66,18 +65,18 @@ div#navigation-bottom-wrapper nav#navigation ul#navigation-elements img{
     height:45px;
 	width:45px;
 }
-div#navigation-bottom-wrapper nav#navigation ul#navigation-elements li.navigation-middle-elements{
-	display: inline-block;
+div#navigation-bottom-wrapper nav#navigation ul#navigation-elements li.navigation-element{
+	float:left;
 	height:45px;
 	width:45px;
 	position:relative;
 	cursor:pointer;
 	padding:5px 8px;
 }
-div#navigation-bottom-wrapper nav#navigation ul#navigation-elements li.navigation-middle-elements:hover{
+div#navigation-bottom-wrapper nav#navigation ul#navigation-elements li.navigation-element:hover{
     background:#577F7F;
 }
-div#navigation-bottom-wrapper nav#navigation ul#navigation-elements li.navigation-middle-elements:after{
+/*div#navigation-bottom-wrapper nav#navigation ul#navigation-elements li.navigation-element:after{
     padding:8px;
 	background:#111725;
 	position: absolute;
@@ -92,16 +91,16 @@ div#navigation-bottom-wrapper nav#navigation ul#navigation-elements li.navigatio
 	opacity: 0;
 	display:none;
 }
-div#navigation-bottom-wrapper nav#navigation ul#navigation-elements li.navigation-middle-elements:hover:after{
+div#navigation-bottom-wrapper nav#navigation ul#navigation-elements li.navigation-element:after{
 	opacity:1;
 	display:block;
 	animation-name: menuItemDataTitle;
 	animation-duration:0.6s;
-}
-@keyframes menuItemDataTitle{
+}*/
+/*@keyframes menuItemDataTitle{
 	from{opacity:0;}
 	to{opacity:1;}
-}
+}*/
 /* END MAIN NAV */
 /* SUB NAV */
 div#navigation-bottom-wrapper nav#navigation-sub ul.navigation-sub-elements{
@@ -113,17 +112,17 @@ div#navigation-bottom-wrapper nav#navigation-sub ul.navigation-sub-elements{
 		max-width:50%;
 	}
 }
-div#navigation-bottom-wrapper nav#navigation-sub ul.navigation-sub-elements li.navigation-sub-middle-elements{
+div#navigation-bottom-wrapper nav#navigation-sub ul.navigation-sub-elements li.navigation-sub-element{
     margin:0 8px 0 8px;
     padding:5px 8px;
     flex-shrink: 0;
 }
-div#navigation-bottom-wrapper nav#navigation-sub ul.navigation-sub-elements li.navigation-sub-middle-elements a{
+div#navigation-bottom-wrapper nav#navigation-sub ul.navigation-sub-elements li.navigation-sub-element a{
     color:#577F7F;
     text-decoration:none;
     font-weight:bold;
 }
-div#navigation-bottom-wrapper nav#navigation-sub ul.navigation-sub-elements li.navigation-sub-middle-elements a:hover{
+div#navigation-bottom-wrapper nav#navigation-sub ul.navigation-sub-elements li.navigation-sub-element a:hover{
     border-bottom:1px dotted #577F7F;
 }
 /* END SUB NAV */
