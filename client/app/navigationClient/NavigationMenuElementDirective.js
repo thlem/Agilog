@@ -11,7 +11,7 @@
 	 * </li>
 	 */
 
-	angular.module("NavigationModule").directive("navigationMenuElementDir", navigationMenuElementDir);
+	angular.module("agilogClient").directive("navigationMenuElementDir", navigationMenuElementDir);
 
     navigationMenuElementDir.$inject = ["NavigationService"];
         
@@ -67,10 +67,12 @@
 					},500);
 				}
 				else{
-					// If there is no sub elements, we juste open the menu
-					$("div#navigation-bottom-wrapper").animate({
-						height:NavigationService.config.menuHeight+"px"
-					},500);
+					// If there is no sub elements, we juste close the menu and the view is visible
+					NavigationService.config.isMenuOpen = !NavigationService.config.isMenuOpen;
+                    $("div#navigation-bottom-wrapper").clearQueue().stop().animate({
+                        bottom : NavigationService.config.bottomClosePosition+"px",	// reset the position
+                        height:NavigationService.config.menuHeight+"px"				// reset the height
+                    },500);
 				}
 			});
 		}

@@ -1,7 +1,7 @@
 (function(){
     'use strict';
 
-angular.module("agilogClient", ["ngResource", "ngRoute", "ngStorage", "NavigationModule"]);
+angular.module("agilogClient", ["ngResource", "ngRoute", "ngStorage"]);
 
 angular.module("agilogClient").config(["$routeProvider", "$httpProvider", function ($routeProvider, $httpProvider){
 	$routeProvider

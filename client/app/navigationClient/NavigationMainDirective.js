@@ -8,7 +8,7 @@
 	 * @example <div id="navigation-bottom-wrapper" navigation-dir></div>
 	 */
 
-	angular.module("NavigationModule").directive("navigationDir", navigationDir);
+	angular.module("agilogClient").directive("navigationDir", navigationDir);
 
     navigationDir.$inject = ["NavigationService", "$compile"];
     
@@ -44,15 +44,6 @@
 				if(mediaWidth.matches){
 					NavigationService.config.isMobile = true;
 				}
-
-				// Catch onClick to the link of main element to reset the position of the menu
-				$(element).find("a").on("click", function(){
-					NavigationService.config.isMenuOpen = !NavigationService.config.isMenuOpen;
-					$("div#navigation-bottom-wrapper").clearQueue().stop().animate({
-	 					bottom : NavigationService.config.bottomClosePosition+"px", // reset the position
-	 					height:NavigationService.config.menuHeight+"px"				// reset the height
-	 				},500);
-				});
 			}
 		}
 	}

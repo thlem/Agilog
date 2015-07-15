@@ -3,7 +3,7 @@
 (function(){
 	'use strict';
 	
-    angular.module("NavigationModule").service("NavigationService", NavigationService);
+    angular.module("agilogClient").service("NavigationService", NavigationService);
     
     function NavigationService(){
         // Configuration variable

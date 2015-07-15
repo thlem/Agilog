@@ -35,7 +35,6 @@ exports.config = {
                     "bower_component/angular-route/angular-route.js",
                     "bower_component/angular-sanitize/angular-sanitize.js",
                     "bower_component/ngstorage/ngStorage.js",
-                    "client/app/navigationModule/NavigationModule.js",
                     "client/app/agilogClient.js"
                 ]
             }
