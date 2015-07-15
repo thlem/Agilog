@@ -7,8 +7,8 @@
  * @Description : Cette directive gère côté JS les événements 
  *                utilisateur liés au formulaire d'enregistrement
  */
-angular.module("agilogClient").directive("registerFormDir", ["NotificationClientService", "AuthenticationClientService", "$location", "$rootScope",
-function(NotificationClientService, AuthenticationClientService, $location, $rootScope){
+angular.module("agilogClient").directive("registerFormDir", ["NotificationClientService", "AuthenticationFactory", "$location", "$rootScope",
+function(NotificationClientService, AuthenticationFactory, $location, $rootScope){
 
 	return function(scope, element) {
 
@@ -145,11 +145,11 @@ function(NotificationClientService, AuthenticationClientService, $location, $roo
 					}
 					
 					// On soumet les données du formulaire via le service
-					AuthenticationClientService.submitRegisterForm(arrayOfUserData, function(message, user){
+					AuthenticationClientFactory.submitRegisterForm(arrayOfUserData, function(message, user){
 						// Si le user a été retourné
 						if(user){
 							// On l'ajoute au localStorage et au scope Global
-							AuthenticationClientService.addOrUpdateUserInLocalStorage(user);
+							AuthenticationClientFactory.addOrUpdateUserInLocalStorage(user);
 							NotificationClientService.addToSuccessMessages(message);
 							$rootScope.endLoading();
 							// On redirige vers l'accueil
@@ -177,8 +177,8 @@ function(NotificationClientService, AuthenticationClientService, $location, $roo
  * @Description : Cette directive gère côté JS les événements 
  *                utilisateur liés au formulaire d'authentification
  */
-angular.module("agilogClient").directive("loginFormDir", ["NotificationClientService", "AuthenticationClientService", "$location", "$rootScope",
-function(NotificationClientService, AuthenticationClientService, $location, $rootScope){
+angular.module("agilogClient").directive("loginFormDir", ["NotificationClientService", "AuthenticationClientFactory", "$location", "$rootScope",
+function(NotificationClientService, AuthenticationClientFactory, $location, $rootScope){
 	return function(scope, element) {
 
 		if($rootScope.root.user){
@@ -229,9 +229,9 @@ function(NotificationClientService, AuthenticationClientService, $location, $roo
 					usrPassword:$(loginForm).find("#usrPassword").val()
 				}
 				
-				AuthenticationClientService.submitLoginForm(arrayOfUserData, function(message, user){
+				AuthenticationClientFactory.submitLoginForm(arrayOfUserData, function(message, user){
 					if(user){
-						AuthenticationClientService.addOrUpdateUserInLocalStorage(user);
+						AuthenticationClientFactory.addOrUpdateUserInLocalStorage(user);
 						NotificationClientService.addToSuccessMessages(message);
 						$rootScope.endLoading();
 						$location.url('/');

@@ -11,12 +11,12 @@ angular.module("agilogClient").config(["$routeProvider", "$httpProvider", functi
 	})
 	.when("/login", {
 		templateUrl: "partials/loginForm.html",
-		controller: "AuthenticationLoginClientController",
+		controller: "AuthenticationLoginController",
 		public: true
 	})
 	.when("/register", {
 		templateUrl: "partials/registerForm.html",
-		controller: "AuthenticationRegisterClientController",
+		controller: "AuthenticationRegisterController",
 		public: true
 	})
     .when("/account", {
@@ -65,6 +65,12 @@ angular.module("agilogClient").config(["$routeProvider", "$httpProvider", functi
                         NotificationClientService.addToErrorMessages(response.data.message);
                         return $q.reject(response);
                     break;
+                    case 404:
+                        NotificationClientService.addToErrorMessages("La ressource demandée est introuvable");
+                        return $q.reject(response);
+                    case 500:
+                        NotificationClientService.addToErrorMessages("ouch");
+                        return $q.reject(response);
                     default:
                         // Si l'erreur n'est pas cité ci-dessus on indique à la response
                         // de continuer son chemin nominal

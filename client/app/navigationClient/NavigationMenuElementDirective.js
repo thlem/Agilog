@@ -1,5 +1,3 @@
-// Wrap Angular components in an Immediately Invoked Function Expression (IIFE)
-// An IIFE removes variables from the global scope
 (function(){
 	'use strict';
 
@@ -7,7 +5,7 @@
 	 * @desc Directive for each main element of the menu
 	 * @example
 	 * <li class=navigation-element data-title:"any" navigation-menu-element-dir>
-	 * <a><img /></a>
+	 * 	<a><img /></a>
 	 * </li>
 	 */
 
