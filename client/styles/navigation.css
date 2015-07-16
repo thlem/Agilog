@@ -37,7 +37,7 @@ div#navigation-bottom-wrapper div#navigation-open-close-button{
 	border-top:5px solid #577F7F;
 	border-right:5px solid #577F7F;
 	color:#577F7F;
-	box-shadow:0 0 15px 1px #111725;
+	box-shadow:0px -10px 50px 1px #111725;
 }
 div#navigation-bottom-wrapper div#navigation-open-close-button.open{
 	background:#111725;

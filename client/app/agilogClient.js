@@ -16,7 +16,6 @@ angular.module("agilogClient").config(["$routeProvider", "$httpProvider", functi
 	})
 	.when("/register", {
 		templateUrl: "partials/registerForm.html",
-		controller: "AuthenticationRegisterController",
 		public: true
 	})
     .when("/account", {
@@ -48,6 +47,9 @@ angular.module("agilogClient").config(["$routeProvider", "$httpProvider", functi
                 var deferred = $q.defer();
                 // Traitement des cas particuliers pour les codes erreur ci-dessous
                 switch(response.status){
+                    case 400:
+                        NotificationClientService.addToErrorMessages(response.data.message);
+                        return $q.reject(response);
                     case 401:
                         // Si l'utilisateur tente d'accéder à une ressource sans être connecté
                         // On s'assure qu'il n'est pas présent dans le local storage
@@ -55,7 +57,6 @@ angular.module("agilogClient").config(["$routeProvider", "$httpProvider", functi
                         delete $localStorage.user;
                         delete $rootScope.root.user;
                         NotificationClientService.addToErrorMessages(response.data.message);
-                        console.log(response);
                         $location.url('/');
                         return $q.reject(response);
                     break;

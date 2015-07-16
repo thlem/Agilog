@@ -1,6 +1,9 @@
 (function(){
 	'use strict';
 
+	/**
+	 * @desc: Directive relating to the register form
+	 */
 
 	angular.module('agilogClient').directive('authenticationRegisterFormDir', getAuthenticationRegisterFormDir);
 
@@ -15,10 +18,11 @@
 
 		return{
 			restrict:'A',
-			link:function(scope, element, attrs){
+			controller:'AuthenticationRegisterController as AuthCtrl',
+			link:function(scope, element, attrs, AuthCtrl){
 
 				// Restrict access to unlogged only
-				AuthenticationFactory.isUserLogged()
+				AuthenticationFactory.isUserNotLogged()
 				.then(function(){
 					// If the user is not logged in
 					var registerForm 			= $(element[0]),
@@ -55,63 +59,30 @@
 						// Check form validity
 						if(!scope.registerForm.$valid){
 							// Reset the mail label if an error was displayed
-							var usrMailLabel = registerForm.find('label[for='usrMail']');
+							var usrMailLabel = registerForm.find('label[for=\'usrMail\']');
 							usrMailLabel.text('Mail');
-							// Reset the focus
-							var focusIsSet = false;
+							
+								// Initialize the focus
+							var focusAlreadySet 				= false,
+								// Get different errors of the form
+								loginRequiredError 				= scope.registerForm.usrLogin.$error.required,
+								passwordRequiredError 			= scope.registerForm.usrPassword.$error.required,
+								passwordConfirmRequiredError 	= 
+									scope.registerForm.usrPasswordConfirm.$error.required,
+								mailPatternError				= scope.registerForm.usrMail.$error;
 
-							// If the login is missing
-							if(scope.registerForm.usrLogin.$error.required){
-								// Add class that show error on the field
-								registerInputList.usrLoginInput.addClass('inputError');
-								// Set the focus on this field
-								focusIsSet = true;
-								registerInputList.usrLoginInput.focus();
-							}
-
-							// If the password is missing
-							if(scope.registerForm.usrPassword.$error.required){
-								// Add class that show error on the field
-								registerInputList.usrPasswordInput.addClass('inputError');
-								// If the focus is not yet set
-								if(!focusIsSet){
-									// Set the focus on this field
-									focusIsSet = true;
-									registerInputList.usrPasswordInput.focus();
-								}
-							}
-
-							// If passwordConfirm is missing
-							if(scope.registerForm.usrPasswordConfirm.$error.required){
-								// Add class that show error on the field
-								registerInputList.usrPasswordConfirmInput.addClass('inputError');
-								// If the focus is not yet set
-								if(!focusIsSet){
-									// Set the focus on this field
-									focusIsSet = true;
-									registerInputList.usrPasswordConfirmInput.focus();
-								}
-							}
-
-							// If the mail is not correct
-							// Don't check if missing, mail is optional
-							if(scope.registerForm.usrMail.$error){
-								// Prevent potentially null value
-								if(registerInputList.usrMailInput.val()){
-									// Get the mail label
-									var usrMailLabel = registerForm.find('label[for=\'usrMail\']');
-									// Add class that show error on the field
-									registerInputList.usrMailInput.addClass('inputError');
-									// Change label value
-									usrMailLabel.append(' E-mail invalide (example@examp.ex)');
-									// If the focus is not yet set
-									if(!focusIsSet){
-										// Set the focus on this field
-										focusIsSet = true;
-										registerInputList.usrMailInput.focus();
-									}
-								}
-							}
+							// Check if the login is missing
+							focusAlreadySet = handleInputError(loginRequiredError,
+								registerInputList.usrLoginInput, focusAlreadySet);
+							// Check if the password is missing
+							focusAlreadySet = handleInputError(
+								passwordRequiredError, registerInputList.usrPasswordInput, focusAlreadySet);
+							// Check if the passwordConfirm is missing
+							focusAlreadySet = handleInputError(passwordConfirmRequiredError,
+								registerInputList.usrPasswordConfirmInput, focusAlreadySet);
+							// Check if the mail is correct
+							focusAlreadySet = handleInputError(
+								mailPatternError, registerInputList.usrMailInput, focusAlreadySet);
 
 							// End of check stop loading
 							$rootScope.endLoading();
@@ -162,21 +133,7 @@
 								};
 
 								// Start server submit
-								AuthenticationFactory.submitRegisterForm(arrayOfUserData)
-								.then(function(responseData){
-									if(responseData.user){
-										AuthenticationFactory.addOrUpdateUserInLocalStorage(responseData.user);
-										NotificationClientService.addToSuccessMessages(responseData.message);
-										$rootScope.endLoading();
-										UrlFactory.redirect(UrlConstant.HOME);
-									}
-								})
-								.catch(function(responseData){
-									NotificationClientService.addToErrorMessages(responseData.message);
-									var usrLoginInput = $(this).find('#usrLogin');
-									usrLoginInput.focus();
-									$rootScope.endLoading();
-								});
+								AuthCtrl.submitRegisterForm(arrayOfUserData);
 							}
 
 						}
@@ -190,5 +147,21 @@
 
 			}
 		};
+	}
+
+	// Handle error of input elements
+	function handleInputError(error, input, focus){
+		// If the scope input element contains an error
+		if(error){
+			// Add class that show error on the field
+			input.addClass('inputError');
+			// If the focus is not yet set
+			if(!focus){
+				// Set the focus on this field
+				focus = true;
+				input.focus();
+			}
+		}
+		return focus;
 	}
 })();

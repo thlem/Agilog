@@ -2,37 +2,34 @@
 	'use strict';
 	
 	/**
-	 * @desc: Controller relating to the register form
+	 * @desc: Controller relating to the logout action
 	 */
 
 	angular.module('agilogClient').controller('AuthenticationLogoutController',
 		getAuthenticationLogoutController);
 
-	var inject = ['$scope', '$location', '$rootScope', 'AuthenticationFactory', 'NotificationClientService'];
+	var inject = ['$scope', '$location', '$rootScope', 'AuthenticationFactory',
+		'NotificationClientService', 'UrlFactory', 'UrlConstant'];
 
 	getAuthenticationLogoutController.$inject = inject;
 		
 
-	function getAuthenticationLogoutController(
-		$scope, $location, $rootScope, AuthenticationFactory, NotificationClientService){
+	function getAuthenticationLogoutController($scope, $location, $rootScope,
+		AuthenticationFactory, NotificationClientService, UrlFactory, UrlConstant){
 		
-		/**
-		 * Méthode disponible dans le scope du controller permettant de 
-		 * lancer la procédure de déconnexion
-		 */
+		// Call the Factory that call the server
+		// Do the logout
 		$scope.logout = function(){
-			// Affichage du spinner de loading
 			$rootScope.startLoading();
-			// Appel à la méthode de logout dans le Service
+			// Call of the factory
 			AuthenticationFactory.logout()
 			.then(function(response){
-				// Quelque que soit le retour du Service on déconnecte l'utilisateur
-				// côté client
+				// Always logout the user, even if the server return a bad response
 				NotificationClientService.addToSuccessMessages(response.data.message);
 				AuthenticationFactory.removeUserFromLocalStorage();
 				$rootScope.endLoading();
-				// On redirige vers l'accueil
-				$location.url('/');
+				// Redirect to the Home
+				UrlFactory.redirect(UrlConstant.HOME);
 			});
 		};
 

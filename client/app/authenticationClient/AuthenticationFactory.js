@@ -35,6 +35,7 @@
 					usrLastName:  arrayOfUserData.usrLastName
 				})
 				.then(function(response){
+					console.log("fact ok");
 					resolve(response.data);
 				})
 				.catch(function(response){
@@ -73,7 +74,8 @@
 	    	return $http.get('/auth/logout');
 	    }
 
-	    function isUserLogged(){
+	    // Check if the user data are in the localStorage
+	    function isUserNotLogged(){
 	    	return $q(function(resolve, reject) {
 		      if($localStorage.user && $rootScope.root.user) {
 		        reject();
