@@ -6,7 +6,7 @@
 	 * @example <div id="navigation-open-close-button" class="close" navigation-open-close-dir></div>
 	 */
 
-	angular.module("agilogClient").directive("navigationOpenCloseDir", navigationOpenCloseDir);
+	angular.module("agilog").directive("navigationOpenCloseDir", navigationOpenCloseDir);
 
     navigationOpenCloseDir.$inject = ["NavigationService"];
     

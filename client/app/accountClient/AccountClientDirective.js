@@ -8,7 +8,7 @@
  *                utilisateur liés au formulaire de modification des
  *				  informations de connexion du compte
  */
-angular.module("agilogClient").directive("usrAccountLoginDir", ["NotificationClientService", "AccountClientService", "AuthenticationClientService", "$location", "$rootScope",
+angular.module("agilog").directive("usrAccountLoginDir", ["NotificationClientService", "AccountClientService", "AuthenticationClientService", "$location", "$rootScope",
 function(NotificationClientService, AccountClientService, AuthenticationClientService, $location, $rootScope){
 		return function(scope, element) {
 
@@ -72,7 +72,7 @@ function(NotificationClientService, AccountClientService, AuthenticationClientSe
  *                utilisateur liés au formulaire de modification des
  *				  informations de connexion du compte
  */
-angular.module("agilogClient").directive("usrAccountPersonalDir", ["NotificationClientService", "AccountClientService", "AuthenticationClientService", "$location", "$rootScope",
+angular.module("agilog").directive("usrAccountPersonalDir", ["NotificationClientService", "AccountClientService", "AuthenticationClientService", "$location", "$rootScope",
 function(NotificationClientService, AccountClientService, AuthenticationClientService, $location, $rootScope){
 		return function(scope, element) {
 			element.on("submit", function(){

@@ -1,5 +1,5 @@
 ﻿doctype html
-html(ng-app="agilogClient")
+html(ng-app="agilog")
     head
         meta(charset="utf-8")
         title AgiLog
@@ -8,7 +8,7 @@ html(ng-app="agilogClient")
         script(src="./js/vendor.min.js")
         script(src="./js/app.min.js")
         
-    body(ng-controller="RootClientController")
+    body(ng-controller="RootController")
         div(id="wrapper")
             div(id="loading", ng-show="root.loading")
               span(id="loadingIco")

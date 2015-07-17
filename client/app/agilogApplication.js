@@ -1,9 +1,9 @@
 (function(){
     'use strict';
 
-angular.module("agilogClient", ["ngResource", "ngRoute", "ngStorage"]);
+angular.module("agilog", ["ngResource", "ngRoute", "ngStorage"]);
 
-angular.module("agilogClient").config(["$routeProvider", "$httpProvider", function ($routeProvider, $httpProvider){
+angular.module("agilog").config(["$routeProvider", "$httpProvider", function ($routeProvider, $httpProvider){
 	$routeProvider
 	.when("/", {
 		templateUrl: "partials/accueil.html",
@@ -85,7 +85,7 @@ angular.module("agilogClient").config(["$routeProvider", "$httpProvider", functi
 
 }]);
 
-angular.module("agilogClient").run(["$rootScope", "$localStorage", function($rootScope, $localStorage){
+angular.module("agilog").run(["$rootScope", "$localStorage", function($rootScope, $localStorage){
  	$rootScope.root = {};
 	$rootScope.root.loading = null;
     $rootScope.root.loadingQueue = 0;

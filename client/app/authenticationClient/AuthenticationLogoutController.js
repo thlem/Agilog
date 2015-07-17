@@ -5,7 +5,7 @@
 	 * @desc: Controller relating to the logout action
 	 */
 
-	angular.module('agilogClient').controller('AuthenticationLogoutController',
+	angular.module('agilog').controller('AuthenticationLogoutController',
 		getAuthenticationLogoutController);
 
 	var inject = ['$scope', '$location', '$rootScope', 'AuthenticationFactory',

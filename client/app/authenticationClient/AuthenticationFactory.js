@@ -5,7 +5,7 @@
 	 * @desc: This service offers methods used by authentification and register form
 	 */
 
-	angular.module('agilogClient').factory('AuthenticationFactory', getAuthenticationFactory);
+	angular.module('agilog').factory('AuthenticationFactory', getAuthenticationFactory);
 
 	getAuthenticationFactory.$inject = ['$localStorage', '$rootScope', '$http', '$q'];
 
@@ -19,7 +19,7 @@
 			addOrUpdateUserInLocalStorage: 	addOrUpdateUserInLocalStorage,
 			removeUserFromLocalStorage: 	removeUserFromLocalStorage,
 			logout: 						logout,
-			isUserLogged: 					isUserLogged
+			isUserNotLogged: 				isUserNotLogged
 		};
 		return service;
 
@@ -35,7 +35,6 @@
 					usrLastName:  arrayOfUserData.usrLastName
 				})
 				.then(function(response){
-					console.log("fact ok");
 					resolve(response.data);
 				})
 				.catch(function(response){

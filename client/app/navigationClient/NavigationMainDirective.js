@@ -6,7 +6,7 @@
 	 * @example <div id="navigation-bottom-wrapper" navigation-dir></div>
 	 */
 
-	angular.module("agilogClient").directive("navigationDir", navigationDir);
+	angular.module("agilog").directive("navigationDir", navigationDir);
 
     navigationDir.$inject = ["NavigationService", "$compile"];
     

@@ -6,7 +6,7 @@
  * @Description : Ce service offre les méthodes relatives à la gestion de 
  *                compte utilisateur
  */
-angular.module("agilogClient").service("AccountClientService", ['$localStorage', '$rootScope', "$http",
+angular.module("agilog").service("AccountClientService", ['$localStorage', '$rootScope', "$http",
 function($localStorage, $rootScope, $http){
 
 	/**

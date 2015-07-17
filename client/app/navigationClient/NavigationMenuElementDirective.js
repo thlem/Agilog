@@ -9,7 +9,7 @@
 	 * </li>
 	 */
 
-	angular.module("agilogClient").directive("navigationMenuElementDir", navigationMenuElementDir);
+	angular.module("agilog").directive("navigationMenuElementDir", navigationMenuElementDir);
 
     navigationMenuElementDir.$inject = ["NavigationService"];
         

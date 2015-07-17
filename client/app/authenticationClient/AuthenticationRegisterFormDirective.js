@@ -5,7 +5,7 @@
 	 * @desc: Directive relating to the register form
 	 */
 
-	angular.module('agilogClient').directive('authenticationRegisterFormDir', getAuthenticationRegisterFormDir);
+	angular.module('agilog').directive('authenticationRegisterFormDir', getAuthenticationRegisterFormDir);
 
 	var inject = ['NotificationClientService', 'AuthenticationFactory', 'UrlConstant',
 				'UrlFactory', 'ErrorMessageConstant', '$location', '$rootScope'];

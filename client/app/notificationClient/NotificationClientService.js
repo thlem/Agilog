@@ -5,7 +5,7 @@
  * @Name        : NotificationClientService
  * @Description : Service offrant les méthodes de manipulation des liste de notifications
  */
-angular.module("agilogClient").service('NotificationClientService', NotificationClientService);
+angular.module("agilog").service('NotificationClientService', NotificationClientService);
     
     NotificationClientService.$inject = ["$timeout"];
 

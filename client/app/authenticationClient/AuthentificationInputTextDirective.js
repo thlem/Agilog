@@ -6,7 +6,7 @@
 	 * @example <input type="" id="" name="" ng-model="" required auth-input-text-dir />
 	 */
 
-	angular.module('agilogClient').directive('authInputTextDir', getAuthInputText);
+	angular.module('agilog').directive('authInputTextDir', getAuthInputText);
 
 	function getAuthInputText(){
 		return{

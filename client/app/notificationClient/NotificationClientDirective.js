@@ -7,7 +7,7 @@
      * @Description : Cette directive permet de définir le template à utiliser
      *                ainsi que le controller
      */
-    angular.module("agilogClient").directive('notificationClientDir', notificationClientDir);
+    angular.module("agilog").directive('notificationClientDir', notificationClientDir);
 
     function notificationClientDir(){
         return{
@@ -24,7 +24,7 @@
      * @Description : Cette directive gère côté JS les événements liés à
      *                une notification
      */
-    angular.module("agilogClient").directive('currentNotifDir', currentNotifDir);
+    angular.module("agilog").directive('currentNotifDir', currentNotifDir);
     function currentNotifDir(){
         return function(scope, notification) {
             // Quand on clic sur une notification

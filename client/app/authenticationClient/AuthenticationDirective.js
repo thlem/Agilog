@@ -7,7 +7,7 @@
  * @Description : Cette directive gère côté JS les événements 
  *                utilisateur liés au formulaire d'enregistrement
  */
-angular.module("agilogClient").directive("registerFormDir", ["NotificationClientService", "AuthenticationFactory", "$location", "$rootScope",
+angular.module("agilog").directive("registerFormDir", ["NotificationClientService", "AuthenticationFactory", "$location", "$rootScope",
 function(NotificationClientService, AuthenticationFactory, $location, $rootScope){
 
 	return function(scope, element) {
@@ -177,7 +177,7 @@ function(NotificationClientService, AuthenticationFactory, $location, $rootScope
  * @Description : Cette directive gère côté JS les événements 
  *                utilisateur liés au formulaire d'authentification
  */
-angular.module("agilogClient").directive("loginFormDir", ["NotificationClientService", "AuthenticationClientFactory", "$location", "$rootScope",
+angular.module("agilog").directive("loginFormDir", ["NotificationClientService", "AuthenticationClientFactory", "$location", "$rootScope",
 function(NotificationClientService, AuthenticationClientFactory, $location, $rootScope){
 	return function(scope, element) {
 

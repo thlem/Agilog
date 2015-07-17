@@ -5,7 +5,7 @@
 	 * @desc: Controller relating to the register form
 	 */
 
-	angular.module('agilogClient').controller('AuthenticationRegisterController',
+	angular.module('agilog').controller('AuthenticationRegisterController',
 		getAuthenticationRegisterController);
 
 	var inject = ['$scope', '$location', '$rootScope', 'AuthenticationFactory',

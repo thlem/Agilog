@@ -5,7 +5,7 @@
      * @Name        : NotificationClientController
      * @Description : Ce Controlleur stockant les liste de notifications affichées
      */
-    angular.module("agilogClient").controller('NotificationClientController', NotificationClientController);
+    angular.module("agilog").controller('NotificationClientController', NotificationClientController);
 
     NotificationClientController.$inject = ["NotificationClientService", "$scope"];
 

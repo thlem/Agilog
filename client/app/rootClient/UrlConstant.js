@@ -1,12 +1,19 @@
 (function(){
 	'use strict';
 
-	angular.module('agilogClient').constant('UrlConstant', getUrlConstant);
+	/**
+	 * @desc: Constant that contains all CLIENT/SERVER URL
+	 */
+
+	angular.module('agilog').constant('UrlConstant', getUrlConstant);
 
 	function getUrlConstant(){
 		return {
-			HOME: '/'
-		}
+			CLIENT_HOME: '/',
+			CLIENT_LOGIN: '#/login',
+			CLIENT_REGISTER: '#/register',
+			CLIENT_ACCOUNT_MANAGER: '#/account'
+		};
 	}
 
 })();
