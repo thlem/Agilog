@@ -7,13 +7,13 @@
 
 	angular.module('agilog').directive('authenticationRegisterFormDir', getAuthenticationRegisterFormDir);
 
-	var inject = ['NotificationClientService', 'AuthenticationFactory', 'UrlConstant',
+	var inject = ['NotificationFactory', 'AuthenticationFactory', 'UrlConstant',
 				'UrlFactory', 'ErrorMessageConstant', '$location', '$rootScope'];
 
 	getAuthenticationRegisterFormDir.$inject = inject;
 
 	function getAuthenticationRegisterFormDir(
-		NotificationClientService, AuthenticationFactory, UrlConstant, 
+		NotificationFactory, AuthenticationFactory, UrlConstant, 
 			UrlFactory, ErrorMessageConstant, $location, $rootScope){
 
 		return{
@@ -96,7 +96,7 @@
 							// If passwords are different
 							if(password !== confirmPassword){
 								// Notify the user
-								NotificationClientService.addToErrorMessages(
+								NotificationFactory.addToErrorMessages(
 									ErrorMessageConstant.REGISTER_PASSWORDS_WRONG);
 
 								// Get both label for animation
@@ -142,7 +142,7 @@
 
 				})
 				.catch(function(error){
-					UrlFactory.redirect(UrlConstant.HOME);
+					UrlFactory.redirect(UrlConstant.CLIENT_HOME);
 				});
 
 			}

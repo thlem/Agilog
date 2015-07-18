@@ -9,13 +9,13 @@
 		getAuthenticationRegisterController);
 
 	var inject = ['$scope', '$location', '$rootScope', 'AuthenticationFactory',
-		'NotificationClientService', 'UrlFactory', 'UrlConstant'];
+		'NotificationFactory', 'UrlFactory', 'UrlConstant'];
 
 	getAuthenticationRegisterController.$inject = inject;
 		
 
 	function getAuthenticationRegisterController($scope, $location, $rootScope,
-		AuthenticationFactory, NotificationClientService, UrlFactory, UrlConstant){
+		AuthenticationFactory, NotificationFactory, UrlFactory, UrlConstant){
 
 		/*jshint validthis: true */
 		var vm = this;
@@ -29,17 +29,17 @@
 				if(responseData.user){
 					// Add it to the localStorage
 					AuthenticationFactory.addOrUpdateUserInLocalStorage(responseData.user);
-					NotificationClientService.addToSuccessMessages(responseData.message);
+					NotificationFactory.addToSuccessMessages(responseData.message);
 					$rootScope.endLoading();
 					UrlFactory.redirect(UrlConstant.HOME);
 				}
 				else{
-					NotificationClientService.addToErrorMessages('Something goes wrong');
+					NotificationFactory.addToErrorMessages('Something goes wrong');
 					$rootScope.endLoading();
 				}
 			})
 			.catch(function(responseData){
-				NotificationClientService.addToErrorMessages(responseData.message);
+				NotificationFactory.addToErrorMessages(responseData.message);
 				$rootScope.endLoading();
 			});
 		};

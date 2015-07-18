@@ -9,11 +9,11 @@
 	 * </li>
 	 */
 
-	angular.module("agilog").directive("navigationMenuElementDir", navigationMenuElementDir);
+	angular.module("agilog").directive("navigationMenuElementDir", getNavigationMenuElementDir);
 
-    navigationMenuElementDir.$inject = ["NavigationService"];
+    getNavigationMenuElementDir.$inject = ["NavigationService"];
         
-	function navigationMenuElementDir(NavigationService){
+	function getNavigationMenuElementDir(NavigationService){
 		return function(scope, menuItemObject){
 
 			//

@@ -7,9 +7,9 @@
      * @desc The service containing menu configuration
      */
 
-    angular.module("agilog").service("NavigationService", NavigationService);
+    angular.module("agilog").service("NavigationService", getNavigationService);
     
-    function NavigationService(){
+    function getNavigationService(){
         // Configuration variable
         this.config = {
                 isMobile            : false,				// if width < 768px

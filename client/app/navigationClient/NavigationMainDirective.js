@@ -6,11 +6,11 @@
 	 * @example <div id="navigation-bottom-wrapper" navigation-dir></div>
 	 */
 
-	angular.module("agilog").directive("navigationDir", navigationDir);
+	angular.module("agilog").directive("navigationDir", getNavigationDir);
 
-    navigationDir.$inject = ["NavigationService", "$compile"];
+    getNavigationDir.$inject = ["NavigationService", "$compile"];
     
-	function navigationDir(NavigationService, $compile){
+	function getNavigationDir(NavigationService, $compile){
 		return{
 			restrict:"E", // On attribute only
 			template:'<div id="navigation-bottom-wrapper" ng-controller="NavigationController">'+

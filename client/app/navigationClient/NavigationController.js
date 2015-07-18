@@ -5,11 +5,11 @@
      * @desc The controller of the navigation
      */
 
-	angular.module("agilog").controller("NavigationController", NavigationController);
+	angular.module("agilog").controller("NavigationController", getNavigationController);
 
-    NavigationController.$inject = ["NavigationService", "$scope"];
+    getNavigationController.$inject = ["NavigationService", "$scope"];
     
-	function NavigationController(NavigationService, $scope){
+	function getNavigationController(NavigationService, $scope){
 
 		// Put in the scope menu elements get from the service
 		$scope.menuElements = NavigationService.menuElements.elements;

@@ -6,11 +6,11 @@
 	 * @example <div id="navigation-open-close-button" class="close" navigation-open-close-dir></div>
 	 */
 
-	angular.module("agilog").directive("navigationOpenCloseDir", navigationOpenCloseDir);
+	angular.module("agilog").directive("navigationOpenCloseDir", getNavigationOpenCloseDir);
 
-    navigationOpenCloseDir.$inject = ["NavigationService"];
+    getNavigationOpenCloseDir.$inject = ["NavigationService"];
     
-	function navigationOpenCloseDir(NavigationService){
+	function getNavigationOpenCloseDir(NavigationService){
 		return {
 	 		restrict: "A",
 	 		link: function(scope, element, attrs){

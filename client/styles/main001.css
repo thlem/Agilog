@@ -23,6 +23,27 @@ h2{font-size: 2.5em;}
 h3{font-size: 2em;}
 h4{font-size: 1.5em;}
 
+input{
+  font-family:'Times New Roman';
+  outline:none;
+}
+  input[type="submit"]{
+  border:2px solid #111725;
+  background:none;
+  width:50%;
+  margin:auto;
+  height:30px;
+  display:block;
+  cursor:pointer;
+  letter-spacing:1px;
+}
+input[type="submit"]:hover{
+  background:#111725;
+  color:#D5E3E3;
+}
+
+
+
 /* LOADING */
   div#loading{
     position:fixed;

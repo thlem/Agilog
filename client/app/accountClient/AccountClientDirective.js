@@ -8,8 +8,8 @@
  *                utilisateur liés au formulaire de modification des
  *				  informations de connexion du compte
  */
-angular.module("agilog").directive("usrAccountLoginDir", ["NotificationClientService", "AccountClientService", "AuthenticationClientService", "$location", "$rootScope",
-function(NotificationClientService, AccountClientService, AuthenticationClientService, $location, $rootScope){
+angular.module("agilog").directive("usrAccountLoginDir", ["NotificationFactory", "AccountClientService", "AuthenticationClientService", "$location", "$rootScope",
+function(NotificationFactory, AccountClientService, AuthenticationClientService, $location, $rootScope){
 		return function(scope, element) {
 
 			// A la soumission du formulaire
@@ -29,7 +29,7 @@ function(NotificationClientService, AccountClientService, AuthenticationClientSe
 						// On empêche la soumission du formulaire
 						doSubmit = false;
 						$(this).find("#usrPassword").focus();
-						NotificationClientService.addToErrorMessages("Les mots de passe saisis ne sont pas identiques");
+						NotificationFactory.addToErrorMessages("Les mots de passe saisis ne sont pas identiques");
 					}
 				}
 
@@ -45,11 +45,11 @@ function(NotificationClientService, AccountClientService, AuthenticationClientSe
 						if(user){
 							// On met à jour le localstorage
 							AuthenticationClientService.addOrUpdateUserInLocalStorage(user);
-							NotificationClientService.addToSuccessMessages(message);
+							NotificationFactory.addToSuccessMessages(message);
 						}
 						// Si le user n'a pas été retourné on affiche le message d'erreur
 						else{
-							NotificationClientService.addToErrorMessages(message);
+							NotificationFactory.addToErrorMessages(message);
 						}
 						$rootScope.endLoading();
 					});
@@ -72,8 +72,8 @@ function(NotificationClientService, AccountClientService, AuthenticationClientSe
  *                utilisateur liés au formulaire de modification des
  *				  informations de connexion du compte
  */
-angular.module("agilog").directive("usrAccountPersonalDir", ["NotificationClientService", "AccountClientService", "AuthenticationClientService", "$location", "$rootScope",
-function(NotificationClientService, AccountClientService, AuthenticationClientService, $location, $rootScope){
+angular.module("agilog").directive("usrAccountPersonalDir", ["NotificationFactory", "AccountClientService", "AuthenticationClientService", "$location", "$rootScope",
+function(NotificationFactory, AccountClientService, AuthenticationClientService, $location, $rootScope){
 		return function(scope, element) {
 			element.on("submit", function(){
 				$(".inputError").removeClass("inputError");
@@ -104,11 +104,11 @@ function(NotificationClientService, AccountClientService, AuthenticationClientSe
 						if(user){
 							// On met à jour le localstorage
 							AuthenticationClientService.addOrUpdateUserInLocalStorage(user);
-							NotificationClientService.addToSuccessMessages(message);
+							NotificationFactory.addToSuccessMessages(message);
 						}
 						// Si le user n'a pas été retourné on affiche le message d'erreur
 						else{
-							NotificationClientService.addToErrorMessages(message);
+							NotificationFactory.addToErrorMessages(message);
 						}
 						$rootScope.endLoading();
 					});

@@ -31,8 +31,8 @@ angular.module("agilog").config(["$routeProvider", "$httpProvider", function ($r
      * Lorsqu'une requête est émise (via $http) on ajoute au header le token utilisateur
      * Lorsqu'une réponse est reçu (via $http) on vérifie si elle est en erreur et traite le code retour
      */
-    $httpProvider.interceptors.push(['$q', '$location', '$localStorage', '$rootScope', 'NotificationClientService',
-    function($q, $location, $localStorage, $rootScope, NotificationClientService) {
+    $httpProvider.interceptors.push(['$q', '$location', '$localStorage', '$rootScope', 'NotificationFactory',
+    function($q, $location, $localStorage, $rootScope, NotificationFactory) {
         return {
             // Ajout du token au header de la request
             'request': function (config) {
@@ -48,7 +48,7 @@ angular.module("agilog").config(["$routeProvider", "$httpProvider", function ($r
                 // Traitement des cas particuliers pour les codes erreur ci-dessous
                 switch(response.status){
                     case 400:
-                        NotificationClientService.addToErrorMessages(response.data.message);
+                        NotificationFactory.addToErrorMessages(response.data.message);
                         return $q.reject(response);
                     case 401:
                         // Si l'utilisateur tente d'accéder à une ressource sans être connecté
@@ -56,21 +56,21 @@ angular.module("agilog").config(["$routeProvider", "$httpProvider", function ($r
                         // et on le redirige vers l'accueil
                         delete $localStorage.user;
                         delete $rootScope.root.user;
-                        NotificationClientService.addToErrorMessages(response.data.message);
+                        NotificationFactory.addToErrorMessages(response.data.message);
                         $location.url('/');
                         return $q.reject(response);
                     break;
                     case 403:
                         // si l'utilisateur tente d'accéder à une ressource dont il n'a pas les droits
                         // On le redirige vers une page informative
-                        NotificationClientService.addToErrorMessages(response.data.message);
+                        NotificationFactory.addToErrorMessages(response.data.message);
                         return $q.reject(response);
                     break;
                     case 404:
-                        NotificationClientService.addToErrorMessages("La ressource demandée est introuvable");
+                        NotificationFactory.addToErrorMessages("La ressource demandée est introuvable");
                         return $q.reject(response);
                     case 500:
-                        NotificationClientService.addToErrorMessages("ouch");
+                        NotificationFactory.addToErrorMessages("ouch");
                         return $q.reject(response);
                     default:
                         // Si l'erreur n'est pas cité ci-dessus on indique à la response
