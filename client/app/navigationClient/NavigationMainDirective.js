@@ -6,34 +6,14 @@
 	 * @example <div id="navigation-bottom-wrapper" navigation-dir></div>
 	 */
 
-	angular.module("agilog").directive("navigationDir", getNavigationDir);
+	angular.module('agilog').directive('navigationDir', getNavigationDir);
 
-    getNavigationDir.$inject = ["NavigationService", "$compile"];
+    getNavigationDir.$inject = ['NavigationService', '$compile'];
     
 	function getNavigationDir(NavigationService, $compile){
 		return{
-			restrict:"E", // On attribute only
-			template:'<div id="navigation-bottom-wrapper" ng-controller="NavigationController">'+
-    					'<nav id="navigation" role="navigation">'+
-        					'<div id="navigation-open-close-button" class="close" navigation-open-close-dir>'+
-            					'<span>Menu</span>'+
-        					'</div>'+
-        					'<ul id="navigation-elements">'+
-            					'<li ng-repeat="element in menuElements" class="navigation-element" data-title="{{ element.title }}" navigation-menu-element-dir>'+
-                					'<a href="{{ element.link }}" ng-if="element.link">'+
-                    					'<img src="{{ element.imgSrc }}" />'+
-                					'</a>'+
-                					'<img src="{{ element.imgSrc }}" ng-if="!element.link" />'+
-                					'<ul class="navigation-sub-elements" ng-if="element.subElements">'+
-                    					'<li class="navigation-sub-element" ng-repeat="subElement in element.subElements">'+
-                        					'<a href="{{ subElement.link }}">{{ subElement.label }}</a>'+
-                    					'</li>'+
-                					'</ul>'+
-            					'</li>'+
-        					'</ul>'+
-    					'</nav>'+
-                        '<nav id="navigation-sub"></nav>'+
-					'</div>',
+			restrict:'E', // On attribute only
+			templateUrl:'partials/navigation.html',
 			compile:function(scope, element){
 
 				// Get the device width
@@ -43,6 +23,6 @@
 					NavigationService.config.isMobile = true;
 				}
 			}
-		}
+		};
 	}
 })();

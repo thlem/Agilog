@@ -19,14 +19,13 @@
 			addOrUpdateUserInLocalStorage: 	addOrUpdateUserInLocalStorage,
 			removeUserFromLocalStorage: 	removeUserFromLocalStorage,
 			logout: 						logout,
-			isUserNotLogged: 				isUserNotLogged
+			isUserOnline: 					isUserOnline
 		};
 		return service;
 
 		// Submit register form data to the server
 		function submitRegisterForm(arrayOfUserData){
 			return $q(function(resolve, reject) {
-
 				$http.post('/auth/register', {
 					usrLogin:     arrayOfUserData.usrLogin,
 					usrPassword:  arrayOfUserData.usrPassword,
@@ -45,12 +44,17 @@
 
 		// Submit login form data to the server
 		function submitLoginForm(arrayOfUserData, callback){
-			$http.post('/auth/login', {
-				usrLogin:     arrayOfUserData.usrLogin,
-				usrPassword:  arrayOfUserData.usrPassword
-			})
-			.then(function(response){
-				callback(response.data.message, response.data.user);
+			return $q(function(resolve, reject) {
+				$http.post('/auth/login', {
+					usrLogin:     arrayOfUserData.usrLogin,
+					usrPassword:  arrayOfUserData.usrPassword
+				})
+				.then(function(response){
+					resolve(response.data);
+				})
+				.catch(function(response){
+					reject(response.data);
+				});
 			});
 		}
 
@@ -74,12 +78,12 @@
 	    }
 
 	    // Check if the user data are in the localStorage
-	    function isUserNotLogged(){
+	    function isUserOnline(){
 	    	return $q(function(resolve, reject) {
 		      if($localStorage.user && $rootScope.root.user) {
-		        reject();
-		      } else {
 		        resolve();
+		      } else {
+		        reject();
 		      }
 		  });
 	    }

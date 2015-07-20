@@ -5,9 +5,9 @@
      * @desc The controller of the navigation
      */
 
-	angular.module("agilog").controller("NavigationController", getNavigationController);
+	angular.module('agilog').controller('NavigationController', getNavigationController);
 
-    getNavigationController.$inject = ["NavigationService", "$scope"];
+    getNavigationController.$inject = ['NavigationService', '$scope'];
     
 	function getNavigationController(NavigationService, $scope){
 

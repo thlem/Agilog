@@ -11,23 +11,7 @@
 	function getNotificationDir(){
 		return{
 			restrict: 'E',  // Element only
-            template: '<div id=\'notification\''+
-                        ' ng-show=\'notification.errorMessages.length || notification.successMessages.length\'>'+
-                            '<ul data-title=\'Cliquez sur une notification pour la cacher\''+
-                                ' id="notificationError\' ng-show="notification.errorMessages.length\'>'+
-                                '<li notification-current-notification-dir class=\'error\''+
-                                    ' ng-repeat=\'error in notification.errorMessages\'>'+
-                                    '{{ error[0] }}'+
-                                '</li>'+
-                            '</ul>'+
-                            '<ul data-title=\'Cliquez sur une notification pour la cacher\''+
-                                ' id=\'notificationSuccess\' ng-show=\'notification.successMessages.length\'>'+
-                                '<li notification-current-notification-dir class=\'success\''+
-                                    ' ng-repeat=\'success in notification.successMessages\'>'+
-                                    '{{ success[0] }}'+
-                                '</li>'+
-                            '</ul>'+
-                        '</div>',
+            templateUrl: 'partials/notification.html',
             controller: 'NotificationController' // Controller
 		};
 	}

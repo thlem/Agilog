@@ -1,100 +1,162 @@
 (function(){
     'use strict';
 
-angular.module("agilog", ["ngResource", "ngRoute", "ngStorage"]);
-
-angular.module("agilog").config(["$routeProvider", "$httpProvider", function ($routeProvider, $httpProvider){
-	$routeProvider
-	.when("/", {
-		templateUrl: "partials/accueil.html",
-		public: true
-	})
-	.when("/login", {
-		templateUrl: "partials/loginForm.html",
-		controller: "AuthenticationLoginController",
-		public: true
-	})
-	.when("/register", {
-		templateUrl: "partials/registerForm.html",
-		public: true
-	})
-    .when("/account", {
-        templateUrl: "partials/account.html",
-        controller: "AccountClientController"
-    })
-	.otherwise({
-        redirectTo: "/"
-    });
-
-	/**
-     * Création d'un interceptor : 
-     * Lorsqu'une requête est émise (via $http) on ajoute au header le token utilisateur
-     * Lorsqu'une réponse est reçu (via $http) on vérifie si elle est en erreur et traite le code retour
+    /*
+     * @desc: Initialize the module of the application
      */
-    $httpProvider.interceptors.push(['$q', '$location', '$localStorage', '$rootScope', 'NotificationFactory',
-    function($q, $location, $localStorage, $rootScope, NotificationFactory) {
-        return {
-            // Ajout du token au header de la request
-            'request': function (config) {
-                config.headers = config.headers || {};
-                if ($localStorage.user) {
-                    config.headers.Authorization = 'Bearer ' + $localStorage.user.token;
-                }
-                return config;
-            },
-            // Traitement des réponses en erreur
-            'responseError': function(response) {
-                var deferred = $q.defer();
-                // Traitement des cas particuliers pour les codes erreur ci-dessous
-                switch(response.status){
-                    case 400:
-                        NotificationFactory.addToErrorMessages(response.data.message);
-                        return $q.reject(response);
-                    case 401:
-                        // Si l'utilisateur tente d'accéder à une ressource sans être connecté
-                        // On s'assure qu'il n'est pas présent dans le local storage
-                        // et on le redirige vers l'accueil
-                        delete $localStorage.user;
-                        delete $rootScope.root.user;
-                        NotificationFactory.addToErrorMessages(response.data.message);
-                        $location.url('/');
-                        return $q.reject(response);
-                    break;
-                    case 403:
-                        // si l'utilisateur tente d'accéder à une ressource dont il n'a pas les droits
-                        // On le redirige vers une page informative
-                        NotificationFactory.addToErrorMessages(response.data.message);
-                        return $q.reject(response);
-                    break;
-                    case 404:
-                        NotificationFactory.addToErrorMessages("La ressource demandée est introuvable");
-                        return $q.reject(response);
-                    case 500:
-                        NotificationFactory.addToErrorMessages("ouch");
-                        return $q.reject(response);
-                    default:
-                        // Si l'erreur n'est pas cité ci-dessus on indique à la response
-                        // de continuer son chemin nominal
-                        deferred.resolve(response);
-                        return deferred.promise;
-                    break;
-                }
-            }
-        };
-    }]);
 
-}]);
+    angular.module('agilog', ['ngResource', 'ngRoute', 'ngStorage']);
 
-angular.module("agilog").run(["$rootScope", "$localStorage", function($rootScope, $localStorage){
- 	$rootScope.root = {};
-	$rootScope.root.loading = null;
-    $rootScope.root.loadingQueue = 0;
-    $rootScope.root.pageTitle = "Accueil";
 
-    // Si le local-storage contient un utilisateur
-    if($localStorage.user){
-        // On le rajoute au scope globale
-        $rootScope.root.user = $localStorage.user;
+    /*
+     * @desc: congig of routes and request/response interceptor
+     */
+
+    angular.module('agilog').config(getConfig);
+
+    var injectConfig = ['$routeProvider', '$httpProvider'];
+
+    getConfig.$inject = injectConfig;
+
+    function getConfig($routeProvider, $httpProvider){
+        
+        /**********************************************************/
+        /********************ROUTES DEFINITION*********************/
+        /**********************************************************/
+
+    	$routeProvider
+    	.when('/', {
+    		templateUrl: 'partials/accueil.html',
+    		public: true
+    	})
+    	.when('/login', {
+    		templateUrl: 'partials/loginForm.html',
+    		guestOnly: true,
+            public: true
+    	})
+    	.when('/register', {
+    		templateUrl: 'partials/registerForm.html',
+    		guestOnly: true,
+            public: true
+    	})
+        .when('/account', {
+            templateUrl: 'partials/account.html'
+        })
+    	.otherwise({
+            redirectTo: '/'
+        });
+
+    	
+        /**********************************************************/
+        /*******************INTERCEPTOR CONFIG*********************/
+        /**********************************************************/
+
+        $httpProvider.interceptors.push(['$q', '$location', '$localStorage', '$rootScope', 'NotificationFactory',
+            function($q, $location, $localStorage, $rootScope, NotificationFactory) {
+                return {
+                    // Ajout du token au header de la request
+                    'request': function (config) {
+                        config.headers = config.headers || {};
+                        if ($localStorage.user) {
+                            config.headers.Authorization = 'Bearer ' + $localStorage.user.token;
+                        }
+                        return config;
+                    },
+                    // Traitement des réponses en erreur
+                    'responseError': function(response) {
+                        var deferred = $q.defer();
+
+                        //
+                        // * Response Code *
+                        // 400 : Functionnal error
+                        // 401 : If the user is not logged
+                        // 403 : If the user is logged but have not the good permission
+                        // 404 : Resource not found on the server
+                        // 500 : Technical error
+                        //
+
+                        switch(response.status){
+                            case 400:
+                                // Functional error after a form submit
+                                NotificationFactory.addToErrorMessages(response.data.message);
+                                return $q.reject(response);
+                            case 401:
+                                // User not logged
+                                // Be sure client storage is clean
+                                delete $localStorage.user;
+                                delete $rootScope.root.user;
+                                NotificationFactory.addToErrorMessages(response.data.message);
+                                $location.url('/');
+                                return $q.reject(response);
+                            case 403:
+                                // Wrong permission
+                                NotificationFactory.addToErrorMessages(response.data.message);
+                                return $q.reject(response);
+                            case 404:
+                                // Resource not found
+                                NotificationFactory.addToErrorMessages('La ressource demandée est introuvable');
+                                return $q.reject(response);
+                            case 500:
+                                // Technical error
+                                NotificationFactory.addToErrorMessages('ouch');
+                                return $q.reject(response);
+                            default:
+                                // Other error not listed, resolve the promise
+                                deferred.resolve(response);
+                                return deferred.promise;
+                        }
+                    }
+                };
+            }]);
     }
-}]);
+
+    /*
+     * @desc: run Kickstart the application
+     */
+
+    angular.module('agilog').run(getRun);
+
+    var injectRun = ['$rootScope', '$localStorage', 'AuthenticationFactory',
+        'UrlFactory', 'UrlConstant', 'NotificationFactory', 'ErrorMessageConstant'];
+
+    getRun.$inject = injectRun;
+
+    function getRun($rootScope, $localStorage, AuthenticationFactory, UrlFactory,
+        UrlConstant, NotificationFactory, ErrorMessageConstant){
+     	$rootScope.root = {};
+    	$rootScope.root.loading = null;
+        $rootScope.root.loadingQueue = 0;
+        $rootScope.root.pageTitle = 'Home';
+
+        // If the localStorage contains a user
+        if($localStorage.user){
+            // Update the global scope
+            $rootScope.root.user = $localStorage.user;
+        }
+
+        // When the route change
+        $rootScope.$on('$routeChangeStart', function (event, next, current) {
+            // If the next route is defined
+            if(next){
+                // Check if the user is online
+                AuthenticationFactory.isUserOnline()
+                // If the user is logged
+                .then(function(){
+                    // If the route is guestOnly, we cannot access to this route
+                    if(next.guestOnly){
+                        NotificationFactory.addToErrorMessages(ErrorMessageConstant.GUEST_ONLY_ERROR);
+                        UrlFactory.redirect(UrlConstant.CLIENT_HOME);
+                    }
+                })
+                // If the user is not logged
+                .catch(function(){
+                    // If the route is not public, we restrict the access
+                    if(!next.public){
+                        NotificationFactory.addToErrorMessages(ErrorMessageConstant.REGISTER_ONLY_ERROR);
+                        UrlFactory.redirect(UrlConstant.CLIENT_LOGIN);
+                    }
+                });
+            }
+        });
+    }
 })();

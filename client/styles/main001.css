@@ -53,6 +53,7 @@ input[type="submit"]:hover{
     height:100%;
     overflow:hidden;
     background:rgba(0,0,0,0.85);
+    z-index:9999;
   }
   div#loading span#loadingIco{
       left:50%;
