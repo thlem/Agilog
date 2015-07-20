@@ -1,6 +1,7 @@
 # Work in progress
- - [CURRENT] Navigation Menu
+ - [CURRENT] Refactor client side / clean code
  - [NEXT]    CSS Refactor
+ - Change brunch with gulp
  -           Create / Join / Leave a project
  
 # Agilog
