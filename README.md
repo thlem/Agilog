@@ -16,3 +16,4 @@ A simple angular/node app
  - bower install
  - brunch build
  - nodemon
+ - You can now access at http://localhost:3131
