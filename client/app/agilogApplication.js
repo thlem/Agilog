@@ -34,6 +34,10 @@
     		guestOnly: true,
             public: true
     	})
+        .when('/logout', {
+            template: ' ', // just fire controller
+            controller:'AuthenticationLogoutController'
+        })
     	.when('/register', {
     		templateUrl: 'partials/registerForm.html',
     		guestOnly: true,

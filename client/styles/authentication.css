@@ -1,11 +1,16 @@
-input:not([type="submit"]){
+div.authForm h1{
+    font-family:'Courier New';
+    letter-spacing:0;
+    font-size:2em;
+}
+div.authForm input:not([type="submit"]){
   letter-spacing:2px;
 }
-label{
+div.authForm label{
   letter-spacing:2px;
   font-size:12px;
 }
-label.moveLabelToBottom{
+div.authForm label.moveLabelToBottom{
   animation-name: moveLabelToBottom;
   animation-duration: 0.2s;
   animation-timing-function: ease-in-out;
@@ -21,7 +26,7 @@ label.moveLabelToBottom{
   from { top:8px; }
   to   { top:40px; }
 }
-label.labelOnBottom{
+div.authForm label.labelOnBottom{
   position:absolute;
   left:5px;
   opacity:0.7;
@@ -29,30 +34,43 @@ label.labelOnBottom{
   top:40px;
   font-size:11px;
 }
-section#content div.authForm{
+div.authForm{
   width:75%;
   margin:35px auto;
 }
 @media only screen and (min-width:768px){
-  section#content div.authForm{
+  div.authForm{
     width:500px;
   }
+  div.authForm .moustache{
+    position:relative;
+  }
+  div.authForm .moustache:after{
+      content:'{';
+      position:absolute;
+      top:-110px;
+      left:-25px;
+      font-size:180px;
+      font-weight:normal;
+      transform: rotate(50deg);
+      font-family:"Times New Roman";
+  }
 }
-section#content div.authForm h1{
+div.authForm h1{
   padding:5px;
   border-bottom:3px solid #6D9E9E;
 }
-section#content div.authForm form{
+div.authForm form{
   padding:8px;
   margin-top:25px;
 }
-section#content div.authForm form p{
+div.authForm form p{
   display:block;
   width:100%;
   position:relative;
   margin-bottom:25px;
 }
-section#content div.authForm form p input:not([type="submit"]){
+div.authForm form p input:not([type="submit"]){
   width:100%;
   height:35px;
   cursor:pointer;
@@ -62,13 +80,13 @@ section#content div.authForm form p input:not([type="submit"]){
   padding-left:20px;
   font-size:16px;
 }
-section#content div.authForm form p input:not([type="submit"]):hover{
+div.authForm form p input:not([type="submit"]):hover{
   border-bottom:1px solid #111725;
 }
-section#content div.authForm form p input.inputError:not([type="submit"]){
+div.authForm form p input.inputError:not([type="submit"]){
   border-bottom:2px solid #CD0100;
 }
-section#content div.authForm form p label:not(.moveLabelToBottom):not(.labelOnBottom){
+div.authForm form p label:not(.moveLabelToBottom):not(.labelOnBottom){
   position:absolute;
   top:8px;
   left:5px;

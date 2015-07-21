@@ -30,7 +30,7 @@
 					AuthenticationFactory.addOrUpdateUserInLocalStorage(responseData.user);
 					NotificationFactory.addToSuccessMessages(responseData.message);
 					$rootScope.endLoading();
-					UrlFactory.redirect(UrlConstant.HOME);
+					UrlFactory.redirect(UrlConstant.CLIENT_HOME);
 				}
 				else{
 					NotificationFactory.addToErrorMessages('Something goes wrong');
