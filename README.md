@@ -1,6 +1,7 @@
 # Work in progress
- - [CURRENT] Navigation Menu
+ - [CURRENT] Refactor client side / clean code
  - [NEXT]    CSS Refactor
+ - Change brunch with gulp
  -           Create / Join / Leave a project
  
 # Agilog
@@ -15,3 +16,4 @@ A simple angular/node app
  - bower install
  - brunch build
  - nodemon
+ - You can now launch your browser and enter the url http://localhost:3131
