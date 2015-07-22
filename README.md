@@ -1,11 +1,14 @@
 # Work in progress
- - [CURRENT] Refactor client side / clean code
+ - [CURRENT] Refactor client side / clean code (account part)
  - [NEXT]    CSS Refactor
- - Change brunch with gulp
- -           Create / Join / Leave a project
+ - [NEXT] Change brunch with gulp
+ - [NEXT] Refactor Server SIDE 
+ - [NEXT] Create / Join / Leave a project
  
 # Agilog
 A simple angular/node app
+WARNING : Before server side refactor, the application doesn't work without a mysql "agilog" localhost DB.
+You can avoid errors for just front testing by commenting agilog.js > line 38..43
 
 ## Installation
  - npm install
