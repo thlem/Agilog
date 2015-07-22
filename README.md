@@ -1,5 +1,5 @@
 # Work in progress
- - [CURRENT] Refactor client side / clean code
+ - [CURRENT] Refactor client side / clean code (account part)
  - [NEXT]    CSS Refactor
  - [NEXT] Change brunch with gulp
  - [NEXT] Refactor Server SIDE 
