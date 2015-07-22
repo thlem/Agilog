@@ -1,8 +1,9 @@
 # Work in progress
  - [CURRENT] Refactor client side / clean code
  - [NEXT]    CSS Refactor
- - Change brunch with gulp
- -           Create / Join / Leave a project
+ - [NEXT] Change brunch with gulp
+ - [NEXT] Refactor Server SIDE 
+ - [NEXT] Create / Join / Leave a project
  
 # Agilog
 A simple angular/node app
