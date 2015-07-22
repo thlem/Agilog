@@ -4,7 +4,7 @@
 			<span>Menu</span>
 		</div>
 		<ul id="navigation-elements">
-			<li ng-repeat="element in menuElements" ng-hide="{{ element.hide }}" class="navigation-element" data-title="{{ element.title }}" navigation-menu-element-dir>
+			<li ng-repeat="element in menuElements" ng-hide="{{ element.hide }}" class="navigation-element hide-data-title" data-title="{{ element.title }}" navigation-menu-element-dir>
 				<a href="{{ element.link }}" ng-if="element.link">
 					<img src="{{ element.imgSrc }}" />
 				</a>

@@ -1,11 +1,11 @@
 ﻿<div id="notification" ng-show="notification.errorMessages.length || notification.successMessages.length">
      <ul data-title="Cliquez sur une notification pour la cacher" id="notificationError" ng-show="notification.errorMessages.length">
-        <li current-notif-dir class="error" ng-repeat="error in notification.errorMessages">
+        <li notification-current-notification-dir class="error" ng-repeat="error in notification.errorMessages">
             {{ error[0] }}
         </li>
     </ul>
     <ul data-title="Cliquez sur une notification pour la cacher" id="notificationSuccess" ng-show="notification.successMessages.length">
-        <li current-notif-dir class="success"ng-repeat="success in notification.successMessages">
+        <li notification-current-notification-dir class="success"ng-repeat="success in notification.successMessages">
             {{ success[0] }}
         </li>
     </ul>

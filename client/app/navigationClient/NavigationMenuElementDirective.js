@@ -74,6 +74,13 @@
 	                    },500);
 					}
 				});
+
+				menuItem.on('mouseenter', function(){
+					$(this).removeClass('hide-data-title');
+				});
+				menuItem.on('mouseleave', function(){
+					$(this).addClass('hide-data-title');
+				});
 			}
 		};
 	}

@@ -91,7 +91,7 @@
 						if(password !== confirmPassword){
 							// Notify the user
 							NotificationFactory.addToErrorMessages(
-								ErrorMessageConstant.REGISTER_PASSWORDS_WRONG);
+								ErrorMessageConstant.PASSWORD_CONFIRM_NOT_IDENTICAL);
 
 							// Get both label for animation
 							var usrPasswordConfirmLabel = 
