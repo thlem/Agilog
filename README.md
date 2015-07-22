@@ -7,6 +7,8 @@
  
 # Agilog
 A simple angular/node app
+WARNING : Before server side refactor, the application doesn't work without a mysql "agilog" localhost DB.
+You can avoid errors for just front testing by commenting agilog.js > line 38..43
 
 ## Installation
  - npm install
