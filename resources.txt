@@ -1,0 +1,62 @@
+Need Node.js Help? Check These Top 10 Common Node.js Developer Mistakes
+http://www.toptal.com/nodejs/top-10-common-nodejs-developer-mistakes
+
+An End-to-End AngularJS Guide
+http://www.webcodegeeks.com/javascript/angular-js/end-end-angularjs-guide
+
+Apprendre Angular en un jour, le guide ultime
+http://www.tinci.fr/blog/apprendre-angular-en-un-jour-le-guide-ultime/
+
+Comprendre Angular en le refaisant de zéro à Devoxx France 2014 
+http://www.technologies-ebusiness.com/langages/comprendre-angular-en-refaisant-zero-devoxx-france-2014
+
+Creating a Super Simple Todo app Using Angular 2 —Tutorial
+http://www.htmlxprs.com/post/54/creating-a-super-simple-todo-app-using-angular-2-tutorial
+
+35 plugins jQuery gratuits pour rendre votre site incroyable
+http://designspartan.com/ressources/35-plugins-jquery-gratuits-pour-rendre-votre-site-incroyable/
+
+Découvrez ES6, le futur du Javascript, et utilisez le dès maintenant !
+http://www.blogduwebdesign.com/ressources-javascript/es6-futur-Javascript-ressources-traduire-es5/1594
+
+The JSON Validator 
+http://jsonlint.com/
+
+Frame-by-frame animation with HTML and JavaScript 
+http://modernweb.com/2014/05/20/frame-by-frame-animation-with-html-and-javascript/
+
+We have a problem with promises
+http://pouchdb.com/2015/05/18/we-have-a-problem-with-promises.html
+
+AngularUI Router, le ngRoute en mieux
+http://www.occitech.fr/blog/2014/12/angular-ui-router/
+
+Six Steps for Approaching the Next JavaScript
+http://developer.telerik.com/featured/six-steps-for-approaching-the-next-javascript/
+
+AngularJS 2.0 changements notables
+http://www.synbioz.com/blog/angularjs_2_0_changements_notables
+
+CodeSchool angularjs
+http://discuss.codeschool.io/c/javascript/angularjs
+
+A deep dive into Angular 2.0
+https://www.opencredo.com/2015/07/08/a-deep-dive-into-angular-2-0/
+
+Try AngularJS 2 
+http://www.tryangular2.com/version
+
+Android icon
+http://romannurik.github.io/AndroidAssetStudio/icons-actionbar.html#source.type=clipart&source.space.trim=0&source.space.pad=-0.05&source.clipart=res%2Fclipart%2Ficons%2Faction_pageview.svg&name=ic_action_action_pageview&theme=dark&color=33b5e5%2C60
+
+API 2.0 Preview
+https://angular.io/docs/js/latest/api/
+
+angular2-education
+https://github.com/timjacobi/angular2-education
+
+How I build Node.js Applications
+http://blog.ragingflame.co.za/2015/4/1/how-i-build-nodejs-applications
+
+The Core Concepts of Angular 2
+http://victorsavkin.com/post/118372404541/the-core-concepts-of-angular-2
