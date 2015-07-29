@@ -1,9 +1,10 @@
 # Work in progress
  - [CURRENT] Refactor client side / clean code (account part)
- - [NEXT]    CSS Refactor
- - [NEXT] Change brunch with gulp
- - [NEXT] Refactor Server SIDE 
- - [NEXT] Create / Join / Leave a project
+ - [NEXT]    Make a storage factory that manage localStorage add/update/delete
+ - [NEXT]    CSS Refactor, maybe use BootStrape
+ - [NEXT]    Change brunch with gulp
+ - [NEXT]    Refactor Server SIDE 
+ - [NEXT]    Create / Join / Leave a project
  
 # Agilog
 A simple angular/node app
