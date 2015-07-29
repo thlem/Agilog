@@ -1,3 +1,12 @@
+Daily links
+http://blogs.marcinkossowski.se/
+
+10 Most-Useful JavaScript Libraries for Animating SVG
+http://designdrizzle.com/10-most-useful-javascript-libraries-for-animating-svg/?ref=dzone
+
+Some Of The Best Javascript Libraries, Frameworks And Plugins
+http://www.designyourway.net/blog/jquery/best-javascript-frameworks-developer/
+
 Need Node.js Help? Check These Top 10 Common Node.js Developer Mistakes
 http://www.toptal.com/nodejs/top-10-common-nodejs-developer-mistakes
 
