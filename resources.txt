@@ -1,3 +1,6 @@
+Google developers
+https://developers.google.com/web/fundamentals
+
 Introduction to Angular 2 – The fundamentals of Components
 http://www.webcodegeeks.com/javascript/angular-js/introduction-angular-2-fundamentals-components/
 
