@@ -8,13 +8,13 @@
 	angular.module('agilog').controller('AuthenticationLoginController', getAuthenticationLoginController);
 
 	var inject = ['$scope', '$location', '$rootScope', 'AuthenticationFactory',
-	'NotificationFactory', 'UrlFactory', 'UrlConstant'];
+	'NotificationFactory', 'ProxyFactory', 'UrlConstant', 'StorageFactory'];
 
 	getAuthenticationLoginController.$inject = inject;
 		
 
 	function getAuthenticationLoginController($scope, $location, $rootScope,
-		AuthenticationFactory, NotificationFactory, UrlFactory, UrlConstant){
+		AuthenticationFactory, NotificationFactory, ProxyFactory, UrlConstant, StorageFactory){
 		
 		/*jshint validthis: true */
 		var vm = this;
@@ -27,10 +27,10 @@
 				// If the server returns the user correctly
 				if(responseData.user){
 					// Add it to the localStorage
-					AuthenticationFactory.addOrUpdateUserInLocalStorage(responseData.user);
+					StorageFactory.addOrUpdateUserInLocalStorage(responseData.user);
 					NotificationFactory.addToSuccessMessages(responseData.message);
 					$rootScope.endLoading();
-					UrlFactory.redirect(UrlConstant.CLIENT_HOME);
+					ProxyFactory.redirect(UrlConstant.CLIENT_HOME);
 				}
 				else{
 					NotificationFactory.addToErrorMessages('Something goes wrong');

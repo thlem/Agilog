@@ -14,10 +14,9 @@
 
         // Configuration variable
         vm.config = {
-                isMobile            : false,				// if width < 768px
+                isMobile            : true,				    // if width < 768px
                 deviceHeight        : $(window).height(),	// get height of the screen
                 deviceWidth         : $(window).width(),	// get width of the screen
-                isMenuOpen          : false,				// Is the menu hidden or not
                 bottomClosePosition : -61,					// The bottom close position of the menu
                 bottomOpenPosition  : 0,					// The bottom open position of the menu
                 menuHeight          : 55					// The height of the menu

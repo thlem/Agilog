@@ -17,7 +17,7 @@ exports.config = {
             "joinTo": {
                 "js/app.min.js": /^client[\\/]app/,
                 "js/vendor.min.js": [
-                    "bower_component/jquery/dist/jquery.js",
+                    "bower_component/jquery/jquery.js",
                     "bower_component/angular/angular.js",
                     "bower_component/angular-cookies/angular-cookies.js",
                     "bower_component/angular-resource/angular-resource.js",

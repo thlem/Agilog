@@ -8,12 +8,12 @@
     angular.module('agilog').controller('RootController', getRootController);
 
     var inject = ['$rootScope', 'AuthenticationFactory', 'NotificationFactory',
-        'ErrorMessageConstant', 'UrlFactory', 'UrlConstant'];
+        'ErrorMessageConstant', 'ProxyFactory', 'UrlConstant'];
 
     getRootController.$inject = inject;
 
     function getRootController($rootScope, AuthenticationFactory, NotificationFactory,
-        ErrorMessageConstant, UrlFactory, UrlConstant){
+        ErrorMessageConstant, ProxyFactory, UrlConstant){
 
     	// Method visible in the entire app and
         // allows to start the loading spinner

@@ -120,12 +120,12 @@
 
     angular.module('agilog').run(getRun);
 
-    var injectRun = ['$rootScope', '$localStorage', 'AuthenticationFactory',
-        'UrlFactory', 'UrlConstant', 'NotificationFactory', 'ErrorMessageConstant'];
+    var injectRun = ['$rootScope', '$localStorage', 'StorageFactory',
+        'ProxyFactory', 'UrlConstant', 'NotificationFactory', 'ErrorMessageConstant'];
 
     getRun.$inject = injectRun;
 
-    function getRun($rootScope, $localStorage, AuthenticationFactory, UrlFactory,
+    function getRun($rootScope, $localStorage, StorageFactory, ProxyFactory,
         UrlConstant, NotificationFactory, ErrorMessageConstant){
      	$rootScope.root = {};
     	$rootScope.root.loading = null;
@@ -143,13 +143,13 @@
             // If the next route is defined
             if(next){
                 // Check if the user is online
-                AuthenticationFactory.isUserOnline()
+                StorageFactory.isUserOnline()
                 // If the user is logged
                 .then(function(){
                     // If the route is guestOnly, we cannot access to this route
                     if(next.guestOnly){
                         NotificationFactory.addToErrorMessages(ErrorMessageConstant.GUEST_ONLY_ERROR);
-                        UrlFactory.redirect(UrlConstant.CLIENT_HOME);
+                        ProxyFactory.redirect(UrlConstant.CLIENT_HOME);
                     }
                 })
                 // If the user is not logged
@@ -157,7 +157,7 @@
                     // If the route is not public, we restrict the access
                     if(!next.public){
                         NotificationFactory.addToErrorMessages(ErrorMessageConstant.REGISTER_ONLY_ERROR);
-                        UrlFactory.redirect(UrlConstant.CLIENT_LOGIN);
+                        ProxyFactory.redirect(UrlConstant.CLIENT_LOGIN);
                     }
                 });
             }

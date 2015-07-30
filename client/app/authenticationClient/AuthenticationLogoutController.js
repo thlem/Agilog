@@ -9,24 +9,24 @@
 		getAuthenticationLogoutController);
 
 	var inject = ['$scope', '$location', '$rootScope', 'AuthenticationFactory',
-		'NotificationFactory', 'UrlFactory', 'UrlConstant'];
+		'NotificationFactory', 'ProxyFactory', 'UrlConstant', 'StorageFactory'];
 
 	getAuthenticationLogoutController.$inject = inject;
 		
 
 	function getAuthenticationLogoutController($scope, $location, $rootScope,
-		AuthenticationFactory, NotificationFactory, UrlFactory, UrlConstant){
+		AuthenticationFactory, NotificationFactory, ProxyFactory, UrlConstant, StorageFactory){
 		
 		$rootScope.startLoading();
 		// Call of the factory
 		AuthenticationFactory.logout()
-		.then(function(response){
+		.then(function(responseData){
 			// Always logout the user, even if the server return a bad response
-			NotificationFactory.addToSuccessMessages(response.data.message);
-			AuthenticationFactory.removeUserFromLocalStorage();
+			NotificationFactory.addToSuccessMessages(responseData.message);
+			StorageFactory.removeUserFromLocalStorage();
 			$rootScope.endLoading();
 			// Redirect to the Home
-			UrlFactory.redirect(UrlConstant.CLIENT_HOME);
+			ProxyFactory.redirect(UrlConstant.CLIENT_HOME);
 		});
 
 	}

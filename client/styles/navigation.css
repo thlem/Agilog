@@ -14,45 +14,44 @@ div#navigation-bottom-wrapper{
 	left:0;
 	width:100%;
 	border-bottom:5px solid #577F7F;
-	border-top:5px solid #577F7F;
 	height:55px;
 	color:#D5E3E3;
     overflow: visible !important;/*prevent jquery animate overflow:hidden*/
     z-index:100;
     box-shadow:0 0 15px 1px #111725;
 }
+@media only screen and (min-width : 768px){
+	div#navigation-bottom-wrapper{
+		bottom:0px;
+	}
+    div#navigation-bottom-wrapper div#navigation-open-close-button{
+        display:none;
+    }
+}
 /* END WRAPPER */
 /* OPEN CLOSE BUTTON */
 div#navigation-bottom-wrapper div#navigation-open-close-button{
-    width:45px;
-	height:45px;
-	border-radius:0 75px 0 0;
+    width:40px;
+	height:25px;
 	position:absolute;
-	top:-85px;
+	top:-65px;
 	left:0;
 	cursor:pointer;
 	text-align:center;
-	padding:30px 20px 0 0;
+	padding:20px 10px;
 	font-weight: bold;
+    font-size:1.2em;
 	background:#111725;
-	border-top:5px solid #577F7F;
-	border-right:5px solid #577F7F;
 	color:#577F7F;
-	box-shadow:0px -10px 50px 1px #111725;
-}
-div#navigation-bottom-wrapper div#navigation-open-close-button.open{
-	background:#111725;
-	border-top:5px solid #577F7F;
-	border-right:5px solid #577F7F;
-	color:#577F7F;
+	box-shadow:0px 0px 30px 1px #111725;
+    border-radius:0 5px 0 0;
 }
 div#navigation-bottom-wrapper div#navigation-open-close-button:hover{
-    
+    box-shadow:0px 0px 30px 1px #000;
 }
 /* END OPEN CLOSE BUTTON */
 /* MAIN NAV */
 div#navigation-bottom-wrapper nav#navigation{
-    
     border-bottom:5px solid #577F7F;
 }
 div#navigation-bottom-wrapper nav#navigation li{
@@ -75,6 +74,7 @@ div#navigation-bottom-wrapper nav#navigation ul#navigation-elements li.navigatio
 	width:45px;
 	cursor:pointer;
 	padding:5px 8px;
+    box-shadow:0 0 15px 1px #111725 inset;
 }
 div#navigation-bottom-wrapper nav#navigation ul#navigation-elements li.navigation-element:hover{
     background:#577F7F;
@@ -82,32 +82,6 @@ div#navigation-bottom-wrapper nav#navigation ul#navigation-elements li.navigatio
 div#navigation-bottom-wrapper nav#navigation ul#navigation-elements li.navigation-element>ul.navigation-sub-elements{
     display:none;
 }
-/*div#navigation-bottom-wrapper nav#navigation ul#navigation-elements li.navigation-element:after{
-	padding:8px;
-	background:#111725;
-	position: absolute;
-	text-align: center;
-	left:75px;
-	bottom:55px;
-	width:179px;
-	white-space: nowrap;
-	border:5px solid #577F7F;
-	color:#D5E3E3;
-	content: attr(data-title);
-	opacity:1;
-	display:block;
-	animation-name: menuItemDataTitle;
-	animation-duration:0.6s;
-}
-div#navigation-bottom-wrapper nav#navigation ul#navigation-elements li.navigation-element.hide-data-title:after{
-	opacity: 0;
-	display:none;
-	
-}
-@keyframes menuItemDataTitle{
-	from{opacity:0;}
-	to{opacity:1;}
-}*/
 /* END MAIN NAV */
 /* SUB NAV */
 div#navigation-bottom-wrapper nav#navigation-sub ul.navigation-sub-elements{
