@@ -21,25 +21,24 @@
 	 				var position = 0;
 
 	 				// If the menu is already open
-	 				if(NavigationService.config.isMenuOpen){
+	 				if(NavigationService.isMenuOpen()){
 	 					// Set the position to hide the menu
-	 					position = NavigationService.config.bottomClosePosition;
-	 					element.removeClass('open');
+	 					position = NavigationService.getBottomClosePosition();
 	 				}
 	 				else{
 						// Set the position to show the menu
-	 					position = NavigationService.config.bottomOpenPosition;
-	 					element.addClass('open');
+	 					position = NavigationService.getBottomOpenPosition();
 	 				}
 	 				// Set the boolean open / close
-	 				NavigationService.config.isMenuOpen = !NavigationService.config.isMenuOpen;
+	 				NavigationService.setMenuOpen(!NavigationService.isMenuOpen());
+	 				NavigationService.setSubMenuOpen(false);
 
 	 				// Select the nav element, clear and stop animation queue
 	 				// to prevent multiple open / close effect
-	 				$(this).parent().parent().clearQueue().stop().animate({
+	 				$('div#navigation-bottom-wrapper').clearQueue().stop().animate({
 	 					bottom : position+'px',								// The bottom position
 	 					// Reset the height of nav to origin height (55px by default)
-	 					height:NavigationService.config.menuHeight+'px'
+	 					height:NavigationService.getMenuHeight()+'px'
 	 				},500);
 	 			});
 	 		}

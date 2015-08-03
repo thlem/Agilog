@@ -22,68 +22,64 @@
 				//
 				var menuItem = $(element[0]);
 				var navigationMainSubMenu = $(menuItem).find('.navigation-main-sub-menu');
-                var subMenuOpen = false;
 
 				//
 				// On Icon Click
 				//
 				menuItem.on('click', function(){
 
+					var hasSubMenu = false;
 					// Find the sub menu to show
 					var navSubMenu = $('nav#navigation-sub');
 					// Clear its content
 		            navSubMenu.find('ul').remove();
-		            
+
 		            // Find the sub menu elements of the current item
-		            var subMenuElements = $($(this).find('ul').first());
+	            	var subMenuElements = $($(this).find('ul').first());
 
-		            // If the current item has sub menu elements
+	            	// If the current item has sub menu elements
 					if(subMenuElements.length > 0){
-                    
-                        if(!subMenuOpen){
-                            // We append all into the sub menu
-                            navSubMenu.append(subMenuElements.clone());
-                            // And show it
-                            navSubMenu.find('ul').show();
+						hasSubMenu = true;
+					}
 
-                            // Catch click on sub menu link to reset the menu position
-                            navSubMenu.find('a').on('click', function(){
-                                $('div#navigation-bottom-wrapper').clearQueue().stop().animate({
-                                    bottom : NavigationService.config.bottomClosePosition+'px',	// reset the position
-                                    height:NavigationService.config.menuHeight+'px'				// reset the height
-                                },500);
-                                subMenuOpen = false;
-                            });
+					if(hasSubMenu && !NavigationService.isSubMenuOpen()){
 
-                            // When we click on an main item that has sub elements, we set the position with a 30px add
-                            // Otherwise the sub elements are close of the bottom of the page
-                            var height = NavigationService.config.menuHeight + navSubMenu.height() + 30;
+						// We append all into the sub menu
+                        navSubMenu.append(subMenuElements.clone());
+                        // And show it
+                        navSubMenu.find('ul').show();
 
-                            // If the current height is greater than the device height, we remove 100px
-                            if(height >= NavigationService.config.deviceHeight -100){
-                                height -= 100;
-                            }
+                        // When we click on an main item that has sub elements, we set the position with a 30px add
+                        // Otherwise the sub elements are close of the bottom of the page
+                        var height = NavigationService.getMenuHeight() + navSubMenu.height() + 30;
 
-                            $('div#navigation-bottom-wrapper').animate({
-                                height:height+'px'	// set the height
-                            },500);
-                            subMenuOpen = false;
+                        // If the current height is greater than the device height, we remove 100px
+                        if(height >= NavigationService.getDeviceHeight() -100){
+                            height -= 100;
                         }
-                        else{
-                             $('div#navigation-bottom-wrapper').clearQueue().stop().animate({
-                                bottom : NavigationService.config.bottomClosePosition+'px',	// reset the position
-                                height:NavigationService.config.menuHeight+'px'				// reset the height
+
+                        $('div#navigation-bottom-wrapper').animate({
+                            height:height+'px'	// set the height
+                        },500);
+
+						NavigationService.setSubMenuOpen(true);
+
+						 navSubMenu.find('a').on('click', function(){
+                            $('div#navigation-bottom-wrapper').clearQueue().stop().animate({
+                                bottom : NavigationService.getBottomClosePosition()+'px',	// reset the position
+                                height:NavigationService.getMenuHeight()+'px'				// reset the height
                             },500);
-                            subMenuOpen = false;
-                        }
+                            NavigationService.setSubMenuOpen(false);
+                        });
 					}
 					else{
-						// If there is no sub elements, we juste close the menu and the view is visible
-	                    $('div#navigation-bottom-wrapper').clearQueue().stop().animate({
-	                        bottom : NavigationService.config.bottomClosePosition+'px',	// reset the position
-	                        height:NavigationService.config.menuHeight+'px'				// reset the height
+						$('div#navigation-bottom-wrapper').clearQueue().stop().animate({
+	                        bottom : NavigationService.getBottomClosePosition()+'px',	// reset the position
+	                        height:NavigationService.getMenuHeight()+'px'				// reset the height
 	                    },500);
+	                    NavigationService.setSubMenuOpen(false);
 					}
+					
 				});
 			}
 		};

@@ -3,7 +3,8 @@ var gulps = {
   uglify  : require('gulp-uglify'),
   concat  : require('gulp-concat'),
   del     : require('del'),
-  css     : require('gulp-minify-css')
+  css     : require('gulp-minify-css'),
+  gutil   : require('gulp-util')
 };
 
 var folders = {
@@ -123,7 +124,7 @@ gulp.task('watch', ['buildApp', 'buildVendor', 'buildCss', 'buildStatic'], funct
  */
 gulp.task('buildApp', function() {
   
-  gulp.src(jsFiles.app).pipe(gulps.concat('app.min.js')).pipe(gulps.uglify()).pipe(gulp.dest(folders.public.js));
+  gulp.src(jsFiles.app).pipe(gulps.concat('app.min.js')).pipe(gulps.uglify().on('error', gulps.gutil.log)).pipe(gulp.dest(folders.public.js));
   
 });
 
@@ -132,7 +133,7 @@ gulp.task('buildApp', function() {
  */
 gulp.task('buildVendor', function() {
 
-  gulp.src(jsFiles.vendors).pipe(gulps.concat('vendors.min.js')).pipe(gulps.uglify()).pipe(gulp.dest(folders.public.js));
+  gulp.src(jsFiles.vendors).pipe(gulps.concat('vendors.min.js')).pipe(gulps.uglify().on('error', gulps.gutil.log)).pipe(gulp.dest(folders.public.js));
 
 });
 

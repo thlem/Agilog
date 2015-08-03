@@ -12,7 +12,7 @@
 	function getNavigationController(NavigationService, $scope){
 
 		// Put in the scope menu elements get from the service
-		$scope.menuElements = NavigationService.menuElements.elements;
+		$scope.menuElements = NavigationService.getMenuElements();
         
 	}
 })();
