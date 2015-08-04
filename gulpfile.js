@@ -73,12 +73,7 @@ gulp.task('clean', function(){
 /**
  * @Task : build
  */
-gulp.task('build', ['buildApp', 'buildVendor', 'buildCss', 'buildStatic'], function(){
-  'buildApp',
-  'buildVendor',
-  'buildCss',
-  'buildStatic'
-});
+gulp.task('build', ['clean', 'buildApp', 'buildVendor', 'buildCss', 'buildStatic']);
 
 /**
  * @Task : watch
