@@ -20,7 +20,8 @@ var folders = {
     css     : './client/styles/',
     static  : {
       partials  : './client/static/partials/',
-      images    : './client/static/images/'
+      images    : './client/static/images/',
+      all       : './client/static/'
     }
   },
   vendors:'./bower_component/'
@@ -73,7 +74,7 @@ gulp.task('clean', function(){
 /**
  * @Task : build
  */
-gulp.task('build', ['clean', 'buildApp', 'buildVendor', 'buildCss', 'buildStatic']);
+gulp.task('build', ['buildApp', 'buildVendor', 'buildCss', 'buildStatic']);
 
 /**
  * @Task : watch
@@ -108,7 +109,7 @@ gulp.task('watch', ['buildApp', 'buildVendor', 'buildCss', 'buildStatic'], funct
   /*********** Watch HTML files ***********/
   /****************************************/
   
-  gulp.watch([folders.app.static+'**/*'],[
+  gulp.watch([folders.app.static.all+'**/*'],[
     'buildStatic'
   ]);
 

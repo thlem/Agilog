@@ -8,102 +8,102 @@ div#navigation-bottom-wrapper ul, div#navigation-bottom-wrapper li ,div#navigati
 /* END RESET CSS */
 /* WRAPPER */
 div#navigation-bottom-wrapper{
-	background:#111725;
 	position:fixed;
-	bottom:-61px;
-	left:0;
-	width:100%;
-	border-bottom:5px solid #577F7F;
-	height:55px;
+	top:0;
+    left:0;
+	height:100%;
 	color:#D5E3E3;
     overflow: visible !important;/*prevent jquery animate overflow:hidden*/
     z-index:100;
-    box-shadow:0 0 15px 1px #111725;
 }
-@media only screen and (min-width : 768px){
-	div#navigation-bottom-wrapper{
-		bottom:0px;
-	}
-    div#navigation-bottom-wrapper div#navigation-open-close-button{
-        display:none;
+.navigation-title{
+    background:#111725;
+     box-shadow:0 0 15px 1px #111725;
+     width:75px;
+     height:50px;
+     line-height:50px;
+     text-align:center;
+     cursor:pointer;
+     border-radius:0 0 8px 0;
+     position:absolute;
+     top:0;
+     left:0;
+     z-index:102;
+}
+.navigation-title > span{
+    font-weight:bold;
+    font-size:1.1em;
+    display:block;
+    margin:auto;
+}
+.navigation-title.close > span{
+    vertical-align:middle;
+}
+.navigation-title.open span span {
+    height:27px;
+    width:20px;
+    display:block;
+    margin:auto;
+}
+.navigation-title.open span{
+    animation-name: open-navigation-title;
+    animation-duration: 1s;
+    opacity:1;
+}
+@keyframes open-navigation-title{
+    from {
+        opacity:0;
+    }
+    to {
+        opacity:1;
     }
 }
-/* END WRAPPER */
-/* OPEN CLOSE BUTTON */
-div#navigation-bottom-wrapper div#navigation-open-close-button{
-    width:40px;
-	height:25px;
-	position:absolute;
-	top:-65px;
-	left:0;
-	cursor:pointer;
-	text-align:center;
-	padding:20px 10px;
-	font-weight: bold;
-    font-size:1.2em;
-	background:#111725;
-	color:#577F7F;
-	box-shadow:0px 0px 30px 1px #111725;
-    border-radius:0 5px 0 0;
+.navigation-title.open{
+    animation-name: open-navigation;
+    animation-duration: 1s;
+    left:75px;
+    width:50px;
+    height:125px;
+    border-radius:0 8px 8px 0;
+    letter-spacing:0;
 }
-div#navigation-bottom-wrapper div#navigation-open-close-button:hover{
-    box-shadow:0px 0px 30px 1px #000;
+@keyframes open-navigation{
+    from {
+        left:0;
+        width:75px;
+        height:50px;
+        border-radius:0 0 8px 0;
+    }
+    to {
+        left:75px;
+        width:50px;
+        height:125px;
+        border-radius:0 8px 8px 0;
+    }
 }
-/* END OPEN CLOSE BUTTON */
-/* MAIN NAV */
-div#navigation-bottom-wrapper nav#navigation{
-    border-bottom:5px solid #577F7F;
+nav#navigation{
+    width:75px;
+    background:#111725;
+    position:absolute;
+    left:-74px;
+     box-shadow:0 0 15px 1px #111725;
+     height:100%;
+     z-index:101;
 }
-div#navigation-bottom-wrapper nav#navigation li{
-    cursor:pointer;
+nav#navigation.open{
+    animation-name: open-navigation-menu;
+    animation-duration: 1s;
+    left:0;
 }
-div#navigation-bottom-wrapper nav#navigation ul#navigation-elements{
-    white-space: nowrap;
-    overflow-x:auto;
+@keyframes open-navigation-menu{
+    from {
+        left:-74px;
+    }
+    to {
+        left:0;
+    }
 }
-div#navigation-bottom-wrapper nav#navigation ul#navigation-elements a{
-	display:block;
+nav#navigation img{
+    width:55px;
+    height:55px;
 }
-div#navigation-bottom-wrapper nav#navigation ul#navigation-elements img{
-    height:45px;
-	width:45px;
-}
-div#navigation-bottom-wrapper nav#navigation ul#navigation-elements li.navigation-element{
-	display:inline-block;
-	height:45px;
-	width:45px;
-	cursor:pointer;
-	padding:5px 8px;
-    box-shadow:0 0 15px 1px #111725 inset;
-}
-div#navigation-bottom-wrapper nav#navigation ul#navigation-elements li.navigation-element:hover{
-    background:#577F7F;
-}
-div#navigation-bottom-wrapper nav#navigation ul#navigation-elements li.navigation-element>ul.navigation-sub-elements{
-    display:none;
-}
-/* END MAIN NAV */
-/* SUB NAV */
-div#navigation-bottom-wrapper nav#navigation-sub ul.navigation-sub-elements{
-    display:flex;
-    flex-flow: row wrap;
-}
-@media only screen and (min-width : 768px){
-	div#navigation-bottom-wrapper nav#navigation-sub ul.navigation-sub-elements{
-		max-width:50%;
-	}
-}
-div#navigation-bottom-wrapper nav#navigation-sub ul.navigation-sub-elements li.navigation-sub-element{
-    margin:0 8px 0 8px;
-    padding:5px 8px;
-    flex-shrink: 0;
-}
-div#navigation-bottom-wrapper nav#navigation-sub ul.navigation-sub-elements li.navigation-sub-element a{
-    color:#577F7F;
-    text-decoration:none;
-    font-weight:bold;
-}
-div#navigation-bottom-wrapper nav#navigation-sub ul.navigation-sub-elements li.navigation-sub-element a:hover{
-    border-bottom:1px dotted #577F7F;
-}
-/* END SUB NAV */
