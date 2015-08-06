@@ -1,3 +1,30 @@
+Front-end Front — Basically, front-end news
+http://frontendfront.com/
+
+Let's talk about Web Performance
+http://ponyfoo.com/articles/talk-about-web-performance
+
+Lodash: 10 Javascript Utility Functions That You Should Probably Stop Rewriting
+http://colintoh.com/blog/lodash-10-javascript-utility-functions-stop-rewriting
+
+angular wrapper based on es7 annotations
+https://github.com/PillowPillow/ng-annotations
+
+How to detect mobile devices with JavaScript
+http://thewebdevelopertimes.com/detect-mobile-visitors-with-javascript/
+
+A social news site for kind web folk
+https://www.sitepoint.com/versioning
+
+Social News Websites for Front-End Developers
+http://snip.ly/Wgti#http://feedproxy.google.com/~r/sixrevisions/~3/V16Uel62WB4/
+
+Code Review beta 
+http://codereview.stackexchange.com/
+
+What's wrong with your JavaScript Part 1
+http://garystorey.com/2015/07/10/whats-wrong-with-your-javascript/
+
 Google developers
 https://developers.google.com/web/fundamentals
 
