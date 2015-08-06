@@ -1,21 +1,54 @@
-/* RESET CSS */
-* { -webkit-tap-highlight-color: rgba(0, 0, 0, 0); }
+/** GENERAL NAVIGATION STYLES **/
+* {
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0); /** Prevent highlight on click on mobile device */
+}
 div#navigation-bottom-wrapper ul, div#navigation-bottom-wrapper li ,div#navigation-bottom-wrapper img{
     margin:0;
     padding:0;
     list-style:none;
 }
-/* END RESET CSS */
-/* WRAPPER */
 div#navigation-bottom-wrapper{
-	position:fixed;
-	top:0;
-    left:0;
-	height:100%;
-	color:#D5E3E3;
+    position:fixed;
+    transform:translate3d(0,0,0);
+    height:100%;
+    color:#D5E3E3;
     overflow: visible !important;/*prevent jquery animate overflow:hidden*/
     z-index:100;
 }
+nav#navigation{
+    width:75px;
+    background:#111725;
+    position:absolute;
+    transform:translate3d(-74px,0,0);
+    box-shadow:0 0 15px 1px #111725;
+    height:100%;
+    z-index:101;
+}
+nav#navigation ul li, nav#navigation img{
+    width:55px;
+    height:55px;
+    display: block;
+    margin:auto;    
+}
+nav#navigation ul li{
+    border-bottom:2px solid transparent;
+    cursor:pointer;
+}
+nav#navigation ul li:hover{
+    animation-name:menu-element-hover;
+    animation-duration:1s;
+    border-bottom:2px solid rgba(255,255,255,1);
+}
+nav#navigation ul li ul{
+    display:none;
+}
+
+nav#navigation-sub{
+    
+}
+
+
+/** CLOSE NAVIGATION STYLES **/
 .navigation-title{
     background:#111725;
      box-shadow:0 0 15px 1px #111725;
@@ -26,8 +59,7 @@ div#navigation-bottom-wrapper{
      cursor:pointer;
      border-radius:0 0 8px 0;
      position:absolute;
-     top:0;
-     left:0;
+     transform:translate3d(0,0,0);
      z-index:102;
 }
 .navigation-title > span{
@@ -36,9 +68,27 @@ div#navigation-bottom-wrapper{
     display:block;
     margin:auto;
 }
-.navigation-title.close > span{
+.navigation-title.close span{
     vertical-align:middle;
+    animation-name: close-navigation-title;
+    animation-duration: 2.5s;
+    opacity:1;
 }
+.navigation-title.close{
+    animation-name: close-navigation;
+    animation-duration: 1s;
+    transform:translate3d(0,0,0);
+    width:75px;
+    height:50px;
+    border-radius:0 0 8px 0;
+}
+nav#navigation.close{
+    animation-name: close-navigation-menu;
+    animation-duration: 1s;
+    transform:translate3d(-74px,0,0);
+}
+
+/** OPEN NAVIGATION STYLES **/
 .navigation-title.open span span {
     height:27px;
     width:20px;
@@ -47,8 +97,38 @@ div#navigation-bottom-wrapper{
 }
 .navigation-title.open span{
     animation-name: open-navigation-title;
-    animation-duration: 1s;
+    animation-duration: 2.5s;
     opacity:1;
+}
+
+.navigation-title.open{
+    animation-name: open-navigation;
+    animation-duration: 1s;
+    transform:translate3d(75px,0,0);
+    width:50px;
+    height:125px;
+    border-radius:0 8px 8px 0;
+}
+nav#navigation.open{
+    animation-name: open-navigation-menu;
+    animation-duration: 1s;
+    transform:translate3d(0,0,0);
+}
+
+/** ANIMATION **/
+@keyframes open-navigation{
+    from {
+        transform:translate3d(0,0,0);
+        width:75px;
+        height:50px;
+        border-radius:0 0 8px 0;
+    }
+    to {
+        transform:translate3d(75px,0,0);
+        width:50px;
+        height:125px;
+        border-radius:0 8px 8px 0;
+    }
 }
 @keyframes open-navigation-title{
     from {
@@ -58,52 +138,49 @@ div#navigation-bottom-wrapper{
         opacity:1;
     }
 }
-.navigation-title.open{
-    animation-name: open-navigation;
-    animation-duration: 1s;
-    left:75px;
-    width:50px;
-    height:125px;
-    border-radius:0 8px 8px 0;
-    letter-spacing:0;
-}
-@keyframes open-navigation{
+@keyframes open-navigation-menu{
     from {
-        left:0;
-        width:75px;
-        height:50px;
-        border-radius:0 0 8px 0;
+        left:-75px;
     }
     to {
-        left:75px;
+        left:0;
+    }
+}
+@keyframes close-navigation{
+    from {
+        transform:translate3d(75px,0,0);
         width:50px;
         height:125px;
         border-radius:0 8px 8px 0;
     }
+    to {
+        transform:translate3d(0,0,0);
+        width:75px;
+        height:50px;
+        border-radius:0 0 8px 0;
+    }
 }
-nav#navigation{
-    width:75px;
-    background:#111725;
-    position:absolute;
-    left:-74px;
-     box-shadow:0 0 15px 1px #111725;
-     height:100%;
-     z-index:101;
-}
-nav#navigation.open{
-    animation-name: open-navigation-menu;
-    animation-duration: 1s;
-    left:0;
-}
-@keyframes open-navigation-menu{
+@keyframes close-navigation-title{
     from {
-        left:-74px;
+        opacity:0;
     }
     to {
-        left:0;
+        opacity:1;
     }
 }
-nav#navigation img{
-    width:55px;
-    height:55px;
+@keyframes close-navigation-menu{
+    from {
+        transform:translate3d(0,0,0);
+    }
+    to {
+        transform:translate3d(-74px,0,0);
+    }
+}
+@keyframes menu-element-hover{
+    from {
+        border-bottom:2px solid rgba(255,255,255,0);
+    }
+    to {
+         border-bottom:2px solid rgba(255,255,255,1);
+    }
 }

@@ -16,20 +16,20 @@
 	 		link: function(scope, element, attrs){
 	 			// On the menu open/close button click
 	 			element.on('click', function(){
-                
-                    if(element.hasClass('close')){
-                        element.addClass('open');
-                        $("#navigation").addClass("open");
-                        element.removeClass('close');
-                        $("#navigation").removeClass("close");
-                    }
-                    else{
+                	
+                    if(element.hasClass('open')){
                         element.addClass('close');
                         $("#navigation").addClass("close");
                         element.removeClass('open');
                         $("#navigation").removeClass("open");
                     }
-                    $compile(element)(scope);
+                    else{
+                        element.addClass('open');
+                        $("#navigation").addClass("open");
+                        element.removeClass('close');
+                        $("#navigation").removeClass("close");
+                    }
+                    
                 });
 	 		}
 	 	};
