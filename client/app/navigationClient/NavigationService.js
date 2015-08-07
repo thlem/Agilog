@@ -94,7 +94,7 @@
                     hide:null,
                     subElements:[               // The sub menu elements
                         {
-                            label:'Sign in',    // The label of the link
+                            label:'Sign inSign inSign in',    // The label of the link
                             link:'#/login',     // The link
                             hide:'root.user'    // Hidden condition, example ($scope.user.isOnLine)!user.isOnLine
                         },

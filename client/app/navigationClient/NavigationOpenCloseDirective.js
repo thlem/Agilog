@@ -14,20 +14,19 @@
 		return {
 	 		restrict: 'A',
 	 		link: function(scope, element, attrs){
+            
+                var wrapper = $('#navigation-bottom-wrapper');
+                
 	 			// On the menu open/close button click
 	 			element.on('click', function(){
                 	
-                    if(element.hasClass('open')){
-                        element.addClass('close');
-                        $("#navigation").addClass("close");
-                        element.removeClass('open');
-                        $("#navigation").removeClass("open");
+                    if(wrapper.hasClass('close-menu-state')){
+                        wrapper.addClass("open-menu-state run");
+                        wrapper.removeClass('close-menu-state');
                     }
                     else{
-                        element.addClass('open');
-                        $("#navigation").addClass("open");
-                        element.removeClass('close');
-                        $("#navigation").removeClass("close");
+                        wrapper.addClass("close-menu-state run");
+                        wrapper.removeClass('open-menu-state');
                     }
                     
                 });
