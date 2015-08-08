@@ -1,3 +1,6 @@
+Angular Style Guide
+https://github.com/johnpapa/angular-styleguide#single-responsibility
+
 12 best web development blogs you should be reading right now
 http://usersnap.com/blog/12-best-web-development-blogs-reading-right-now/
 
