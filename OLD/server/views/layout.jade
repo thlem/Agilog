@@ -1,10 +1,12 @@
 ﻿doctype html
-html(ng-app="ag")
+html(ng-app="agilog")
     head
         meta(charset="utf-8")
         title AgiLog
         meta(name="viewport", content="width=device-width, initial-scale=1, user-scalable=no")
         link(rel="stylesheet", href="./css/app.min.css")
+        script(src="./js/vendors.min.js")
+        script(src="./js/app.min.js")
         
     body(ng-controller="RootController")
         div(id="wrapper")
@@ -20,6 +22,4 @@ html(ng-app="ag")
             navigation-dir
             notification-dir
             section(id="content")
-                div(ui-view="")
-        script(src="./js/vendors.min.js")
-        script(src="./js/app.min.js")
+                ng-view

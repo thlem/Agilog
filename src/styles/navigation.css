@@ -1,0 +1,286 @@
+/** GENERAL NAVIGATION STYLES **/
+* {
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0); /** Prevent highlight on click on mobile device */
+}
+div#navigation-bottom-wrapper ul, div#navigation-bottom-wrapper li ,div#navigation-bottom-wrapper img{
+    margin:0;
+    padding:0;
+    list-style:none;
+}
+div#navigation-bottom-wrapper{
+    position:fixed;
+    height:100%;
+    color:#D5E3E3;
+    overflow: visible !important;/*prevent jquery animate overflow:hidden*/
+    z-index:100;
+}
+nav#navigation{
+    width:55px;
+    background:#111725;
+    position:absolute;
+    box-shadow:0 0 15px 1px #111725;
+    height:100%;
+    z-index:101;
+}
+nav#navigation > ul > li, nav#navigation img{
+    width:45px;
+    height:45px;
+    display: block;
+    margin:auto;    
+}
+nav#navigation ul li{
+    border-bottom:2px solid transparent;
+    cursor:pointer;
+    margin-bottom:10px;
+}
+nav#navigation ul li:hover{
+    animation-name:menu-element-hover;
+    animation-duration:1s;
+    border-bottom:2px solid rgba(255,255,255,1);
+}
+@keyframes menu-element-hover{
+    from {
+        border-bottom:2px solid rgba(255,255,255,0);
+    }
+    to {
+         border-bottom:2px solid rgba(255,255,255,1);
+    }
+}
+nav#navigation ul li ul{
+    display:none;
+}
+
+nav#navigation-sub{
+    transform:translateX(-55px);
+    border-left:1px solid #D5E3E3;
+    box-shadow: 0 -5px 5px #D5E3E3 inset;
+    height:100%;
+    padding:15px;
+    display:none;
+    background:#111725;
+    white-space: nowrap;
+}
+nav#navigation-sub ul li{
+    margin-bottom:15px;
+}
+.navigation-title{
+    background:#111725;
+    box-shadow:0 0 15px 1px #111725;
+    cursor:pointer;
+    z-index:102;
+    position:absolute;
+    line-height:50px;
+    text-align:center;
+}
+.navigation-title > span{
+    font-weight:bold;
+    font-size:1.1em;
+    display:block;
+    margin:auto;
+}
+
+/** OPEN MENU STATE **/
+.open-menu-state .navigation-title{
+    transform:translateX(55px);
+    width:50px;
+    height:125px;
+    border-radius:0 8px 8px 0;
+}
+.open-menu-state.run .navigation-title span{
+    opacity:1;
+}
+.open-menu-state .navigation-title span span {
+    height:27px;
+    width:20px;
+    display:block;
+    margin:auto;
+}
+.open-menu-state nav#navigation{
+    transform:translateX(0);
+}
+
+/** OPEN SUB MENU STATE **/
+.open-sub-menu-state .navigation-title{
+    transform:translateX(0);
+    width:50px;
+    height:125px;
+    border-radius:0 8px 8px 0;
+}
+.open-sub-menu-state nav#navigation ul{
+    transform:translateY(135px);
+}
+.open-sub-menu-state nav#navigation-sub{
+    transform:translateX(55px);
+}
+
+/** CLOSE MENU STATE **/
+.close-menu-state .navigation-title{
+    width:75px;
+    height:50px;
+    line-height:50px;
+    text-align:center;
+    border-radius:0 0 8px 0;
+    transform:translateX(0);
+}
+.close-menu-state nav#navigation{
+    transform:translateX(-74px);
+}
+
+/** CLOSE SUB MENU STATE **/
+.close-sub-menu-state .navigation-title{
+
+}
+.close-sub-menu-state nav#navigation{
+
+}
+
+/** OPEN MENU ANIMATION **/
+.open-menu-state.run:not(.open-sub-menu-state) .navigation-title{
+    animation-name: open-menu-state-run-title;
+    animation-duration: 1s;
+}
+.open-menu-state.run:not(.open-sub-menu-state) .navigation-title span{
+    animation-name: open-menu-state-run-title-opacity;
+    animation-duration: 2.5s;
+}
+.open-menu-state.run:not(.close-sub-menu-state) nav#navigation{
+    animation-name: open-menu-state-run-nav;
+    animation-duration: 1s;
+}
+@keyframes open-menu-state-run-title{
+    from {
+        transform:translateX(0);
+        width:75px;
+        height:50px;
+        border-radius:0 0 8px 0;
+    }
+    to {
+        transform:translateX(55px);
+        width:50px;
+        height:125px;
+        border-radius:0 8px 8px 0;
+    }
+}
+@keyframes open-menu-state-run-title-opacity{
+    from {
+        opacity:0;
+    }
+    to {
+        opacity:1;
+    }
+}
+@keyframes open-menu-state-run-nav{
+    from {
+        transform:translateX(-55px);
+    }
+    to {
+        transform:translateX(0,);
+    }
+}
+
+/** OPEN SUB MENU ANIMATION **/
+.open-sub-menu-state.run nav#navigation-sub{
+    animation-name:open-sub-menu-state-run-nav;
+    animation-duration:1s;
+}
+@keyframes open-sub-menu-state-run-nav{
+    from {
+        transform:translateX(-55px);
+    }
+    to {
+        transform:translateX(55px);
+    }
+}
+.open-sub-menu-state.run nav#navigation ul{
+    animation-name:open-sub-menu-state-run-ul;
+    animation-duration:1s;
+}
+@keyframes open-sub-menu-state-run-ul{
+    from {
+        transform:translateY(0);
+    }
+    to {
+        transform:translateY(135px);
+    }
+}
+.open-sub-menu-state.run .navigation-title{
+    animation-name:open-sub-menu-state-run-title;
+    animation-duration:1s;
+}
+@keyframes open-sub-menu-state-run-title{
+    from {
+        transform:translateY(-125px);
+    }
+    to {
+        transform:translateY(0);
+    }
+}
+
+/** CLOSE MENU ANIMATION **/
+.close-menu-state.run .navigation-title{
+    animation-name: close-menu-state-run-title;
+    animation-duration: 1s;
+}
+.close-menu-state.run .navigation-title span{
+    animation-name: close-menu-state-run-title-opacity;
+    animation-duration: 2.5s;
+}
+.close-menu-state.run nav#navigation{
+    animation-name: close-menu-state-run-nav;
+    animation-duration: 1s;
+}
+@keyframes close-menu-state-run-title{
+    from {
+        transform:translateX(55px);
+        width:50px;
+        height:125px;
+        border-radius:0 8px 8px 0;
+    }
+    to {
+        transform:translateX(0);
+        width:75px;
+        height:50px;
+        border-radius:0 0 8px 0;
+    }
+}
+@keyframes close-menu-state-run-title-opacity{
+    from {
+        opacity:0;
+    }
+    to {
+        opacity:1;
+    }
+}
+@keyframes close-menu-state-run-nav{
+    from {
+        transform:translateX(0);
+    }
+    to {
+        transform:translateX(-55px);
+    }
+}
+/** CLOSE SUB MENU ANIMATION **/
+.close-sub-menu-state.run nav#navigation ul{
+    animation-name:close-sub-menu-state-run-ul;
+    animation-duration:1s;
+}
+@keyframes close-sub-menu-state-run-ul{
+    from {
+        transform:translateY(135px);
+    }
+    to {
+        transform:translateY(0);
+    }
+}
+.close-sub-menu-state.run .navigation-title{
+    animation-name:close-sub-menu-state-run-title;
+    animation-duration:0.5s;
+}
+@keyframes close-sub-menu-state-run-title{
+    from {
+        transform:translateX(0);
+    }
+    to {
+        transform:translateX(55px);
+    }
+}

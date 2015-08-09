@@ -1,0 +1,95 @@
+div.authForm h1{
+    font-family:'Courier New';
+    letter-spacing:0;
+    font-size:2em;
+}
+div.authForm input:not([type="submit"]){
+  letter-spacing:2px;
+}
+div.authForm label{
+  letter-spacing:2px;
+  font-size:12px;
+}
+div.authForm label.moveLabelToBottom{
+  animation-name: moveLabelToBottom;
+  animation-duration: 0.2s;
+  animation-timing-function: ease-in-out;
+  position:absolute;
+  left:5px;
+  opacity:0.7;
+  z-index:-1;
+  top:40px;
+  font-size:11px;
+
+}
+@keyframes moveLabelToBottom{
+  from { top:8px; }
+  to   { top:40px; }
+}
+div.authForm label.labelOnBottom{
+  position:absolute;
+  left:5px;
+  opacity:0.7;
+  z-index:-1;
+  top:40px;
+  font-size:11px;
+}
+div.authForm{
+  width:75%;
+  margin:35px auto;
+}
+@media only screen and (min-width:768px){
+  div.authForm{
+    width:500px;
+  }
+  div.authForm .moustache{
+    position:relative;
+  }
+  div.authForm .moustache:after{
+      content:'{';
+      position:absolute;
+      top:-110px;
+      left:-25px;
+      font-size:180px;
+      font-weight:normal;
+      transform: rotate(50deg);
+      font-family:"Times New Roman";
+  }
+}
+div.authForm h1{
+  padding:5px;
+  border-bottom:3px solid #6D9E9E;
+}
+div.authForm form{
+  padding:8px;
+  margin-top:25px;
+}
+div.authForm form p{
+  display:block;
+  width:100%;
+  position:relative;
+  margin-bottom:25px;
+}
+div.authForm form p input:not([type="submit"]){
+  width:100%;
+  height:35px;
+  cursor:pointer;
+  border:none;
+  background:none;
+  border-bottom:1px solid #456B6B;
+  padding-left:20px;
+  font-size:16px;
+}
+div.authForm form p input:not([type="submit"]):hover{
+  border-bottom:1px solid #111725;
+}
+div.authForm form p input.inputError:not([type="submit"]){
+  border-bottom:2px solid #CD0100;
+}
+div.authForm form p label:not(.moveLabelToBottom):not(.labelOnBottom){
+  position:absolute;
+  top:8px;
+  left:5px;
+  opacity:0.7;
+  z-index:-1;
+}

@@ -1,91 +1,125 @@
-var gulp = require('gulp');
-var gulps = {
-  uglify  : require('gulp-uglify'),
-  concat  : require('gulp-concat'),
-  del     : require('del'),
-  css     : require('gulp-minify-css'),
-  gutil   : require('gulp-util')
-};
+var gulp 		= require('gulp'),
+	gulpModule 	= {
+		jsdoc  :require('gulp-jsdoc'),
+		concat :require('gulp-concat'),
+		del    :require('del'),
+		gutil  :require('gulp-util'),
+		uglify :require('gulp-uglify'),
+		css    :require('gulp-minify-css')
+	};
+
 
 var folders = {
-  public:{
-    all       : './public/',
-    js        : './public/js/',
-    css       : './public/css/',
-    images    : './public/images/',
-    partials  : './public/partials/'
-  },
-  app:{
-    js      : './client/app/',
-    css     : './client/styles/',
-    static  : {
-      partials  : './client/static/partials/',
-      images    : './client/static/images/',
-      all       : './client/static/'
-    }
-  },
-  vendors:'./bower_component/'
+	js      :'./src/app/agilog/',
+	css     :'./src/styles/',
+	html    :'./src/partials/',
+	images  :'./src/images',
+	vendors :'./bower_component/',
+	public  :{
+		js:'./public/js/',
+		css:'./public/css/',
+		html:'./public/partials/',
+		images:'./public/images',
+		all:'./public/'
+	}
 };
 
-var jsFiles = {
-  app:[
-    folders.app.js+'agilogApplication.js',
-    folders.app.js+'**/*.js'
-  ],
-  vendors:[
-    folders.vendors+'jquery/dist/jquery.js',
-    folders.vendors+'angular/angular.js',
-    folders.vendors+'angular-cookies/angular-cookies.js',
-    folders.vendors+'angular-resource/angular-resource.js',
-    folders.vendors+'angular-route/angular-route.js',
-    folders.vendors+'angular-sanitize/angular-sanitize.js',
-    folders.vendors+'ngstorage/ngstorage.js'
-  ]
+var order = {
+	js:[
+		folders.js+'technical/*.module.js',
+		folders.js+'technical/**/*.js',
+		folders.js+'navigation/*.module.js',
+		folders.js+'navigation/**/*.js',
+		folders.js+'notification/*.module.js',
+		folders.js+'notification/**/*.js',
+		folders.js+'account/authentification/*.module.js',
+		folders.js+'account/authentification/**/*.js',
+		folders.js+'account/manage/*.module.js',
+		folders.js+'account/manage/**/*.js',
+		folders.js+'account/*.module.js',
+		folders.js+'*.module.js',
+		folders.js+'!(*.module.js)*.js'
+	],
+	css:[
+		folders.css+'reset.css',
+		folders.css+'main.css',
+		folders.css+'navigation.css',
+		folders.css+'notification.css'
+	],
+	vendors:[
+	    folders.vendors+'jquery/dist/jquery.js',
+	    folders.vendors+'angular/angular.js',
+	    folders.vendors+'angular-cookies/angular-cookies.js',
+	    folders.vendors+'angular-resource/angular-resource.js',
+	    folders.vendors+'angular-ui-router/release/angular-ui-router.js',
+	    folders.vendors+'angular-sanitize/angular-sanitize.js',
+	    folders.vendors+'ngstorage/ngstorage.js'
+	  ]
+
 };
 
-var cssFiles = {
-  app:[
-    folders.app.css+'main001.css',
-    folders.app.css+'notification.css',
-    folders.app.css+'navigation.css',
-    folders.app.css+'authentication.css'
-  ]
-};
+var production = !!gulpModule.gutil.env.production;
 
-var staticFiles = {
-  images    :[
-    folders.app.static.images+'*.png',
-    folders.app.static.images+'*.jpg'
-  ],
-  partials  :[
-    folders.app.static.partials+'*.html'
-  ]  
-};
-    
-/**
- * @Task : clean
- */
 gulp.task('clean', function(){
  
-  gulps.del(folders.public.all);
+  gulpModule.del(folders.public.all);
  
 });
 
-/**
- * @Task : build
- */
-gulp.task('build', ['buildApp', 'buildVendor', 'buildCss', 'buildStatic']);
+gulp.task('doc', function(){
+	gulp.src(['./src/app/**/*.js'])
+	.pipe(gulpModule.jsdoc.parser())
+	.pipe(gulpModule.jsdoc.generator('./doc'));
+});
 
-/**
- * @Task : watch
- */
+gulp.task('buildApp', function(){
+	if(production){
+		gulp.src(order.js)
+		.pipe(gulpModule.concat('app.min.js'))
+		.pipe(gulpModule.uglify())
+		.pipe(gulp.dest(folders.public.js));
+	}
+	else{
+		gulp.src(order.js)
+		.pipe(gulpModule.concat('app.min.js'))
+		.pipe(gulp.dest(folders.public.js));
+	}
+});
+
+gulp.task('buildVendor', function() {
+  gulp.src(order.vendors)
+  .pipe(gulpModule.concat('vendors.min.js'))
+  .pipe(gulpModule.uglify())
+  .pipe(gulp.dest(folders.public.js));
+
+});
+
+gulp.task('buildCss', function() {
+
+  gulp.src(order.css)
+  .pipe(gulpModule.concat('app.min.css'))
+  .pipe(gulpModule.css())
+  .pipe(gulp.dest(folders.public.css));
+
+});
+
+gulp.task('buildStatic', function() {
+
+  gulp.src(folders.images+'**/*')
+  .pipe(gulp.dest(folders.public.all));
+
+  gulp.src(folders.html+'**/*.html')
+  .pipe(gulp.dest(folders.public.html));
+
+});
+
 gulp.task('watch', ['buildApp', 'buildVendor', 'buildCss', 'buildStatic'], function() {
   
   /**************************************/
   /********* Watch JS APP files *********/
   /**************************************/
   
-  gulp.watch(['./client/**/*.js'],[
+  gulp.watch([folders.js+'**/*.js'],[
     'buildApp'
   ]);
   
@@ -101,54 +135,21 @@ gulp.task('watch', ['buildApp', 'buildVendor', 'buildCss', 'buildStatic'], funct
   /*********** Watch CSS files ***********/
   /***************************************/
   
-  gulp.watch(['client/**/*.css'],[
+  gulp.watch([folders.css+'**/*.css'],[
     'buildCss'
   ]);
   
   /****************************************/
-  /*********** Watch HTML files ***********/
+  /********* Watch HTML&IMG files *********/
   /****************************************/
   
-  gulp.watch([folders.app.static.all+'**/*'],[
+  gulp.watch([folders.images+'**/*'],[
+    'buildStatic'
+  ]);
+  gulp.watch([folders.html+'**/*'],[
     'buildStatic'
   ]);
 
 });
 
-/**
- * @Task : concatJsAppFiles
- */
-gulp.task('buildApp', function() {
-  
-  gulp.src(jsFiles.app).pipe(gulps.concat('app.min.js')).pipe(gulps.uglify().on('error', gulps.gutil.log)).pipe(gulp.dest(folders.public.js));
-  
-});
-
-/**
- * @Task : concatjsVendorFiles
- */
-gulp.task('buildVendor', function() {
-
-  gulp.src(jsFiles.vendors).pipe(gulps.concat('vendors.min.js')).pipe(gulps.uglify().on('error', gulps.gutil.log)).pipe(gulp.dest(folders.public.js));
-
-});
-
-/**
- * @Task : concatjsVendorFiles
- */
-gulp.task('buildCss', function() {
-
-  gulp.src(cssFiles.app).pipe(gulps.concat('app.min.css')).pipe(gulps.css()).pipe(gulp.dest(folders.public.css));
-
-});
-
-/**
- * @Task : concatjsVendorFiles
- */
-gulp.task('buildStatic', function() {
-
-  gulp.src(staticFiles.images).pipe(gulp.dest(folders.public.images));
-  gulp.src(staticFiles.partials).pipe(gulp.dest(folders.public.partials));
-
-});
-    
+gulp.task('build', ['buildApp', 'buildVendor', 'buildCss', 'buildStatic']);
