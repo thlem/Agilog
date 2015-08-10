@@ -32,21 +32,38 @@
 					
 						// If there is none submenu
 						if(!subMenuContent){
-							// Close the menu on element click
-						 	wrapper.addClass('close-menu-state run');
-						 	wrapper.removeClass('open-menu-state');
-						 	wrapper.removeClass('close-sub-menu-state');
-						 	wrapper.removeClass('open-sub-menu-state');
-						 	subMenu.hide();
+                            if(wrapper.hasClass('state2')){
+                                wrapper.addClass('state0 state2to0 run');
+                                wrapper.removeClass('state1 state2');
+                                $timeout(function(){
+                                    wrapper.removeClass('state2to0 run');
+                                    
+                                },1000);
+                            }
+                            else{
+                                // Close the menu on element click
+                                wrapper.addClass('state0 state1to0 run');
+                                wrapper.removeClass('state1 state2');
+                                
+                                $timeout(function(){
+                                    wrapper.removeClass('state1to0 run');
+                                    
+                                },1000);
+                            }
 						}
 						// If there is submenu content
 						else{
 
 							// If the subnav is display and antoher click
 							// is fire on the element, hide subnav
-							if(wrapper.hasClass('open-sub-menu-state')){
-								wrapper.removeClass('open-sub-menu-state');
-								wrapper.addClass('close-sub-menu-state run');
+							if(wrapper.hasClass('state2')){
+								wrapper.addClass('state1 state2to1 run');
+                                wrapper.removeClass('state0 state2');
+                                
+                                $timeout(function(){
+                                    wrapper.removeClass('state2to1 run');
+                                    
+                                },1000);
 							}
 							else{
 
@@ -56,17 +73,17 @@
 								subMenu.append(subClone);
 	                        	subMenu.show();
 
-								wrapper.removeClass('close-sub-menu-state');
-								wrapper.addClass('open-sub-menu-state run');
+								wrapper.addClass('state2 state1to2 run');
+                                wrapper.removeClass('state0 state1');
+                                
+                                $timeout(function(){
+                                    wrapper.removeClass('state1to2 run');
+                                    
+                                },1000);
 							}
 
 						}
 
-						// Delete class that launch animation
-	                    // after the animation (1s)
-	                    $timeout(function(){
-	                    	wrapper.removeClass('run');
-	                    }, 1000);
 	                }
 
 				});

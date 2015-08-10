@@ -26,23 +26,32 @@
 	 				// Prevent multiple click
                 	if(!wrapper.hasClass('run')){
 
-	                    if(wrapper.hasClass('close-menu-state')){
-	                        wrapper.addClass('open-menu-state run');
-	                        wrapper.removeClass('close-menu-state');
+	                    if(wrapper.hasClass('state1')){
+                            wrapper.addClass('state0 state1to0 run');
+	                        wrapper.removeClass('state1');
+                            
+                            $timeout(function(){
+                                wrapper.removeClass('state1to0 run');
+                                
+                            },1000);
 	                    }
+                        else if(wrapper.hasClass('state2')){
+                            wrapper.addClass('state0 state2to0 run');
+                            wrapper.removeClass('state1 state2');
+                            $timeout(function(){
+                                wrapper.removeClass('state2to0 run');
+                                
+                            },1000);
+                        }
 	                    else{
-	                        wrapper.addClass('close-menu-state run');
-	                        wrapper.removeClass('open-menu-state');
-	                        wrapper.removeClass('open-sub-menu-state');
-	                        wrapper.removeClass('close-sub-menu-state');
-	                        $('#navigation-sub').hide();
+                            wrapper.addClass('state1 state0to1 run');
+	                        wrapper.removeClass('state0');
+                            
+                            $timeout(function(){
+                                wrapper.removeClass('state0to1 run');
+                                
+                            },1000);
 	                    }
-
-	                    // Delete class that launch animation
-	                    // after the animation (1s)
-	                    $timeout(function(){
-	                    	wrapper.removeClass('run');
-	                    }, 1000);
 
 	                }
                     

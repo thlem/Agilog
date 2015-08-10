@@ -56,12 +56,19 @@ nav#navigation-sub{
     box-shadow: 0 -5px 5px #D5E3E3 inset;
     height:100%;
     padding:15px;
-    display:none;
     background:#111725;
     white-space: nowrap;
 }
 nav#navigation-sub ul li{
     margin-bottom:15px;
+    text-align:center;
+}
+nav#navigation-sub ul li a{
+    color:#D5E3E3;
+    text-decoration:none;
+}
+nav#navigation-sub ul li a:hover{
+    color:#fff;
 }
 .navigation-title{
     background:#111725;
@@ -71,6 +78,7 @@ nav#navigation-sub ul li{
     position:absolute;
     line-height:50px;
     text-align:center;
+    overflow:hidden;
 }
 .navigation-title > span{
     font-weight:bold;
@@ -79,42 +87,8 @@ nav#navigation-sub ul li{
     margin:auto;
 }
 
-/** OPEN MENU STATE **/
-.open-menu-state .navigation-title{
-    transform:translateX(55px);
-    width:50px;
-    height:125px;
-    border-radius:0 8px 8px 0;
-}
-.open-menu-state.run .navigation-title span{
-    opacity:1;
-}
-.open-menu-state .navigation-title span span {
-    height:27px;
-    width:20px;
-    display:block;
-    margin:auto;
-}
-.open-menu-state nav#navigation{
-    transform:translateX(0);
-}
-
-/** OPEN SUB MENU STATE **/
-.open-sub-menu-state .navigation-title{
-    transform:translateX(0);
-    width:50px;
-    height:125px;
-    border-radius:0 8px 8px 0;
-}
-.open-sub-menu-state nav#navigation ul{
-    transform:translateY(135px);
-}
-.open-sub-menu-state nav#navigation-sub{
-    transform:translateX(55px);
-}
-
-/** CLOSE MENU STATE **/
-.close-menu-state .navigation-title{
+/**  state0 = Main menu is closed **/
+.state0 .navigation-title{
     width:75px;
     height:50px;
     line-height:50px;
@@ -122,32 +96,69 @@ nav#navigation-sub ul li{
     border-radius:0 0 8px 0;
     transform:translateX(0);
 }
-.close-menu-state nav#navigation{
+.state0 nav#navigation{
     transform:translateX(-74px);
 }
 
-/** CLOSE SUB MENU STATE **/
-.close-sub-menu-state .navigation-title{
-
-}
-.close-sub-menu-state nav#navigation{
-
+.state0 nav#navigation-sub{
+    transform:translateX(-55px);
+    opacity:0;
 }
 
-/** OPEN MENU ANIMATION **/
-.open-menu-state.run:not(.open-sub-menu-state) .navigation-title{
-    animation-name: open-menu-state-run-title;
+/**  state1 = Main menu is open **/
+.state1 .navigation-title{
+    transform:translateX(55px);
+    width:50px;
+    height:125px;
+    border-radius:0 8px 8px 0;
+}
+.state1 .navigation-title span{
+    opacity:1;
+}
+.state1 .navigation-title span span {
+    height:27px;
+    width:20px;
+    display:block;
+    margin:auto;
+}
+.state1 nav#navigation{
+    transform:translateX(0);
+}
+.state1 nav#navigation-sub{
+    transform:translateX(-55px);
+    opacity:0;
+}
+
+/**  state2 = Sub menu is open **/
+.state2 .navigation-title{
+    transform:translateX(0);
+    width:50px;
+    height:125px;
+    border-radius:0 8px 8px 0;
+}
+.state2 .navigation-title span{
+    opacity:1;
+}
+.state2 .navigation-title span span {
+    height:27px;
+    width:20px;
+    display:block;
+    margin:auto;
+}
+.state2 nav#navigation ul{
+    transform:translateY(135px);
+}
+.state2 nav#navigation-sub{
+    transform:translateX(55px);
+    opacity:1;
+}
+
+/** state0 to state1 **/
+.state0to1 .navigation-title{
+    animation-name: state0-to-1-title;
     animation-duration: 1s;
 }
-.open-menu-state.run:not(.open-sub-menu-state) .navigation-title span{
-    animation-name: open-menu-state-run-title-opacity;
-    animation-duration: 2.5s;
-}
-.open-menu-state.run:not(.close-sub-menu-state) nav#navigation{
-    animation-name: open-menu-state-run-nav;
-    animation-duration: 1s;
-}
-@keyframes open-menu-state-run-title{
+@keyframes state0-to-1-title{
     from {
         transform:translateX(0);
         width:75px;
@@ -161,7 +172,11 @@ nav#navigation-sub ul li{
         border-radius:0 8px 8px 0;
     }
 }
-@keyframes open-menu-state-run-title-opacity{
+.state0to1 .navigation-title span{
+    animation-name: state0-to-1-title-span;
+    animation-duration: 2.5s;
+}
+@keyframes state0-to-1-title-span{
     from {
         opacity:0;
     }
@@ -169,69 +184,162 @@ nav#navigation-sub ul li{
         opacity:1;
     }
 }
-@keyframes open-menu-state-run-nav{
+.state0to1 nav#navigation{
+    animation-name: state0-to-1-nav;
+    animation-duration: 1s;
+}
+@keyframes state0-to-1-nav{
     from {
         transform:translateX(-55px);
     }
     to {
-        transform:translateX(0,);
+        transform:translateX(0);
     }
 }
 
-/** OPEN SUB MENU ANIMATION **/
-.open-sub-menu-state.run nav#navigation-sub{
-    animation-name:open-sub-menu-state-run-nav;
-    animation-duration:1s;
+/** state1 to state0 **/
+.state1to0 .navigation-title{
+    animation-name: state1-to-0-title;
+    animation-duration: 1s;
 }
-@keyframes open-sub-menu-state-run-nav{
+@keyframes state1-to-0-title{
     from {
+        transform:translateX(55px);
+        width:50px;
+        height:125px;
+        border-radius:0 8px 8px 0;
+    }
+    to {
+        transform:translateX(0);
+        width:75px;
+        height:50px;
+        border-radius:0 0 8px 0;
+    }
+}
+.state1to0 .navigation-title span{
+    animation-name: state1-to-0-title-span;
+    animation-duration: 2.5s;
+}
+@keyframes state1-to-0-title-span{
+    from {
+        opacity:0;
+    }
+    to {
+        opacity:1;
+    }
+}
+.state1to0 nav#navigation{
+    animation-name: state1-to-0-nav;
+    animation-duration: 1s;
+}
+@keyframes state1-to-0-nav{
+    from {
+        transform:translateX(0);
+    }
+    to {
         transform:translateX(-55px);
     }
-    to {
+}
+
+/** state1 to state2 **/
+.state1to2 .navigation-title{
+    animation-name:state1-to-2-title;
+    animation-duration:1s;
+}
+@keyframes state1-to-2-title{
+    0% {
+        opacity:1;
         transform:translateX(55px);
     }
-}
-.open-sub-menu-state.run nav#navigation ul{
-    animation-name:open-sub-menu-state-run-ul;
-    animation-duration:1s;
-}
-@keyframes open-sub-menu-state-run-ul{
-    from {
-        transform:translateY(0);
-    }
-    to {
-        transform:translateY(135px);
-    }
-}
-.open-sub-menu-state.run .navigation-title{
-    animation-name:open-sub-menu-state-run-title;
-    animation-duration:1s;
-}
-@keyframes open-sub-menu-state-run-title{
-    from {
+    33% {
+        opacity:0;
+        transform:translateX(0);
         transform:translateY(-125px);
     }
+    100%{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+.state1to2 nav#navigation ul{
+    animation-name:state1-to-2-ul;
+    animation-duration:1s;
+}
+@keyframes state1-to-2-ul{
+    from {
+        transform:translateY(0);
+    }
+    to {
+        transform:translateY(135px);
+    }
+}
+.state1to2 nav#navigation-sub{
+    animation-name:state1-to-2-sub;
+    animation-duration:1s;
+}
+@keyframes state1-to-2-sub{
+    from {
+        transform:translateX(-55px);
+        opacity:0;
+    }
+    to {
+        transform:translateX(55px);
+        opacity:1;
+    }
+}
+/** state2 to state1 **/
+.state2to1 .navigation-title{
+    animation-name:state2-to-1-title;
+    animation-duration:1s;
+}
+@keyframes state2-to-1-title{
+    0% {
+        opacity:1;
+        transform:translateY(0);
+    }
+    33% {
+        opacity:0;
+        transform:translateY(-125px);
+    }
+    100%{
+        opacity:1;
+        transform:translateX(55px);
+    }
+}
+.state2to1 nav#navigation ul{
+    animation-name:state2-to-1-ul;
+    animation-duration:1s;
+}
+@keyframes state2-to-1-ul{
+    from {
+        transform:translateY(135px);
+    }
     to {
         transform:translateY(0);
     }
 }
-
-/** CLOSE MENU ANIMATION **/
-.close-menu-state.run .navigation-title{
-    animation-name: close-menu-state-run-title;
-    animation-duration: 1s;
+.state2to1 nav#navigation-sub{
+    animation-name:state2-to-1-sub;
+    animation-duration:1s;
 }
-.close-menu-state.run .navigation-title span{
-    animation-name: close-menu-state-run-title-opacity;
-    animation-duration: 2.5s;
-}
-.close-menu-state.run nav#navigation{
-    animation-name: close-menu-state-run-nav;
-    animation-duration: 1s;
-}
-@keyframes close-menu-state-run-title{
+@keyframes state2-to-1-sub{
     from {
         transform:translateX(55px);
+        opacity:1;
+    }
+    to {
+        transform:translateX(-55px);
+        opacity:0;
+    }
+}
+
+/** state2 to state0 **/
+.state2to0 .navigation-title{
+    animation-name:state2-to-0-title;
+    animation-duration:1s;
+}
+@keyframes state2-to-0-title{
+    from {
         width:50px;
         height:125px;
         border-radius:0 8px 8px 0;
@@ -243,15 +351,23 @@ nav#navigation-sub ul li{
         border-radius:0 0 8px 0;
     }
 }
-@keyframes close-menu-state-run-title-opacity{
+.state2to0 .navigation-title span{
+    animation-name:state2-to-0-title-span;
+    animation-duration:2.5s;
+}
+@keyframes state2-to-0-title-span{
     from {
-        opacity:0;
+       opacity:0;
     }
     to {
         opacity:1;
     }
 }
-@keyframes close-menu-state-run-nav{
+.state2to0 nav#navigation{
+    animation-name: state2-to-0-nav;
+    animation-duration: 1s;
+}
+@keyframes state2-to-0-nav{
     from {
         transform:translateX(0);
     }
@@ -259,28 +375,17 @@ nav#navigation-sub ul li{
         transform:translateX(-55px);
     }
 }
-/** CLOSE SUB MENU ANIMATION **/
-.close-sub-menu-state.run nav#navigation ul{
-    animation-name:close-sub-menu-state-run-ul;
+.state2to0 nav#navigation-sub{
+    animation-name:state2-to-0-sub;
     animation-duration:1s;
 }
-@keyframes close-sub-menu-state-run-ul{
+@keyframes state2-to-0-sub{
     from {
-        transform:translateY(135px);
-    }
-    to {
-        transform:translateY(0);
-    }
-}
-.close-sub-menu-state.run .navigation-title{
-    animation-name:close-sub-menu-state-run-title;
-    animation-duration:0.5s;
-}
-@keyframes close-sub-menu-state-run-title{
-    from {
-        transform:translateX(0);
-    }
-    to {
         transform:translateX(55px);
+        opacity:1;
+    }
+    to {
+        transform:translateX(-55px);
+        opacity:0;
     }
 }
