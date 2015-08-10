@@ -3,7 +3,7 @@
 
 	/**
 	 * @name NavigationMainDirective
-	 * @description The description of directive
+	 * @description The navigation main directive that load the template
      * @memberof ag.nav
 	 */
 

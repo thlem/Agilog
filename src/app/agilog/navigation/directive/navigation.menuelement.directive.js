@@ -38,7 +38,7 @@
                                 $timeout(function(){
                                     wrapper.removeClass('state2to0 run');
                                     
-                                },1000);
+                                },800);
                             }
                             else{
                                 // Close the menu on element click
@@ -48,7 +48,7 @@
                                 $timeout(function(){
                                     wrapper.removeClass('state1to0 run');
                                     
-                                },1000);
+                                },800);
                             }
 						}
 						// If there is submenu content
@@ -63,7 +63,7 @@
                                 $timeout(function(){
                                     wrapper.removeClass('state2to1 run');
                                     
-                                },1000);
+                                },800);
 							}
 							else{
 
@@ -79,7 +79,17 @@
                                 $timeout(function(){
                                     wrapper.removeClass('state1to2 run');
                                     
-                                },1000);
+                                },800);
+
+                                subMenu.find('a').click(function(){
+                                    wrapper.addClass('state0 state2to0 run');
+                                    wrapper.removeClass('state1 state2');
+                                    $timeout(function(){
+                                        wrapper.removeClass('state2to0 run');
+                                        
+                                    },800);
+                                });
+
 							}
 
 						}

@@ -2,8 +2,8 @@
     'use strict';
 
 	/**
-	 * @name ag.nav
-	 * @description module description
+	 * @name NavigationModule
+	 * @description The navigation module
      * @namespace ag.nav
 	 */
 

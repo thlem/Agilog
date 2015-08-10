@@ -9,14 +9,14 @@
     </div>
 	<nav id="navigation" role="navigation">
 		<ul id="navigation-elements">
-			<li ng-repeat="element in menuElements" ng-hide="{{ element.hide }}" class="navigation-element" navigation-menu-element-dir>
-				<a href="{{ element.link }}" ng-if="element.link">
+			<li ng-repeat="element in menuElements" data-title="{{ element.title }}" ng-hide="{{ element.hide }}" class="navigation-element" navigation-menu-element-dir>
+				<a ui-sref="{{ element.link }}" ng-if="element.link">
 					<img src="{{ element.imgSrc }}" />
 				</a>
 				<img src="{{ element.imgSrc }}" ng-if="!element.link" />
 				<ul class="navigation-sub-elements" ng-if="element.subElements">
-					<li class="navigation-sub-element" ng-repeat="subElement in element.subElements" ng-hide="{{ subElement.hide }}" >
-    					<a href="{{ subElement.link }}">{{ subElement.label }}</a>
+					<li class="navigation-sub-element" data-title="{{ element.title }}" ng-repeat="subElement in element.subElements" ng-hide="{{ subElement.hide }}" >
+    					<a ui-sref="{{ subElement.link }}">{{ subElement.label }}</a>
 					</li>
 				</ul>
 			</li>

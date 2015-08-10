@@ -14,6 +14,7 @@ body{
   font-size:14px;
   font-family:'Times New Roman';
   letter-spacing:1px;
+  z-index:0;
 }
 @media only screen and (max-width:768px){
 	body{font-size:12px;}
@@ -51,7 +52,7 @@ input[type="submit"]:hover{
     height:100%;
     overflow:hidden;
     background:rgba(0,0,0,0.85);
-    z-index:9999;
+    z-index:30;
   }
   div#loading span#loadingIco{
       left:50%;
@@ -79,6 +80,8 @@ input[type="submit"]:hover{
       height:30px;
       width:100%;
       position:fixed;
+      bottom:0;
+      z-index:20;
   }
   div#topBanner form{
       float:left;
@@ -153,6 +156,10 @@ input{
 
 section#content{
   padding:45px 15px 35px 15px;
+  margin:auto;
+}
+@media only screen and (min-width:768px){
+ section#content{ width:960px; }
 }
 section#content div#userAccountManage>div{
     background:#577F7F;

@@ -1,6 +1,6 @@
 var gulp 		= require('gulp'),
 	gulpModule 	= {
-		/*jsdoc  :require('gulp-jsdoc'),*/
+		jsdoc  :require('gulp-jsdoc'),
 		concat :require('gulp-concat'),
 		del    :require('del'),
 		gutil  :require('gulp-util'),
@@ -44,7 +44,8 @@ var order = {
 		folders.css+'reset.css',
 		folders.css+'main.css',
 		folders.css+'navigation.css',
-		folders.css+'notification.css'
+		folders.css+'notification.css',
+		folders.css+'authentication.css'
 	],
 	vendors:[
 	    folders.vendors+'jquery/dist/jquery.js',
@@ -66,11 +67,11 @@ gulp.task('clean', function(){
  
 });
 
-//gulp.task('doc', function(){
-//	gulp.src(['./src/app/**/*.js'])
-//	.pipe(gulpModule.jsdoc.parser())
-//	.pipe(gulpModule.jsdoc.generator('./doc'));
-//});
+gulp.task('doc', function(){
+	gulp.src(['./src/app/**/*.js'])
+	.pipe(gulpModule.jsdoc.parser())
+	.pipe(gulpModule.jsdoc.generator('./doc'));
+});
 
 gulp.task('buildApp', function(){
 	if(production){

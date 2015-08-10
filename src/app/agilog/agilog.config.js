@@ -3,8 +3,8 @@
 
 	/**
 	 * @name config
-	 * @description The configuration of the module
-     * @namespace ag
+	 * @description The configuration of the module, containing routes, interceptor
+     * @memberof ag
 	 */
 
     angular.module('ag').config(getConfig);
@@ -15,11 +15,23 @@
 
     function getConfig($httpProvider, $stateProvider, $urlRouterProvider){
 
-        $urlRouterProvider.otherwise("/");
+        $urlRouterProvider.otherwise('/');
          $stateProvider
         .state('Home', {
-            url: "/",
-            templateUrl: "partials/accueil.html"
+            url: '/',
+            templateUrl: 'partials/accueil.html'
+        })
+        .state('Login', {
+            url: '/login',
+            templateUrl: 'partials/loginForm.html'
+        })
+        .state('Register', {
+            url: '/register',
+            templateUrl: 'partials/registerForm.html'
+        })
+        .state('Logout', {
+            url: '/logout',
+            controller: 'AuthenticationLogoutController'
         });
 
 

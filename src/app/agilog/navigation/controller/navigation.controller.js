@@ -2,7 +2,7 @@
     'use strict';
 
 	/**
-	 * @name ControllerName
+	 * @name NavigationController
 	 * @description The navigation controller that load menu elements
      * @memberof ag.nav
 	 */

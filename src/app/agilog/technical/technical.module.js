@@ -4,7 +4,7 @@
 	/**
 	 * @name ag.tech
 	 * @description Module that contains common technical things like constants, factory
-	 * @namespace ag.tech
+	 * @memberof ag.tech
 	 */
 
     angular.module('ag.tech', []);

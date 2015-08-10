@@ -2,7 +2,7 @@
     'use strict';
 
 	/**
-	 * @name DirectiveName
+	 * @name navigationOpenCloseDir
 	 * @description Menu open close directive that toggle display
      * @memberof ag.nav
 	 */
@@ -33,7 +33,7 @@
                             $timeout(function(){
                                 wrapper.removeClass('state1to0 run');
                                 
-                            },1000);
+                            },800);
 	                    }
                         else if(wrapper.hasClass('state2')){
                             wrapper.addClass('state0 state2to0 run');
@@ -41,7 +41,7 @@
                             $timeout(function(){
                                 wrapper.removeClass('state2to0 run');
                                 
-                            },1000);
+                            },800);
                         }
 	                    else{
                             wrapper.addClass('state1 state0to1 run');
@@ -50,7 +50,7 @@
                             $timeout(function(){
                                 wrapper.removeClass('state0to1 run');
                                 
-                            },1000);
+                            },800);
 	                    }
 
 	                }

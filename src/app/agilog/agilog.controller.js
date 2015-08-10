@@ -3,8 +3,8 @@
 
 	/**
 	 * @name RootController
-	 * @description The description of controller
-     * @namespace ag
+	 * @description The root controller that contains some rootScope accessible methods
+     * @memberof ag
 	 */
 
     angular.module('ag').controller('RootController', getRootController);

@@ -3,7 +3,7 @@
 	
     /**
      * @name NavigationFactory
-     * @description factory description
+     * @description The factory that contains menu elements
      * @memberof ag.nav
      */
 
@@ -31,63 +31,42 @@
             return [
                 {
                     title:'Home',                   // The data-title attribute, visible on hover
-                    link:'#/',                      // The Link, put the 'null' value if there is a sub menu
+                    link:'Home',                      // The Link, put the 'null' value if there is a sub menu
                     imgSrc:'./images/homeIco.png',  // The image of the menu element
                     hide:null,                      // Hidden condition, example ($scope.user.isOnLine)!user.isOnLine
                     subElements:null                // The sub menu to show
                 },
                 {
-                    title:'Sign in/up - Logout',
+                    title:'Sign in/up',
                     link:null,
                     imgSrc:'./images/loggedIco.png',
-                    hide:null,
+                    hide:'root.user',
                     subElements:[               // The sub menu elements
                         {
-                            label:'Sign inSign inSign in',    // The label of the link
-                            link:'#/login',     // The link
+                            label:'Sign in',    // The label of the link
+                            link:'Login',     // The link
                             hide:'root.user'    // Hidden condition, example ($scope.user.isOnLine)!user.isOnLine
                         },
                         {
-                            label:'Logout',
-                            link:'#/logout',
-                            hide:'!root.user'
-                        },
-                        {
                             label:'Sign up',
-                            link:'#/register',
+                            link:'Register',
                             hide:'root.user'
                         }
                     ]
                 },
                 {
-                    title:'My Account',
-                    link:'#/account',
-                    imgSrc:'./images/accountIco.png',
+                    title:'Logout',
+                    link:'Logout',
+                    imgSrc:'./images/loggedIco.png',
                     hide:'!root.user',
                     subElements:null
                 },
                 {
-                    title:'My Projects',
-                    link:null,
-                    imgSrc:'./images/projectsIco.png',
+                    title:'My Account',
+                    link:'Account',
+                    imgSrc:'./images/accountIco.png',
                     hide:'!root.user',
-                    subElements:[
-                        {
-                            label:'Project 1',
-                            link:'#/',
-                            hide:null
-                        },
-                        {
-                            label:'Project 2',
-                            link:'#/',
-                            hide:null                   
-                        },
-                        {
-                            label:'Project 3',
-                            link:'#/',
-                            hide:null                   
-                        }
-                    ]
+                    subElements:null
                 }
             ];
         }

@@ -12,6 +12,7 @@
     	'ui.router',
     	'ngStorage',
     	'ag.tech',
-        'ag.nav'
+        'ag.nav',
+        'ag.acc'
    	]);
 })();

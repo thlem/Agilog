@@ -12,7 +12,7 @@ div#navigation-bottom-wrapper{
     height:100%;
     color:#D5E3E3;
     overflow: visible !important;/*prevent jquery animate overflow:hidden*/
-    z-index:100;
+    z-index:10;
 }
 nav#navigation{
     width:55px;
@@ -32,18 +32,33 @@ nav#navigation ul li{
     border-bottom:2px solid transparent;
     cursor:pointer;
     margin-bottom:10px;
+    position:relative;
 }
 nav#navigation ul li:hover{
     animation-name:menu-element-hover;
     animation-duration:1s;
     border-bottom:2px solid rgba(255,255,255,1);
 }
+nav#navigation ul li:hover:after{
+    content:attr(data-title);
+    position:absolute;
+    display:block;
+    left:50px;
+    top:0;
+    background:#111725;
+    height:30px;
+    z-index:12;
+    border:1px solid #D5E3E3;
+    text-align:center;
+    white-space: nowrap;
+    padding:5px;
+}
 @keyframes menu-element-hover{
     from {
         border-bottom:2px solid rgba(255,255,255,0);
     }
     to {
-         border-bottom:2px solid rgba(255,255,255,1);
+        border-bottom:2px solid rgba(255,255,255,1);
     }
 }
 nav#navigation ul li ul{
@@ -66,6 +81,7 @@ nav#navigation-sub ul li{
 nav#navigation-sub ul li a{
     color:#D5E3E3;
     text-decoration:none;
+    font-weight:bold;
 }
 nav#navigation-sub ul li a:hover{
     color:#fff;
@@ -74,7 +90,7 @@ nav#navigation-sub ul li a:hover{
     background:#111725;
     box-shadow:0 0 15px 1px #111725;
     cursor:pointer;
-    z-index:102;
+    z-index:11;
     position:absolute;
     line-height:50px;
     text-align:center;
@@ -136,6 +152,13 @@ nav#navigation-sub ul li a:hover{
     height:125px;
     border-radius:0 8px 8px 0;
 }
+@media only screen and (max-width:768px){
+    .state2 .navigation-title{
+        transform:translateX(0);
+        width:50px;
+        height:45px;
+      }
+}
 .state2 .navigation-title span{
     opacity:1;
 }
@@ -148,6 +171,11 @@ nav#navigation-sub ul li a:hover{
 .state2 nav#navigation ul{
     transform:translateY(135px);
 }
+@media only screen and (max-width:768px){
+  .state2 nav#navigation ul{
+        transform:translateY(45px);
+    }  
+}
 .state2 nav#navigation-sub{
     transform:translateX(55px);
     opacity:1;
@@ -156,7 +184,7 @@ nav#navigation-sub ul li a:hover{
 /** state0 to state1 **/
 .state0to1 .navigation-title{
     animation-name: state0-to-1-title;
-    animation-duration: 1s;
+    animation-duration: 0.8s;
 }
 @keyframes state0-to-1-title{
     from {
@@ -174,7 +202,7 @@ nav#navigation-sub ul li a:hover{
 }
 .state0to1 .navigation-title span{
     animation-name: state0-to-1-title-span;
-    animation-duration: 2.5s;
+    animation-duration: 1.5s;
 }
 @keyframes state0-to-1-title-span{
     from {
@@ -186,7 +214,7 @@ nav#navigation-sub ul li a:hover{
 }
 .state0to1 nav#navigation{
     animation-name: state0-to-1-nav;
-    animation-duration: 1s;
+    animation-duration: 0.8s;
 }
 @keyframes state0-to-1-nav{
     from {
@@ -200,7 +228,7 @@ nav#navigation-sub ul li a:hover{
 /** state1 to state0 **/
 .state1to0 .navigation-title{
     animation-name: state1-to-0-title;
-    animation-duration: 1s;
+    animation-duration: 0.8s;
 }
 @keyframes state1-to-0-title{
     from {
@@ -218,7 +246,7 @@ nav#navigation-sub ul li a:hover{
 }
 .state1to0 .navigation-title span{
     animation-name: state1-to-0-title-span;
-    animation-duration: 2.5s;
+    animation-duration: 1.5s;
 }
 @keyframes state1-to-0-title-span{
     from {
@@ -230,7 +258,7 @@ nav#navigation-sub ul li a:hover{
 }
 .state1to0 nav#navigation{
     animation-name: state1-to-0-nav;
-    animation-duration: 1s;
+    animation-duration: 0.8s;
 }
 @keyframes state1-to-0-nav{
     from {
@@ -244,7 +272,7 @@ nav#navigation-sub ul li a:hover{
 /** state1 to state2 **/
 .state1to2 .navigation-title{
     animation-name:state1-to-2-title;
-    animation-duration:1s;
+    animation-duration:0.8s;
 }
 @keyframes state1-to-2-title{
     0% {
@@ -263,7 +291,13 @@ nav#navigation-sub ul li a:hover{
 }
 .state1to2 nav#navigation ul{
     animation-name:state1-to-2-ul;
-    animation-duration:1s;
+    animation-duration:0.8s;
+}
+@media only screen and (max-width:768px){
+    .state1to2 nav#navigation ul{
+        animation-name:state1-to-2-ul-mobile;
+        animation-duration:0.8s;
+    }
 }
 @keyframes state1-to-2-ul{
     from {
@@ -273,9 +307,17 @@ nav#navigation-sub ul li a:hover{
         transform:translateY(135px);
     }
 }
+@keyframes state1-to-2-ul-mobile{
+    from {
+        transform:translateY(0);
+    }
+    to {
+        transform:translateY(45px);
+    }
+}
 .state1to2 nav#navigation-sub{
     animation-name:state1-to-2-sub;
-    animation-duration:1s;
+    animation-duration:0.8s;
 }
 @keyframes state1-to-2-sub{
     from {
@@ -290,7 +332,7 @@ nav#navigation-sub ul li a:hover{
 /** state2 to state1 **/
 .state2to1 .navigation-title{
     animation-name:state2-to-1-title;
-    animation-duration:1s;
+    animation-duration:0.8s;
 }
 @keyframes state2-to-1-title{
     0% {
@@ -308,7 +350,7 @@ nav#navigation-sub ul li a:hover{
 }
 .state2to1 nav#navigation ul{
     animation-name:state2-to-1-ul;
-    animation-duration:1s;
+    animation-duration:0.8s;
 }
 @keyframes state2-to-1-ul{
     from {
@@ -320,7 +362,7 @@ nav#navigation-sub ul li a:hover{
 }
 .state2to1 nav#navigation-sub{
     animation-name:state2-to-1-sub;
-    animation-duration:1s;
+    animation-duration:0.8s;
 }
 @keyframes state2-to-1-sub{
     from {
@@ -336,7 +378,7 @@ nav#navigation-sub ul li a:hover{
 /** state2 to state0 **/
 .state2to0 .navigation-title{
     animation-name:state2-to-0-title;
-    animation-duration:1s;
+    animation-duration:0.8s;
 }
 @keyframes state2-to-0-title{
     from {
@@ -353,7 +395,7 @@ nav#navigation-sub ul li a:hover{
 }
 .state2to0 .navigation-title span{
     animation-name:state2-to-0-title-span;
-    animation-duration:2.5s;
+    animation-duration:1.5s;
 }
 @keyframes state2-to-0-title-span{
     from {
@@ -365,7 +407,7 @@ nav#navigation-sub ul li a:hover{
 }
 .state2to0 nav#navigation{
     animation-name: state2-to-0-nav;
-    animation-duration: 1s;
+    animation-duration: 0.8s;
 }
 @keyframes state2-to-0-nav{
     from {
@@ -377,7 +419,7 @@ nav#navigation-sub ul li a:hover{
 }
 .state2to0 nav#navigation-sub{
     animation-name:state2-to-0-sub;
-    animation-duration:1s;
+    animation-duration:0.8s;
 }
 @keyframes state2-to-0-sub{
     from {
