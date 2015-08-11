@@ -12,7 +12,6 @@ div#navigation-bottom-wrapper{
     height:100%;
     color:#D5E3E3;
     overflow: visible !important;/*prevent jquery animate overflow:hidden*/
-    z-index:10;
 }
 nav#navigation{
     width:55px;
@@ -20,7 +19,7 @@ nav#navigation{
     position:absolute;
     box-shadow:0 0 15px 1px #111725;
     height:100%;
-    z-index:101;
+    z-index:10;
 }
 nav#navigation > ul > li, nav#navigation img{
     width:45px;
@@ -47,7 +46,7 @@ nav#navigation ul li:hover:after{
     top:0;
     background:#111725;
     height:30px;
-    z-index:12;
+    z-index:13;
     border:1px solid #D5E3E3;
     text-align:center;
     white-space: nowrap;
@@ -73,6 +72,7 @@ nav#navigation-sub{
     padding:15px;
     background:#111725;
     white-space: nowrap;
+    z-index:9;
 }
 nav#navigation-sub ul li{
     margin-bottom:15px;
@@ -110,7 +110,7 @@ nav#navigation-sub ul li a:hover{
     line-height:50px;
     text-align:center;
     border-radius:0 0 8px 0;
-    transform:translateX(0);
+    transform:translateX(75px);
 }
 .state0 nav#navigation{
     transform:translateX(-74px);
@@ -123,10 +123,10 @@ nav#navigation-sub ul li a:hover{
 
 /**  state1 = Main menu is open **/
 .state1 .navigation-title{
-    transform:translateX(55px);
     width:50px;
     height:125px;
     border-radius:0 8px 8px 0;
+    transform:translateX(55px);
 }
 .state1 .navigation-title span{
     opacity:1;
@@ -147,14 +147,12 @@ nav#navigation-sub ul li a:hover{
 
 /**  state2 = Sub menu is open **/
 .state2 .navigation-title{
-    transform:translateX(0);
     width:50px;
     height:125px;
     border-radius:0 8px 8px 0;
 }
 @media only screen and (max-width:768px){
     .state2 .navigation-title{
-        transform:translateX(0);
         width:50px;
         height:45px;
       }
@@ -188,7 +186,7 @@ nav#navigation-sub ul li a:hover{
 }
 @keyframes state0-to-1-title{
     from {
-        transform:translateX(0);
+        transform:translateX(55px);
         width:75px;
         height:50px;
         border-radius:0 0 8px 0;
@@ -232,16 +230,16 @@ nav#navigation-sub ul li a:hover{
 }
 @keyframes state1-to-0-title{
     from {
-        transform:translateX(55px);
         width:50px;
         height:125px;
         border-radius:0 8px 8px 0;
+        transform:translateX(55px);
     }
     to {
-        transform:translateX(0);
         width:75px;
         height:50px;
         border-radius:0 0 8px 0;
+        transform:translateX(55px);
     }
 }
 .state1to0 .navigation-title span{
@@ -281,12 +279,13 @@ nav#navigation-sub ul li a:hover{
     }
     33% {
         opacity:0;
-        transform:translateX(0);
+        transform:translateX(55px);
         transform:translateY(-125px);
     }
     100%{
         opacity:1;
         transform:translateY(0);
+        transform:translateX(0);
     }
 }
 .state1to2 nav#navigation ul{
@@ -345,7 +344,6 @@ nav#navigation-sub ul li a:hover{
     }
     100%{
         opacity:1;
-        transform:translateX(55px);
     }
 }
 .state2to1 nav#navigation ul{
@@ -385,12 +383,13 @@ nav#navigation-sub ul li a:hover{
         width:50px;
         height:125px;
         border-radius:0 8px 8px 0;
+        transform:translateX(55px);
     }
     to {
-        transform:translateX(0);
         width:75px;
         height:50px;
         border-radius:0 0 8px 0;
+        transform:translateX(55px);
     }
 }
 .state2to0 .navigation-title span{
