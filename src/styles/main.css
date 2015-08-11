@@ -159,13 +159,23 @@ section#content{
 }
 section#content div#userAccountManage>div{
     color:#111725;
+    display:flex;
+}
+@media only screen and (max-width:768px){
+    section#content div#userAccountManage>div{
+        flex-flow: row wrap;
+    }
 }
 section#content div#userAccountManage form{
-    margin-bottom:25px;
+    margin:10px;
     padding-bottom:15px;
     border:1px solid rgba(17,23,37,0.3);
-    display:inline-block;
-    width:48%;
+    flex:1;
+}
+@media only screen and (max-width:768px){
+    section#content div#userAccountManage form{
+        min-width:255px;
+    }
 }
 section#content div#userAccountManage form h2{
     margin-bottom:10px;
@@ -193,7 +203,7 @@ section#content div#userAccountManage form input:not([type="submit"]){
     border-right:1px solid rgba(17,23,37,0.3);
 }
 section#content div#userAccountManage form input.inputError{
-    border:2px solid #CD0100;
+    border-bottom:2px solid #CD0100;
 }
 section#content div#userAccountManage form input:not([type="submit"]):focus{
     box-shadow:0 0 2px black;
