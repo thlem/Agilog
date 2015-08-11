@@ -5,7 +5,6 @@
 html, body{
   width:100%;
   position:relative;
-  height:5000px;
 }
 body{
   background:#D5E3E3;
@@ -19,10 +18,10 @@ body{
 @media only screen and (max-width:768px){
 	body{font-size:12px;}
 }
-h1{font-size: 3em;}
-h2{font-size: 2.5em;}
-h3{font-size: 2em;}
-h4{font-size: 1.5em;}
+h1{font-size: 2em;}
+h2{font-size: 1.5em;}
+h3{font-size: 1.3em;}
+h4{font-size: 1.2em;}
 
 input{
   font-family:'Times New Roman';
@@ -155,43 +154,50 @@ input{
 
 
 section#content{
-  padding:45px 15px 35px 15px;
+  padding:25px 15px 35px 15px;
   margin:auto;
+  background:#E3EDED;
 }
 @media only screen and (min-width:768px){
  section#content{ width:960px; }
 }
 section#content div#userAccountManage>div{
-    background:#577F7F;
     max-width:500px;
-    box-shadow:0 0 3px #111725;
     color:#111725;
-    border:2px solid #111725;
-    border-radius:4px;
-  }
-  section#content div#userAccountManage form{
+}
+section#content div#userAccountManage form{
     margin-bottom:25px;
-    text-align:center;
     padding-bottom:15px;
-  }
-  section#content div#userAccountManage form h2{
+    border:1px solid rgba(17,23,37,0.3);
+}
+section#content div#userAccountManage form h2{
     margin-bottom:10px;
     padding:15px;
-  }
-  section#content div#userAccountManage form input:not([type="submit"]){
+    text-align:center;
+    letter-spacing:2.5px;
+}
+section#content div#userAccountManage form label{
+  letter-spacing:2px;
+  font-size:12px;
+  display:block;
+  margin:0 0 10px 23px;
+}
+section#content div#userAccountManage form input:not([type="submit"]){
     display:block;
     width:80%;
     height:25px;
     padding-left:8px;
     margin:auto;
     margin-bottom:15px;
-    border-radius:5px;
-    border:1px solid #52636B;
+    border:none;
     background:#F2F2F2;
-  }
-  section#content div#userAccountManage form input.inputError{
+    letter-spacing: 2px;
+    border-bottom:1px solid rgba(17,23,37,0.3);
+    border-right:1px solid rgba(17,23,37,0.3);
+}
+section#content div#userAccountManage form input.inputError{
     border:2px solid #CD0100;
-  }
-  section#content div#userAccountManage form input:not([type="submit"]):focus{
+}
+section#content div#userAccountManage form input:not([type="submit"]):focus{
     box-shadow:0 0 2px black;
-  }
+}

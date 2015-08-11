@@ -10,12 +10,12 @@
     angular.module('ag.acc.auth').controller('AuthenticationRegisterController', getAuthenticationRegisterController);
 
     var inject = ['$scope', '$location', '$rootScope', 'AuthenticationFactory',
-        'NotificationFactory', 'ProxyFactory', 'ApiConstant', 'StorageFactory'];
+        'NotificationFactory', 'ProxyFactory', 'CliUrlConstant', 'StorageFactory'];
 
     getAuthenticationRegisterController.$inject = inject;
 
     function getAuthenticationRegisterController($scope, $location, $rootScope,
-        AuthenticationFactory, NotificationFactory, ProxyFactory, ApiConstant, StorageFactory){
+        AuthenticationFactory, NotificationFactory, ProxyFactory, CliUrlConstant, StorageFactory){
 
         /*jshint validthis: true */
         var vm = this;
@@ -31,7 +31,7 @@
                     StorageFactory.addOrUpdateUserInLocalStorage(responseData.user);
                     NotificationFactory.addToSuccessMessages(responseData.message);
                     $rootScope.endLoading();
-                    ProxyFactory.redirect(ApiConstant.CLIENT_HOME);
+                    ProxyFactory.redirect(CliUrlConstant.CLIENT_HOME);
                 }
                 else{
                     NotificationFactory.addToErrorMessages('Something goes wrong');

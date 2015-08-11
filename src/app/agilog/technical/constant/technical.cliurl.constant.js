@@ -7,7 +7,7 @@
      * @memberof ag.tech
      */
 
-	angular.module('ag.tech').constant('ApiConstant', {
+	angular.module('ag.tech').constant('CliUrlConstant', {
 		CLIENT_HOME            : '/',
 		CLIENT_LOGIN           : '#/login',
 		CLIENT_REGISTER        : '#/register',

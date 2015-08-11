@@ -10,12 +10,12 @@
     angular.module('ag.acc.auth').controller('AuthenticationLogoutController', getAuthenticationLogoutController);
 
     var inject = ['$scope', '$location', '$rootScope', 'AuthenticationFactory',
-        'NotificationFactory', 'ProxyFactory', 'ApiConstant', 'StorageFactory'];
+        'NotificationFactory', 'ProxyFactory', 'CliUrlConstant', 'StorageFactory'];
 
     getAuthenticationLogoutController.$inject = inject;
 
     function getAuthenticationLogoutController($scope, $location, $rootScope,
-        AuthenticationFactory, NotificationFactory, ProxyFactory, ApiConstant, StorageFactory){
+        AuthenticationFactory, NotificationFactory, ProxyFactory, CliUrlConstant, StorageFactory){
 
         $rootScope.startLoading();
         // Call of the factory
@@ -26,7 +26,7 @@
             StorageFactory.removeUserFromLocalStorage();
             $rootScope.endLoading();
             // Redirect to the Home
-            ProxyFactory.redirect(ApiConstant.CLIENT_HOME);
+            ProxyFactory.redirect(CliUrlConstant.CLIENT_HOME);
         });
 
     }

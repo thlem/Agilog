@@ -32,6 +32,10 @@
         .state('Logout', {
             url: '/logout',
             controller: 'AuthenticationLogoutController'
+        })
+        .state('Account', {
+            url: '/account',
+            templateUrl: 'partials/account.html'
         });
 
 
