@@ -154,21 +154,18 @@ input{
 
 
 section#content{
-  padding:25px 15px 35px 15px;
+  padding:25px 15px 35px 85px;
   margin:auto;
-  background:#E3EDED;
-}
-@media only screen and (min-width:768px){
- section#content{ width:960px; }
 }
 section#content div#userAccountManage>div{
-    max-width:500px;
     color:#111725;
 }
 section#content div#userAccountManage form{
     margin-bottom:25px;
     padding-bottom:15px;
     border:1px solid rgba(17,23,37,0.3);
+    display:inline-block;
+    width:48%;
 }
 section#content div#userAccountManage form h2{
     margin-bottom:10px;
