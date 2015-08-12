@@ -8,6 +8,7 @@
 	 */
 
     angular.module('ag.acc', [
-        'ag.acc.auth'
+        'ag.acc.auth',
+        'ag.acc.manage'
     ]);
 })();

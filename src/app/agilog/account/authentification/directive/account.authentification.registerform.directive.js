@@ -90,6 +90,7 @@
 
                         // If passwords are different
                         if(password !== confirmPassword){
+
                             // Notify the user
                             NotificationFactory.addToErrorMessages(
                                 ErrorMessageConstant.PASSWORD_CONFIRM_NOT_IDENTICAL);
@@ -113,8 +114,7 @@
                             registerInputList.usrPasswordInput.focus();
                             // End of verification, stop loading
                             $rootScope.endLoading();
-
-                            //scope.$apply();
+                            scope.$apply();
                         }
                         // If passwords are ok
                         else{

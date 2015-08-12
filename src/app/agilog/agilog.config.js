@@ -31,11 +31,12 @@
         })
         .state('Logout', {
             url: '/logout',
-            controller: 'AuthenticationLogoutController'
+            controller: 'AuthenticationLogoutController as AuthLogoutCtrl'
         })
         .state('Account', {
             url: '/account',
-            templateUrl: 'partials/account.html'
+            templateUrl: 'partials/account.html',
+            controller:'AccountManageController as AccMngCtrl'
         });
 
 

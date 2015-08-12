@@ -29,6 +29,7 @@
 		// Add or Update users data in the localStorage
 		function addOrUpdateUserInLocalStorage(user){
 			if(user){
+            console.log(user);
 	        	$localStorage.user = user;
 	            $rootScope.root.user = $localStorage.user;
 	        }

@@ -2,28 +2,31 @@
     'use strict';
 
 	/**
-	 * @name AuthenticationRegisterController
-	 * @description The constroller of the register form
+	 * @name AuthenticationLoginController
+	 * @description The controller of the login form
      * @memberof ag.acc.auth
 	 */
 
-    angular.module('ag.acc.auth').controller('AuthenticationRegisterController', getAuthenticationRegisterController);
+    angular.module('ag.acc.manage').controller('AccountManageLoginInfoController', getAccountManageLoginInfoController);
 
     var inject = ['$scope', '$location', '$rootScope', 'AuthenticationFactory',
-        'NotificationFactory', 'ProxyFactory', 'CliUrlConstant', 'StorageFactory'];
+    'NotificationFactory', 'ProxyFactory', 'CliUrlConstant', 'StorageFactory'];
 
-    getAuthenticationRegisterController.$inject = inject;
+    getAccountManageLoginInfoController.$inject = inject;
 
-    function getAuthenticationRegisterController($scope, $location, $rootScope,
+    function getAccountManageLoginInfoController($scope, $location, $rootScope,
         AuthenticationFactory, NotificationFactory, ProxyFactory, CliUrlConstant, StorageFactory){
 
         /*jshint validthis: true */
         var vm = this;
-
-        // Call the Factory that call the server
-        // Submit the register data
-        vm.submitRegisterForm = function(arrayOfUserData){
-            AuthenticationFactory.submitRegisterForm(arrayOfUserData)
+        
+        vm.submitAccountManageLoginInfo = function(arrayOfUserData){
+            var user = {
+                usrLogin:arrayOfUserData.usrLogin,
+            };
+            StorageFactory.addOrUpdateUserInLocalStorage(user);
+            $rootScope.endLoading();
+           /* AccountManageFactory.submitAccountManageLoginInfo(arrayOfUserData)
             .then(function(responseData){
                 // If the server returns the user correctly
                 if(responseData.user){
@@ -41,11 +44,7 @@
             .catch(function(responseData){
                 NotificationFactory.addToErrorMessages(responseData.message);
                 $rootScope.endLoading();
-            });
+            });*/
         };
-
-        // Used as ng-model
-        $scope.user = {};
-
     }
 })();
