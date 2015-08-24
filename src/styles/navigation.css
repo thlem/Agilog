@@ -38,12 +38,15 @@ nav#navigation ul li:hover{
     animation-duration:1s;
     border-bottom:2px solid rgba(255,255,255,1);
 }
+nav#navigation ul li:after{
+    opacity:0;
+}
 nav#navigation ul li:hover:after{
     content:attr(data-title);
     position:absolute;
     display:block;
-    left:50px;
-    top:0;
+    left:47px;
+    top:45px;
     background:#111725;
     height:30px;
     z-index:13;
@@ -51,6 +54,9 @@ nav#navigation ul li:hover:after{
     text-align:center;
     white-space: nowrap;
     padding:5px;
+    animation-name:menu-element-after-hover;
+    animation-duration:1s;
+    opacity:1;
 }
 @keyframes menu-element-hover{
     from {
@@ -58,6 +64,14 @@ nav#navigation ul li:hover:after{
     }
     to {
         border-bottom:2px solid rgba(255,255,255,1);
+    }
+}
+@keyframes menu-element-after-hover{
+    from {
+        opacity:0;
+    }
+    to {
+        opacity:1;
     }
 }
 nav#navigation ul li ul{

@@ -20,7 +20,7 @@
         /*jshint validthis: true */
         var vm = this;
         
-        $rootScope.root.pageTitle = 'Manage your account';
+        //$rootScope.root.pageTitle = 'Manage your account';
         
         // Get the user from the localstorage
         var user = StorageFactory.getUserFromLocalStorage();

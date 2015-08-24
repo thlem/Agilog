@@ -9,10 +9,10 @@
 
     angular.module('ag.tech').factory('StorageFactory', getStorageFactory);
     
-	var inject = ['$localStorage', '$rootScope'];
+	var inject = ['$localStorage', '$rootScope', '$q'];
 	getStorageFactory.$inject = inject;
 
-    function getStorageFactory($localStorage, $rootScope){
+    function getStorageFactory($localStorage, $rootScope, $q){
 
 		/**
 		 * Public method that are accessible

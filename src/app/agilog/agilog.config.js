@@ -19,15 +19,21 @@
          $stateProvider
         .state('Home', {
             url: '/',
-            templateUrl: 'partials/accueil.html'
+            templateUrl: 'partials/accueil.html',
+            title: 'Home',
+            public: true
         })
         .state('Login', {
             url: '/login',
-            templateUrl: 'partials/loginForm.html'
+            templateUrl: 'partials/loginForm.html',
+            public: true,
+            guestOnly: true
         })
         .state('Register', {
             url: '/register',
-            templateUrl: 'partials/registerForm.html'
+            templateUrl: 'partials/registerForm.html',
+            public: true,
+            guestOnly: true
         })
         .state('Logout', {
             url: '/logout',
@@ -36,7 +42,8 @@
         .state('Account', {
             url: '/account',
             templateUrl: 'partials/account.html',
-            controller:'AccountManageController as AccMngCtrl'
+            controller:'AccountManageController as AccMngCtrl',
+            title: 'Manage your account'
         });
 
 
