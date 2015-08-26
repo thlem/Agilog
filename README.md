@@ -1,7 +1,7 @@
 # Work in progress
  - [CURRENT] Refactor client side / clean code (account part)
- - [NEXT]    Make a storage factory that manage localStorage add/update/delete
- - [NEXT]    CSS Refactor, maybe use BootStrape
+ - [DONE]    Make a storage factory that manage localStorage add/update/delete
+ - [CURRENT] CSS Refactor
  - [DONE]    Change brunch with gulp
  - [NEXT]    Refactor Server SIDE 
  - [NEXT]    Create / Join / Leave a project
