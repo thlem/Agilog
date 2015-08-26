@@ -10,7 +10,8 @@
 	angular.module('ag.tech').constant('ApiConstant', {
 		AUTH_REGISTER : '/auth/register',
 		AUTH_LOGIN    : '/auth/login',
-		AUTH_LOGOUT   : '/auth/logout'
+		AUTH_LOGOUT   : '/auth/logout',
+        ACC_MNG_LOGIN : '/account/update/logininfo'
 	});
 	
 })();

@@ -10,12 +10,14 @@
     angular.module('ag.acc.manage').controller('AccountManageLoginInfoController', getAccountManageLoginInfoController);
 
     var inject = ['$scope', '$location', '$rootScope', 'AuthenticationFactory',
-    'NotificationFactory', 'ProxyFactory', 'CliUrlConstant', 'StorageFactory'];
+    'NotificationFactory', 'ProxyFactory', 'CliUrlConstant', 'StorageFactory',
+    'AccountManageFactory'];
 
     getAccountManageLoginInfoController.$inject = inject;
 
     function getAccountManageLoginInfoController($scope, $location, $rootScope,
-        AuthenticationFactory, NotificationFactory, ProxyFactory, CliUrlConstant, StorageFactory){
+        AuthenticationFactory, NotificationFactory, ProxyFactory, CliUrlConstant,
+        StorageFactory, AccountManageFactory){
 
         /*jshint validthis: true */
         var vm = this;
@@ -24,9 +26,7 @@
             var user = {
                 usrLogin:arrayOfUserData.usrLogin,
             };
-            StorageFactory.addOrUpdateUserInLocalStorage(user);
-            $rootScope.endLoading();
-           /* AccountManageFactory.submitAccountManageLoginInfo(arrayOfUserData)
+           AccountManageFactory.submitAccountManageLoginInfo(arrayOfUserData)
             .then(function(responseData){
                 // If the server returns the user correctly
                 if(responseData.user){
@@ -34,7 +34,6 @@
                     StorageFactory.addOrUpdateUserInLocalStorage(responseData.user);
                     NotificationFactory.addToSuccessMessages(responseData.message);
                     $rootScope.endLoading();
-                    ProxyFactory.redirect(CliUrlConstant.CLIENT_HOME);
                 }
                 else{
                     NotificationFactory.addToErrorMessages('Something goes wrong');
@@ -44,7 +43,7 @@
             .catch(function(responseData){
                 NotificationFactory.addToErrorMessages(responseData.message);
                 $rootScope.endLoading();
-            });*/
+            });
         };
     }
 })();

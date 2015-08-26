@@ -206,5 +206,6 @@ section#content div#userAccountManage form input.inputError{
     border-bottom:2px solid #CD0100;
 }
 section#content div#userAccountManage form input:not([type="submit"]):focus{
-    box-shadow:0 0 2px black;
+    border-bottom:1px solid #000;
+    border-right:1px solid #000;
 }

@@ -34,6 +34,7 @@ var updateLoginInfo = function(request, User, callback){
               // Si le formulaire contient le login
               // Il faut vérifier que celui ci n'est pas 
               // déjà utilisé
+              console.log(arrayOfUserDataFromRequest);
               if(arrayOfUserDataFromRequest.usrLogin !== undefined
                 && arrayOfUserDataFromRequest.usrLogin !== ""
                 && arrayOfUserDataFromRequest.usrLogin !== user.usrLogin){

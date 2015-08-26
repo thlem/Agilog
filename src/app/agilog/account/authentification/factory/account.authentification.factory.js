@@ -9,10 +9,10 @@
 
     angular.module('ag.acc.auth').factory('AuthenticationFactory', getAuthenticationFactory);
     
-	var inject = ['$localStorage', '$rootScope', '$http', '$q', 'ProxyFactory', 'ApiConstant'];
+	var inject = ['ProxyFactory', 'ApiConstant'];
 	getAuthenticationFactory.$inject = inject;
 
-    function getAuthenticationFactory($localStorage, $rootScope, $http, $q, ProxyFactory, ApiConstant){
+    function getAuthenticationFactory(ProxyFactory, ApiConstant){
 
 		/**
 		 * Public method that are accessible
