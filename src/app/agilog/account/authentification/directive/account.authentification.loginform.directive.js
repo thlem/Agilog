@@ -37,8 +37,6 @@
 
                 // On login form submit
                 loginForm.on('submit', function(){
-                    // start the loading spinner
-                    $rootScope.startLoading();
                     // Clear error class
                     $('.inputError').removeClass('inputError');
 
@@ -57,9 +55,6 @@
                         // Check if the password is missing
                         focusAlreadySet = handleInputError(
                             passwordRequiredError, loginInputList.usrPasswordInput, focusAlreadySet);
-
-                        // End of check stop loading
-                        $rootScope.endLoading();
                     }
                     else{
                         // Build of the json object that will be send to the server

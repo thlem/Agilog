@@ -17,14 +17,12 @@
     function getAuthenticationLogoutController($scope, $location, $rootScope,
         AuthenticationFactory, NotificationFactory, ProxyFactory, CliUrlConstant, StorageFactory){
 
-        $rootScope.startLoading();
         // Call of the factory
         AuthenticationFactory.logout()
         .then(function(responseData){
             // Always logout the user, even if the server return a bad response
             NotificationFactory.addToSuccessMessages(responseData.message);
             StorageFactory.removeUserFromLocalStorage();
-            $rootScope.endLoading();
             // Redirect to the Home
             ProxyFactory.redirect(CliUrlConstant.CLIENT_HOME);
         });

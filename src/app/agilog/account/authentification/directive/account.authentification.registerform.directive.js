@@ -47,7 +47,6 @@
                 // On register form submit
                 registerForm.on('submit', function(){
                     // start the loading spinner
-                    $rootScope.startLoading();
                     // Clear error class
                     $('.inputError').removeClass('inputError');
 
@@ -78,9 +77,6 @@
                         // Check if the mail is correct
                         focusAlreadySet = handleInputError(
                             mailPatternError, registerInputList.usrMailInput, focusAlreadySet);
-
-                        // End of check stop loading
-                        $rootScope.endLoading();
                     }
                     // If no error in the register form
                     else{
@@ -112,8 +108,6 @@
                             registerInputList.usrPasswordConfirmInput.val('');
                             // Set the focus on the password field
                             registerInputList.usrPasswordInput.focus();
-                            // End of verification, stop loading
-                            $rootScope.endLoading();
                             scope.$apply();
                         }
                         // If passwords are ok

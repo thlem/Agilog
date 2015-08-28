@@ -56,16 +56,23 @@
                 return {
                     // Ajout du token au header de la request
                     'request': function (config) {
+                        $rootScope.startLoading();
                         config.headers = config.headers || {};
                         if ($localStorage.user) {
                             config.headers.Authorization = 'Bearer ' + $localStorage.user.token;
                         }
                         return config;
                     },
+                    'response': function(response){
+                        var deferred = $q.defer();
+                        $rootScope.endLoading();
+                        deferred.resolve(response);
+                        return deferred.promise;
+                    },
                     // Traitement des réponses en erreur
                     'responseError': function(response) {
                         var deferred = $q.defer();
-
+                        $rootScope.endLoading();
                         //
                         // * Response Code *
                         // 400 : Functionnal error

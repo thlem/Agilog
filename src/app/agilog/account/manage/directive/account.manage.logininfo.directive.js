@@ -22,7 +22,6 @@
             link:function(scope, element, attrs, AccCtrl){
             
                 element.on('submit', function(){
-                    $rootScope.startLoading();
                     
                     var doUpdate = false;
                     
@@ -59,9 +58,6 @@
                     
                     if(Object.keys(arrayOfUserData).length !== 0 && doUpdate){
                         AccCtrl.submitAccountManageLoginInfo(arrayOfUserData);
-                    }
-                    else{
-                        $rootScope.endLoading();
                     }
                 });
             

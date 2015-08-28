@@ -33,16 +33,13 @@
                     // Add it to the localStorage
                     StorageFactory.addOrUpdateUserInLocalStorage(responseData.user);
                     NotificationFactory.addToSuccessMessages(responseData.message);
-                    $rootScope.endLoading();
                 }
                 else{
                     NotificationFactory.addToErrorMessages('Something goes wrong');
-                    $rootScope.endLoading();
                 }
             })
             .catch(function(responseData){
                 NotificationFactory.addToErrorMessages(responseData.message);
-                $rootScope.endLoading();
             });
         };
     }
