@@ -46,4 +46,15 @@ module.exports = function(agilogServer){
     });
   });
 
+  agilogServer.get('/account/delete', function(request, response){
+    AccountManageService.deleteAccount(request, User, function(message, success){
+      if(success){
+        response.status(200).json({message:message, success:success});
+      }
+      else{
+        response.status(200).json({message:message});
+      }
+    });
+  });
+
 }

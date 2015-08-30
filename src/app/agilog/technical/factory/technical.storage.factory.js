@@ -41,7 +41,9 @@
 	    }
         
         function getUserFromLocalStorage(){
-            return $localStorage.user;
+        	var localStorageUser = {};
+        	angular.copy($localStorage.user, localStorageUser);
+            return localStorageUser;
         }
         
         // Check if the user data are in the localStorage

@@ -27,7 +27,7 @@ input{
   font-family:'Times New Roman';
   outline:none;
 }
-input[type="submit"]{
+input[type="submit"], button.submit{
   border:2px solid #111725;
   background:none;
   width:50%;
@@ -37,7 +37,7 @@ input[type="submit"]{
   cursor:pointer;
   letter-spacing:1px;
 }
-input[type="submit"]:hover{
+input[type="submit"]:hover, button.submit:hover{
   background:#111725;
   color:#D5E3E3;
 }

@@ -137,7 +137,23 @@ var updatePersonalInfo = function(request, User, callback){
     });     
 };
 
+var deleteAccount = function(request, User, callback){
+  RequestService.getTokenFromRequest(request, function(token){
+     if(token){
+      var param = {"token":token};
+        UserDAS.getUserBy(User, param, function(error, user){
+          if(user){
+            UserDAS.deleteUser(User, user, function(){
+              callback("Account deleted", true);
+            });
+          }
+        });
+     }
+  });
+};
+
 module.exports = {
   updateLoginInfo: updateLoginInfo,
-  updatePersonalInfo: updatePersonalInfo
+  updatePersonalInfo: updatePersonalInfo,
+  deleteAccount : deleteAccount
 }

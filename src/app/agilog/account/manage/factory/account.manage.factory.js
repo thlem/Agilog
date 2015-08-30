@@ -19,13 +19,19 @@
 		 * @type {Object}
 		 */
 		var ret = {
-			submitAccountManageLoginInfo : submitAccountManageLoginInfo
+			submitAccountManageLoginInfo : submitAccountManageLoginInfo,
+			deleteAccount : deleteAccount
 		};
 		return ret;
         
         function submitAccountManageLoginInfo(arrayOfUserData){
             return ProxyFactory.sendPostRequest(ApiConstant.ACC_MNG_LOGIN, arrayOfUserData);
         }
+
+        // Send to the server the request to delete the user account
+	    function deleteAccount(){
+	    	return ProxyFactory.sendGetRequest(ApiConstant.ACC_MNG_DELETE_ACCOUNT);
+	    }
     }
 
 })();
