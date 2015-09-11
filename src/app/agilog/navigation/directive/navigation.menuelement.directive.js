@@ -23,8 +23,8 @@
 						subMenu        = $('#navigation-sub'),
 						titleElement   = $('.navigation-title'),
 						navElement     = $('#navigation'),
-                        parent         = $('#navigation-bottom-wrapper');
-                    var wrapper = $('#navigation-bottom-wrapper');
+                        parent         = $('#navigation-wrapper');
+                    var wrapper = $('#navigation-wrapper');
                     
                     subMenu.find('ul').remove();
 

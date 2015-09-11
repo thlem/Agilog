@@ -1,0 +1,25 @@
+.submit-button{
+  border:2px solid #111725;
+  background:none;
+  width:50%;
+  margin:auto;
+  height:30px;
+  display:block;
+  cursor:pointer;
+  letter-spacing:1px;
+}
+.submit-button:hover{
+    background:#111725;
+    color:#D5E3E3;
+    animation-name:submit-button-hover;
+    animation-duration:1s;
+}
+
+@keyframes submit-button-hover{
+    0%{
+        background:none;
+    }
+    100%{
+        background:#111725;
+    }
+}

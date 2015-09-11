@@ -29,7 +29,6 @@
         
         // When the route change
         $rootScope.$on('$stateChangeStart', function(e, toState, toParams, fromState, fromParams) {
-            
             // If the next route is defined
             if(toState){
                 $rootScope.root.pageTitle = toState.title;

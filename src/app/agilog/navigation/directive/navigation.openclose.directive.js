@@ -18,7 +18,7 @@
             restrict:'A',
             link:function(scope, element){
 
-				var wrapper = $('#navigation-bottom-wrapper');
+				var wrapper = $('#navigation-wrapper');
                 
 	 			// On the menu open/close button click
 	 			element.on('click', function(){

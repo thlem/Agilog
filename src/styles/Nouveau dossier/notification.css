@@ -1,4 +1,4 @@
-/* NOTIFICATION STYLE */
+/* NOTIFICATION */
 div#notification{
     position:fixed;
     bottom:35px;
@@ -44,4 +44,4 @@ div#notification ul li.success:hover:after{
   z-index:151;
   background:#111725;
 }
-/**********************/
+/* END NOTIFICATION */

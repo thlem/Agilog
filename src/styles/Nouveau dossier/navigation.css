@@ -1,8 +1,14 @@
-/* NAVIGATION STYLE */
-div#navigation-wrapper{
+/** GENERAL NAVIGATION STYLES **/
+* {
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0); /** Prevent highlight on click on mobile device */
+}
+div#navigation-bottom-wrapper ul, div#navigation-bottom-wrapper li ,div#navigation-bottom-wrapper img{
+    margin:0;
+    padding:0;
+    list-style:none;
+}
+div#navigation-bottom-wrapper{
     position:fixed;
-    top:0;
-    left:0;
     height:100%;
     color:#D5E3E3;
     overflow: visible !important;/*prevent jquery animate overflow:hidden*/
@@ -387,19 +393,13 @@ nav#navigation-sub ul li a:hover{
     animation-duration:0.8s;
 }
 @keyframes state2-to-0-title{
-    0%{
+    from {
         width:50px;
         height:125px;
         border-radius:0 8px 8px 0;
         transform:translateX(55px);
-        transform:translateY(0);
     }
-    50%{
-        transform:translateY(-125px);
-        width:50px;
-        height:125px;
-    }
-    100%{
+    to {
         width:75px;
         height:50px;
         border-radius:0 0 8px 0;
@@ -444,4 +444,3 @@ nav#navigation-sub ul li a:hover{
         opacity:0;
     }
 }
-/********************/

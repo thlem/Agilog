@@ -152,10 +152,8 @@ input{
 }
 /* END FORMS */
 
-
 section#content{
-  padding:25px 15px 35px 85px;
-  margin:auto;
+  padding-left:90px;
 }
 section#content div#userAccountManage>div{
     color:#111725;

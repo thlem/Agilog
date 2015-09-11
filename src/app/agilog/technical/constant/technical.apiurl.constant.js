@@ -12,6 +12,7 @@
 		AUTH_LOGIN             : '/auth/login',
 		AUTH_LOGOUT            : '/auth/logout',
         ACC_MNG_LOGIN          : '/account/update/logininfo',
+        ACC_MNG_PERSONAL       : '/account/update/personalinfo',
         ACC_MNG_DELETE_ACCOUNT : '/account/delete'
 	});
 	

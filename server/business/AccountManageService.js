@@ -65,6 +65,7 @@ var updateLoginInfo = function(request, User, callback){
               if(Object.keys(arrayOfUserDataToUpdate).length !== 0){
                 UserDAS.updateUser(user, arrayOfUserDataToUpdate, function(error, user){
                   if(user){
+                    user.usrPassword = '';
                     console.log("[WORKING][AccountManageService][updateLoginInfo] Mise à jour de l'utilisateur effectuée");
                     callback("Mise à jour du login effectuée", user);
                   }
@@ -115,8 +116,6 @@ var updatePersonalInfo = function(request, User, callback){
             // Récupération des données du formulaire
             var arrayOfUserDataFromRequest = request.body;
 
-            console.log(arrayOfUserDataFromRequest.usrFirstName);
-
             var arrayOfUserDataToUpdate = {};
             arrayOfUserDataToUpdate.usrFirstName = arrayOfUserDataFromRequest.usrFirstName;
             arrayOfUserDataToUpdate.usrLastName = arrayOfUserDataFromRequest.usrLastName;
@@ -124,6 +123,7 @@ var updatePersonalInfo = function(request, User, callback){
 
             UserDAS.updateUser(user, arrayOfUserDataToUpdate, function(error, user){
               if(user){
+                user.usrPassword = '';
                 console.log("[WORKING][AccountManageService][updateLoginInfo] Mise à jour de l'utilisateur effectuée");
                 callback("Mise à jour du prénom effectuée", user);
               }

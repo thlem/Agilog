@@ -46,13 +46,17 @@
                                 doUpdate = true;
                             }
                             else{
-                                NotificationFactory.addToErrorMessages(
-                                'Both password have to be identical');
+                                scope.$apply(function(){
+                                    NotificationFactory.addToErrorMessages(
+                                    'Both password have to be identical');
+                                });
                             }
                         }
                         else{
-                            NotificationFactory.addToErrorMessages(
-                                'Both password have to be set');
+                            scope.$apply(function(){
+                                NotificationFactory.addToErrorMessages(
+                                    'Both password have to be set');
+                            });
                         }
                     }
                     

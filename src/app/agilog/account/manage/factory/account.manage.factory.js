@@ -20,12 +20,17 @@
 		 */
 		var ret = {
 			submitAccountManageLoginInfo : submitAccountManageLoginInfo,
+            submitAccountManagePersonalInfo : submitAccountManagePersonalInfo,
 			deleteAccount : deleteAccount
 		};
 		return ret;
         
         function submitAccountManageLoginInfo(arrayOfUserData){
             return ProxyFactory.sendPostRequest(ApiConstant.ACC_MNG_LOGIN, arrayOfUserData);
+        }
+        
+        function submitAccountManagePersonalInfo(arrayOfUserData){
+            return ProxyFactory.sendPostRequest(ApiConstant.ACC_MNG_PERSONAL, arrayOfUserData);
         }
 
         // Send to the server the request to delete the user account

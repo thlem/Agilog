@@ -41,11 +41,11 @@ var order = {
 		folders.js+'!(*.module.js)*.js'
 	],
 	css:[
-		folders.css+'reset.css',
-		folders.css+'main.css',
+		folders.css+'general.css',
+		folders.css+'loading.css',
 		folders.css+'navigation.css',
 		folders.css+'notification.css',
-		folders.css+'authentication.css'
+		folders.css+'content.css'
 	],
 	vendors:[
 	    folders.vendors+'jquery/dist/jquery.js',

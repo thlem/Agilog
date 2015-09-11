@@ -1,0 +1,78 @@
+/* GENERAL THEM STYLE */
+
+/*RESET*/
+*{
+    margin:0;
+    padding:0;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0); /** Prevent highlight on click on mobile device */
+}
+
+/*MAIN*/
+html, body{
+  width:100%;
+  position:relative;
+}
+body{
+  background:#D5E3E3;
+  color:#111725;
+  overflow-x:hidden;
+  font-size:14px;
+  font-family:'Times New Roman';
+  letter-spacing:1px;
+  z-index:0;
+}
+h1{font-size: 2em;}
+h2{font-size: 1.5em;}
+h3{font-size: 1.3em;}
+h4{font-size: 1.2em;}
+
+ul{
+    list-style:none;
+}
+
+/*FORMS*/
+input{
+  letter-spacing: 2px;
+  font-family:'Times New Roman';
+  outline:none;
+}
+input[type="submit"], button.submit{
+  border:2px solid #111725;
+  background:none;
+  width:50%;
+  margin:auto;
+  height:30px;
+  display:block;
+  cursor:pointer;
+  letter-spacing:1px;
+}
+input[type="submit"]:hover, button.submit:hover{
+  background:#111725;
+  color:#D5E3E3;
+}
+input:not([type="submit"]){
+    display:block;
+    width:80%;
+    height:25px;
+    padding-left:8px;
+    margin:auto;
+    margin-bottom:15px;
+    border:none;
+    background:#F2F2F2;
+    letter-spacing: 2px;
+    border-bottom:1px solid rgba(17,23,37,0.3);
+    border-right:1px solid rgba(17,23,37,0.3);
+}
+input.inputError{
+    border-bottom:2px solid #CD0100;
+}
+input:not([type="submit"]):focus{
+    border-bottom:1px solid #000;
+    border-right:1px solid #000;
+}
+label{
+  letter-spacing:2px;
+  font-size:12px;
+}
+
+/*********************/
