@@ -1,11 +1,11 @@
-(function(){
+(function() {
     'use strict';
 
-	/**
-	 * @name config
-	 * @description The configuration of the module, containing routes, interceptor
+    /**
+     * @name config
+     * @description The configuration of the module, containing routes, interceptor
      * @memberof ag
-	 */
+     */
 
     angular.module('ag').config(getConfig);
 
@@ -13,41 +13,41 @@
 
     getConfig.$inject = inject;
 
-    function getConfig($httpProvider, $stateProvider, $urlRouterProvider){
+    function getConfig($httpProvider, $stateProvider, $urlRouterProvider) {
 
         $urlRouterProvider.otherwise('/');
-         $stateProvider
-        .state('Home', {
-            url: '/',
-            templateUrl: 'partials/accueil.html',
-            title: 'Home',
-            public: true
-        })
-        .state('Login', {
-            url: '/login',
-            templateUrl: 'partials/loginForm.html',
-            public: true,
-            guestOnly: true
-        })
-        .state('Register', {
-            url: '/register',
-            templateUrl: 'partials/registerForm.html',
-            public: true,
-            guestOnly: true
-        })
-        .state('Logout', {
-            url: '/logout',
-            controller: 'AuthenticationLogoutController as AuthLogoutCtrl'
-        })
-        .state('Account', {
-            url: '/account',
-            templateUrl: 'partials/account.html',
-            controller:'AccountManageController as AccMngCtrl',
-            title: 'Manage your account'
-        });
+        $stateProvider
+            .state('Home', {
+                url: '/',
+                templateUrl: 'partials/accueil.html',
+                title: 'Home',
+                public: true
+            })
+            .state('Login', {
+                url: '/login',
+                templateUrl: 'partials/loginForm.html',
+                public: true,
+                guestOnly: true
+            })
+            .state('Register', {
+                url: '/register',
+                templateUrl: 'partials/registerForm.html',
+                public: true,
+                guestOnly: true
+            })
+            .state('Logout', {
+                url: '/logout',
+                controller: 'AuthenticationLogoutController as AuthLogoutCtrl'
+            })
+            .state('Account', {
+                url: '/account',
+                templateUrl: 'partials/account.html',
+                controller: 'AccountManageController as AccMngCtrl',
+                title: 'Manage your account'
+            });
 
 
-    	/**********************************************************/
+        /**********************************************************/
         /*******************INTERCEPTOR CONFIG*********************/
         /**********************************************************/
 
@@ -55,7 +55,7 @@
             function($q, $location, $localStorage, $rootScope) {
                 return {
                     // Ajout du token au header de la request
-                    'request': function (config) {
+                    'request': function(config) {
                         $rootScope.startLoading();
                         config.headers = config.headers || {};
                         if ($localStorage.user) {
@@ -63,7 +63,7 @@
                         }
                         return config;
                     },
-                    'response': function(response){
+                    'response': function(response) {
                         var deferred = $q.defer();
                         $rootScope.endLoading();
                         deferred.resolve(response);
@@ -82,39 +82,39 @@
                         // 500 : Technical error
                         //
 
-                        switch(response.status){
+                        switch (response.status) {
                             case 400:
                                 // Functional error after a form submit
-                               /* NotificationFactory.addToErrorMessages(response.data.message);*/
+                                /* NotificationFactory.addToErrorMessages(response.data.message);*/
                                 return $q.reject(response);
                             case 401:
                                 // User not logged
                                 // Be sure client storage is clean
                                 delete $localStorage.user;
                                 delete $rootScope.root.user;
-                               /* NotificationFactory.addToErrorMessages(response.data.message);*/
+                                /* NotificationFactory.addToErrorMessages(response.data.message);*/
                                 $location.url('/');
                                 return $q.reject(response);
                             case 403:
                                 // Wrong permission
-                              /*  NotificationFactory.addToErrorMessages(response.data.message);*/
+                                /*  NotificationFactory.addToErrorMessages(response.data.message);*/
                                 return $q.reject(response);
                             case 404:
                                 // Resource not found
-                             /*   NotificationFactory.addToErrorMessages('La ressource demandée est introuvable');*/
+                                /*   NotificationFactory.addToErrorMessages('La ressource demandée est introuvable');*/
                                 return $q.reject(response);
                             case 500:
                                 // Technical error
-                             /*   NotificationFactory.addToErrorMessages('ouch');*/
+                                /*   NotificationFactory.addToErrorMessages('ouch');*/
                                 return $q.reject(response);
                             default:
                                 // Other error not listed, resolve the promise
                                 deferred.resolve(response);
                                 return deferred.promise;
-	                    }
-	                }
-	            };
-        	}
-    	]);
+                        }
+                    }
+                };
+            }
+        ]);
     }
 })();

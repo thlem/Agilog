@@ -1,6 +1,6 @@
-(function(){
-	'use strict';
-	
+(function() {
+    'use strict';
+
     /**
      * @name AuthenticationFactory
      * @description Factory that offers method relative to the auth form submission
@@ -8,37 +8,37 @@
      */
 
     angular.module('ag.acc.auth').factory('AuthenticationFactory', getAuthenticationFactory);
-    
-	var inject = ['ProxyFactory', 'ApiConstant'];
-	getAuthenticationFactory.$inject = inject;
 
-    function getAuthenticationFactory(ProxyFactory, ApiConstant){
+    var inject = ['ProxyFactory', 'ApiConstant'];
+    getAuthenticationFactory.$inject = inject;
 
-		/**
-		 * Public method that are accessible
-		 * @type {Object}
-		 */
-		var ret = {
-			submitRegisterForm: 			submitRegisterForm,
-			submitLoginForm: 				submitLoginForm,
-			logout: 						logout
-		};
-		return ret;
+    function getAuthenticationFactory(ProxyFactory, ApiConstant) {
 
-		// Submit register form data to the server
-		function submitRegisterForm(arrayOfUserData){
+        /**
+         * Public method that are accessible
+         * @type {Object}
+         */
+        var ret = {
+            submitRegisterForm: submitRegisterForm,
+            submitLoginForm: submitLoginForm,
+            logout: logout
+        };
+        return ret;
+
+        // Submit register form data to the server
+        function submitRegisterForm(arrayOfUserData) {
             return ProxyFactory.sendPostRequest(ApiConstant.AUTH_REGISTER, arrayOfUserData);
-		}
+        }
 
-		// Submit login form data to the server
-		function submitLoginForm(arrayOfUserData, callback){
+        // Submit login form data to the server
+        function submitLoginForm(arrayOfUserData, callback) {
             return ProxyFactory.sendPostRequest(ApiConstant.AUTH_LOGIN, arrayOfUserData);
-		}
+        }
 
-	    // Send to the server the request to logout the user
-	    function logout(){
-	    	return ProxyFactory.sendGetRequest(ApiConstant.AUTH_LOGOUT);
-	    }
+        // Send to the server the request to logout the user
+        function logout() {
+            return ProxyFactory.sendGetRequest(ApiConstant.AUTH_LOGOUT);
+        }
 
     }
 

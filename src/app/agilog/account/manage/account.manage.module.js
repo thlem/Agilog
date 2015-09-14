@@ -1,11 +1,11 @@
-(function(){
+(function() {
     'use strict';
 
-	/**
-	 * @name AccountManageModule
-	 * @description The account manage module
+    /**
+     * @name AccountManageModule
+     * @description The account manage module
      * @namespace ag.acc.manage
-	 */
+     */
 
     angular.module('ag.acc.manage', [
         'ag.tech',

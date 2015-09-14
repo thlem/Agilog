@@ -5,9 +5,9 @@
  * @param request
  * @param : callback : La fonction à exécuter en sortie
  */
-var getTokenFromRequest = function(request, callback){
+var getTokenFromRequest = function(request, callback) {
     // Si la request est bien passé
-    if(request){
+    if (request) {
         var bearerToken;
         // Récupération du token dans la 'variable' authorization du header
         var bearerHeader = request.headers["authorization"];
@@ -19,13 +19,12 @@ var getTokenFromRequest = function(request, callback){
             bearerToken = bearer[1];
             // On appel le callback en sortie
             callback(bearerToken);
-        }
-        else{
+        } else {
             callback(null);
         }
     }
     // Sinon on retourne un token null
-    else{
+    else {
         callback(null);
     }
 };

@@ -1,7 +1,7 @@
-module.exports = function(agilogServer){
+module.exports = function(agilogServer) {
 
-  agilogServer.get("*", function(request, response){
-  	response.render("layout.jade");
-  });
+    agilogServer.get("*", function(request, response) {
+        response.render("layout.jade");
+    });
 
 }

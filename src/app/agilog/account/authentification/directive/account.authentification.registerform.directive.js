@@ -1,11 +1,11 @@
-(function(){
+(function() {
     'use strict';
 
-	/**
-	 * @name authenticationRegisterFormDir
-	 * @description The directive relative to the register form
+    /**
+     * @name authenticationRegisterFormDir
+     * @description The directive relative to the register form
      * @memberof ag.acc.auth
-	 */
+     */
 
     angular.module('ag.acc.auth').directive('authenticationRegisterFormDir', getAuthenticationRegisterFormDir);
 
@@ -14,56 +14,55 @@
     getAuthenticationRegisterFormDir.$inject = inject;
 
     function getAuthenticationRegisterFormDir(NotificationFactory, ErrorMessageConstant,
-        $location, $rootScope){
-        return{
-            restrict:'A',
-            controller:'AuthenticationRegisterController as AuthCtrl',
-            link:function(scope, element, attrs, AuthCtrl){
+        $location, $rootScope) {
+        return {
+            restrict: 'A',
+            controller: 'AuthenticationRegisterController as AuthCtrl',
+            link: function(scope, element, attrs, AuthCtrl) {
 
-                var registerForm        = $(element[0]),
-                    registerInputList   = {
-                        usrLoginInput           : $(registerForm.find('#usrLogin')),
-                        usrPasswordInput        : $(registerForm.find('#usrPassword')),
-                        usrPasswordConfirmInput : $(registerForm.find('#usrPasswordConfirm')),
-                        usrMailInput            : $(registerForm.find('#usrMail')),
-                        usrFirstNameInput       : $(registerForm.find('#usrFirstName')),
-                        usrLastNameInput        : $(registerForm.find('#usrLastName'))
+                var registerForm = $(element[0]),
+                    registerInputList = {
+                        usrLoginInput: $(registerForm.find('#usrLogin')),
+                        usrPasswordInput: $(registerForm.find('#usrPassword')),
+                        usrPasswordConfirmInput: $(registerForm.find('#usrPasswordConfirm')),
+                        usrMailInput: $(registerForm.find('#usrMail')),
+                        usrFirstNameInput: $(registerForm.find('#usrFirstName')),
+                        usrLastNameInput: $(registerForm.find('#usrLastName'))
                     };
-                
+
                 // Clear the form
-                $.each(registerInputList, function(inputKey, inputElment){
+                $.each(registerInputList, function(inputKey, inputElment) {
                     $(inputElment).val('');
                 });
 
                 // On the page displayed if the usrLogin input contains
                 // a value then we set the focus on the usrPassword input
-                if(registerInputList.usrLoginInput.val()){
+                if (registerInputList.usrLoginInput.val()) {
                     registerInputList.usrPasswordInput.focus();
-                }
-                else{
+                } else {
                     registerInputList.usrLoginInput.focus();
                 }
 
                 // On register form submit
-                registerForm.on('submit', function(){
+                registerForm.on('submit', function() {
                     // start the loading spinner
                     // Clear error class
                     $('.inputError').removeClass('inputError');
 
                     // Check form validity
-                    if(!scope.registerForm.$valid){
+                    if (!scope.registerForm.$valid) {
                         // Reset the mail label if an error was displayed
                         var usrMailLabel = registerForm.find('label[for=\'usrMail\']');
                         usrMailLabel.text('Mail');
-                        
-                            // Initialize the focus
-                        var focusAlreadySet                 = false,
+
+                        // Initialize the focus
+                        var focusAlreadySet = false,
                             // Get different errors of the form
-                            loginRequiredError              = scope.registerForm.usrLogin.$error.required,
-                            passwordRequiredError           = scope.registerForm.usrPassword.$error.required,
-                            passwordConfirmRequiredError    = 
-                                scope.registerForm.usrPasswordConfirm.$error.required,
-                            mailPatternError                = scope.registerForm.usrMail.$error;
+                            loginRequiredError = scope.registerForm.usrLogin.$error.required,
+                            passwordRequiredError = scope.registerForm.usrPassword.$error.required,
+                            passwordConfirmRequiredError =
+                            scope.registerForm.usrPasswordConfirm.$error.required,
+                            mailPatternError = scope.registerForm.usrMail.$error;
 
                         // Check if the login is missing
                         focusAlreadySet = handleInputError(loginRequiredError,
@@ -79,23 +78,23 @@
                             mailPatternError, registerInputList.usrMailInput, focusAlreadySet);
                     }
                     // If no error in the register form
-                    else{
+                    else {
                         // Get the value of the password and the confirm
-                        var password        = scope.user.usrPassword,
+                        var password = scope.user.usrPassword,
                             confirmPassword = scope.user.usrPasswordConfirm;
 
                         // If passwords are different
-                        if(password !== confirmPassword){
+                        if (password !== confirmPassword) {
 
                             // Notify the user
                             NotificationFactory.addToErrorMessages(
                                 ErrorMessageConstant.PASSWORD_CONFIRM_NOT_IDENTICAL);
 
                             // Get both label for animation
-                            var usrPasswordConfirmLabel = 
-                                    $(registerInputList.usrPasswordConfirmInput.siblings()[0]),
-                                usrPasswordLabel        = 
-                                    $(registerInputList.usrPasswordInput.siblings()[0]);
+                            var usrPasswordConfirmLabel =
+                                $(registerInputList.usrPasswordConfirmInput.siblings()[0]),
+                                usrPasswordLabel =
+                                $(registerInputList.usrPasswordInput.siblings()[0]);
 
                             // Remove the class that display label at the bottom
                             usrPasswordConfirmLabel.removeClass('labelOnBottom');
@@ -111,14 +110,14 @@
                             scope.$apply();
                         }
                         // If passwords are ok
-                        else{
+                        else {
                             // Build of the json object that will be send to the server
                             var arrayOfUserData = {
-                                usrLogin:scope.user.usrLogin,
-                                usrPassword:scope.user.usrPassword,
-                                usrMail:scope.user.usrMail,
-                                usrFirstName:scope.user.usrFirstName,
-                                usrLastName:scope.user.usrLastName
+                                usrLogin: scope.user.usrLogin,
+                                usrPassword: scope.user.usrPassword,
+                                usrMail: scope.user.usrMail,
+                                usrFirstName: scope.user.usrFirstName,
+                                usrLastName: scope.user.usrLastName
                             };
 
                             // Start server submit
@@ -134,13 +133,13 @@
     }
 
     // Handle error of input elements
-    function handleInputError(error, input, focus){
+    function handleInputError(error, input, focus) {
         // If the scope input element contains an error
-        if(error){
+        if (error) {
             // Add class that show error on the field
             input.addClass('inputError');
             // If the focus is not yet set
-            if(!focus){
+            if (!focus) {
                 // Set the focus on this field
                 focus = true;
                 input.focus();

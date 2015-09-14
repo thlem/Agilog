@@ -1,11 +1,11 @@
-(function(){
+(function() {
     'use strict';
 
-	/**
-	 * @name NavigationMainDirective
-	 * @description The navigation main directive that load the template
+    /**
+     * @name NavigationMainDirective
+     * @description The navigation main directive that load the template
      * @memberof ag.nav
-	 */
+     */
 
     angular.module('ag.nav').directive('navigationDir', getNavigationDir);
 
@@ -13,13 +13,13 @@
 
     getNavigationDir.$inject = inject;
 
-    function getNavigationDir(){
-		return{
-			restrict:'E',
-			templateUrl:'../../partials/navigation.html',
-			compile:function(scope, element){
-				
-			}
-    	};
+    function getNavigationDir() {
+        return {
+            restrict: 'E',
+            templateUrl: '../../partials/navigation.html',
+            compile: function(scope, element) {
+
+            }
+        };
     }
 })();

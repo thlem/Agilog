@@ -1,6 +1,6 @@
-(function(){
-	'use strict';
-	
+(function() {
+    'use strict';
+
     /**
      * @name NotificationFactory
      * @description The factory that offers methods to manage notification list
@@ -8,59 +8,59 @@
      */
 
     angular.module('ag.notif').factory('NotificationFactory', getNotificationFactory);
-    
-	var inject = ['$timeout'];
-	getNotificationFactory.$inject = inject;
 
-    function getNotificationFactory($timeout){
+    var inject = ['$timeout'];
+    getNotificationFactory.$inject = inject;
 
-    	 // Error message list
+    function getNotificationFactory($timeout) {
+
+        // Error message list
         var errorMessages = [];
         // SuccessMessageList
         var successMessages = [];
 
-		/**
-		 * Public method that are accessible
-		 * @type {Object}
-		 */
-		var ret = {
-			getErrorMessages: getErrorMessages,
+        /**
+         * Public method that are accessible
+         * @type {Object}
+         */
+        var ret = {
+            getErrorMessages: getErrorMessages,
             getSuccessMessages: getSuccessMessages,
             addToErrorMessages: addToErrorMessages,
             addToSuccessMessages: addToSuccessMessages,
             removeAllErrorMessages: removeAllErrorMessages,
             removeAllSuccessMessages: removeAllSuccessMessages
-		};
-		return ret;
+        };
+        return ret;
 
         // Return the error message list
-        function getErrorMessages(){
+        function getErrorMessages() {
             return errorMessages;
         }
-        
+
         // Return the success message list
-        function getSuccessMessages(){
+        function getSuccessMessages() {
             return successMessages;
         }
-        
+
         // Add the error passed in parameter to the 
         // error message list.
         // Add a timer to automatically remove the error
         // at the end of the timer
-        function addToErrorMessages(error){
+        function addToErrorMessages(error) {
             // If the error is not empty
-            if(error && !angular.equals(error, '')){
+            if (error && !angular.equals(error, '')) {
                 // Check if the error message is already in the list
-                for(var i = 0; i<errorMessages.length; i++){
-                    if(errorMessages[i][0] === error){
+                for (var i = 0; i < errorMessages.length; i++) {
+                    if (errorMessages[i][0] === error) {
                         // If the error message has been found
                         // Cancel its timer
                         $timeout.cancel(errorMessages[i][1]);
                         // Delete the error from the list
-                        errorMessages.splice(i,1);
+                        errorMessages.splice(i, 1);
                     }
                 }
-                
+
                 // An array containing the error message and
                 // its timer
                 var currentError = [];
@@ -68,36 +68,36 @@
                 currentError.push(error);
                 // Create a timer that remove the error
                 // after 9scd
-                var timeout = $timeout(function(){
-                    for(var i = 0; i<errorMessages.length; i++){
-                        if(errorMessages[i][0] === error){
-                            errorMessages.splice(i,1);
+                var timeout = $timeout(function() {
+                    for (var i = 0; i < errorMessages.length; i++) {
+                        if (errorMessages[i][0] === error) {
+                            errorMessages.splice(i, 1);
                         }
                     }
-                },9000);
-                
+                }, 9000);
+
                 // Add the timer to the array
                 currentError.push(timeout);
                 // Add the error+timer to the list
                 errorMessages.push(currentError);
             }
         }
-        
+
         // Add the success passed in parameter to the 
         // success message list.
         // Add a timer to automatically remove the success
         // at the end of the timer
-        function addToSuccessMessages(success){
+        function addToSuccessMessages(success) {
             // If the success is not empty
-            if(success && !angular.equals(success, '')){
+            if (success && !angular.equals(success, '')) {
                 // Check if the success message is already in the list
-                for(var i = 0; i<successMessages.length; i++){
-                    if(successMessages[i][0] === success){
+                for (var i = 0; i < successMessages.length; i++) {
+                    if (successMessages[i][0] === success) {
                         // If the success message has been found
                         // Cancel its timer
                         $timeout.cancel(successMessages[i][1]);
                         // Delete the success from the list
-                        successMessages.splice(i,1);
+                        successMessages.splice(i, 1);
                     }
                 }
 
@@ -108,32 +108,32 @@
                 currentSuccess.push(success);
                 // Create a timer that remove the success
                 // after 9scd
-                var timeout = $timeout(function(){
-                    for(var i = 0; i<successMessages.length; i++){
-                        if(successMessages[i][0] === success){
-                            successMessages.splice(i,1);
+                var timeout = $timeout(function() {
+                    for (var i = 0; i < successMessages.length; i++) {
+                        if (successMessages[i][0] === success) {
+                            successMessages.splice(i, 1);
                         }
                     }
-                },9000);
-                
+                }, 9000);
+
                 // Add the timer to the array
                 currentSuccess.push(timeout);
                 // Add the success+timer to the list
                 successMessages.push(currentSuccess);
             }
         }
-        
+
         // Clear the error list and remove timer
-        function removeAllErrorMessages(){
-            for(var i = 0; i<errorMessages.length; i++){
+        function removeAllErrorMessages() {
+            for (var i = 0; i < errorMessages.length; i++) {
                 $timeout.cancel(errorMessages[i][1]);
             }
             errorMessages = [];
         }
-        
+
         // Clear the success list and remove timer
-        function removeAllSuccessMessages(){
-            for(var i = 0; i<successMessages.length; i++){
+        function removeAllSuccessMessages() {
+            for (var i = 0; i < successMessages.length; i++) {
                 $timeout.cancel(successMessages[i][1]);
             }
             successMessages = [];

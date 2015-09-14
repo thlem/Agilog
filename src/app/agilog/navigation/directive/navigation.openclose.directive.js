@@ -1,11 +1,11 @@
-(function(){
+(function() {
     'use strict';
 
-	/**
-	 * @name navigationOpenCloseDir
-	 * @description Menu open close directive that toggle display
+    /**
+     * @name navigationOpenCloseDir
+     * @description Menu open close directive that toggle display
      * @memberof ag.nav
-	 */
+     */
 
     angular.module('ag.nav').directive('navigationOpenCloseDir', getNavigationOpenCloseDir);
 
@@ -13,48 +13,46 @@
 
     getNavigationOpenCloseDir.$inject = inject;
 
-    function getNavigationOpenCloseDir($timeout){
-        return{
-            restrict:'A',
-            link:function(scope, element){
+    function getNavigationOpenCloseDir($timeout) {
+        return {
+            restrict: 'A',
+            link: function(scope, element) {
 
-				var wrapper = $('#navigation-wrapper');
-                
-	 			// On the menu open/close button click
-	 			element.on('click', function(){
+                var wrapper = $('#navigation-wrapper');
 
-	 				// Prevent multiple click
-                	if(!wrapper.hasClass('run')){
+                // On the menu open/close button click
+                element.on('click', function() {
 
-	                    if(wrapper.hasClass('state1')){
+                    // Prevent multiple click
+                    if (!wrapper.hasClass('run')) {
+
+                        if (wrapper.hasClass('state1')) {
                             wrapper.addClass('state0 state1to0 run');
-	                        wrapper.removeClass('state1');
-                            
-                            $timeout(function(){
+                            wrapper.removeClass('state1');
+
+                            $timeout(function() {
                                 wrapper.removeClass('state1to0 run');
-                                
-                            },800);
-	                    }
-                        else if(wrapper.hasClass('state2')){
+
+                            }, 800);
+                        } else if (wrapper.hasClass('state2')) {
                             wrapper.addClass('state0 state2to0 run');
                             wrapper.removeClass('state1 state2');
-                            $timeout(function(){
+                            $timeout(function() {
                                 wrapper.removeClass('state2to0 run');
-                                
-                            },800);
-                        }
-	                    else{
-                            wrapper.addClass('state1 state0to1 run');
-	                        wrapper.removeClass('state0');
-                            
-                            $timeout(function(){
-                                wrapper.removeClass('state0to1 run');
-                                
-                            },800);
-	                    }
 
-	                }
-                    
+                            }, 800);
+                        } else {
+                            wrapper.addClass('state1 state0to1 run');
+                            wrapper.removeClass('state0');
+
+                            $timeout(function() {
+                                wrapper.removeClass('state0to1 run');
+
+                            }, 800);
+                        }
+
+                    }
+
                 });
             }
         }
