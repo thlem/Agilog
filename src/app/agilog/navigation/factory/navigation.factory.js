@@ -62,6 +62,12 @@
                 imgSrc: './images/accountIco.png',
                 hide: '!root.user',
                 subElements: null
+            }, {
+                title: 'Projects',
+                link: 'Projects',
+                imgSrc: './images/projectsIco.png',
+                hide: '!root.user',
+                subElements: null
             }];
         }
 

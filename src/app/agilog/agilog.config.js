@@ -44,6 +44,10 @@
                 templateUrl: 'partials/account.html',
                 controller: 'AccountManageController as AccMngCtrl',
                 title: 'Manage your account'
+            })
+            .state('Projects', {
+                url: '/projects',
+                controller: 'ProjectManageProjectListController as PrjMngCtrl'
             });
 
 
