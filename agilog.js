@@ -44,11 +44,17 @@ var sequelizeConnection = require("./server/technical/database/DataBaseConnectio
 sequelizeConnection.sync();
 agilogServer.set("models", require("./server/model/Models.js"));
 
+agilogServer.get("models").User.belongsToMany(
+    agilogServer.get("models").Project, {through: 'UserProject', foreignKey: 'projectId'});
+agilogServer.get("models").Project.belongsToMany(
+    agilogServer.get("models").User, {through: 'UserProject', foreignKey: 'userId'});
+
 // Chargement des strategy relatives à l'authentification
 require('./server/business/AuthenticationService.js').passportRules(agilogServer, passport, localStrategy);
 
 require("./server/controller/AuthenticationController.js")(agilogServer, passport);
 require("./server/controller/AccountManageController.js")(agilogServer);
+require("./server/controller/ProjectManageController.js")(agilogServer);
 require("./server/controller/RootController.js")(agilogServer);
 
 agilogServer.listen(3131, function() {

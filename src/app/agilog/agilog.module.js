@@ -13,6 +13,7 @@
         'ngStorage',
         'ag.tech',
         'ag.nav',
-        'ag.acc'
+        'ag.acc',
+        'ag.prj'
     ]);
 })();

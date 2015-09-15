@@ -37,6 +37,9 @@ var order = {
 		folders.js+'account/manage/*.module.js',
 		folders.js+'account/manage/**/*.js',
 		folders.js+'account/*.module.js',
+		folders.js+'project/manage/*.module.js',
+		folders.js+'project/manage/**/*.js',
+		folders.js+'project/*.module.js',
 		folders.js+'*.module.js',
 		folders.js+'!(*.module.js)*.js'
 	],

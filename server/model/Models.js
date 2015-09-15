@@ -1,7 +1,8 @@
 var sequelizeConnection = require("../technical/database/DataBaseConnection.js").sequelizeConnection;
 
 var models = [
-    'User'
+    'User',
+    'Project'
 ]
 
 models.forEach(function(model) {

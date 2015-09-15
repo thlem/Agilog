@@ -1,5 +1,5 @@
 module.exports = function(sequelizeConnection, DataTypes) {
-    return sequelizeConnection.define("User", {
+    var User = sequelizeConnection.define("User", {
         usrId: {
             type: DataTypes.BIGINT,
             primaryKey: true,
@@ -35,4 +35,6 @@ module.exports = function(sequelizeConnection, DataTypes) {
         updatedAt: false,
         deletedAt: false
     });
+
+    return User;
 }

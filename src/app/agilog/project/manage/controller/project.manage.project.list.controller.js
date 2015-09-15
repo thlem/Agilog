@@ -3,14 +3,14 @@
 
     angular.module('ag.prj.manage').controller('ProjectManageProjectListController', getProjectManageProjectListController);
 
-    var inject = [];
+    var inject = ['$scope', 'ProxyFactory'];
 
     getProjectManageProjectListController.$inject = inject;
 
-    function getProjectManageProjectListController(){
+    function getProjectManageProjectListController($scope, ProxyFactory){
 
     	var vm = this;
-
+ProxyFactory.sendGetRequest('/project/getlist/thomas', null);
     	$scope.projectList = {};
 
     };

@@ -47,7 +47,9 @@
             })
             .state('Projects', {
                 url: '/projects',
-                controller: 'ProjectManageProjectListController as PrjMngCtrl'
+                templateUrl: 'partials/projects.html',
+                controller: 'ProjectManageProjectListController as PrjMngCtrl',
+                title: 'Your project list'
             });
 
 
