@@ -5,8 +5,6 @@ var AccountManageService = require("../business/AccountManageService.js"),
 
 module.exports = function(agilogServer) {
 
-    var User = agilogServer.get("models").User;
-
     /**
      * Route appelée lors de la soumissions du formulaire de mise à jour
      * des données de connexion de l'utilisateur
@@ -16,7 +14,7 @@ module.exports = function(agilogServer) {
      */
     agilogServer.post("/account/update/logininfo", function(request, response) {
 
-        AccountManageService.updateLoginInfo(request, User, function(message, user) {
+        AccountManageService.updateLoginInfo(request, function(message, user) {
             if (user) {
                 response.status(200).json({
                     message: message,
@@ -41,7 +39,7 @@ module.exports = function(agilogServer) {
      */
     agilogServer.post("/account/update/personalinfo", function(request, response) {
 
-        AccountManageService.updatePersonalInfo(request, User, function(message, user) {
+        AccountManageService.updatePersonalInfo(request, function(message, user) {
             if (user) {
                 response.status(200).json({
                     message: message,
@@ -57,7 +55,7 @@ module.exports = function(agilogServer) {
     });
 
     agilogServer.get('/account/delete', function(request, response) {
-        AccountManageService.deleteAccount(request, User, function(message, success) {
+        AccountManageService.deleteAccount(request, function(message, success) {
             if (success) {
                 response.status(200).json({
                     message: message,

@@ -1,8 +1,9 @@
 var errorMessageConstant = require("../../technical/constants/errorMessageConstant.js"),
+    models = require('../../new/model/Models.js'),
     bcrypt = require('bcrypt-nodejs'); // Middleware de chiffrage des mots de passe
 
-var getUserBy = function(User, param, callback) {
-    User.find({
+var getUserBy = function(param, callback) {
+    models.User.find({
         where: param
     }).then(function(user) {
         if (user) {
@@ -13,9 +14,9 @@ var getUserBy = function(User, param, callback) {
     });
 };
 
-var createUser = function(User, arrayOfUserData, callback) {
+var createUser = function(arrayOfUserData, callback) {
     console.log("[START][UserDAS][createUser]");
-    User.create(arrayOfUserData)
+    models.User.create(arrayOfUserData)
         .then(function(user) {
             if (user) {
                 console.log("[WORKING][UserDAS][createUser] Utilisateur créé");
@@ -40,7 +41,7 @@ var updateUser = function(userToUpdate, arrayOfUserDataToUpdate, callback) {
         });
 };
 
-var deleteUser = function(User, userToDelete, callback) {
+var deleteUser = function(userToDelete, callback) {
     userToDelete.destroy().then(function() {
         callback();
     });

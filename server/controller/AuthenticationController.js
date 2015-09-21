@@ -5,8 +5,6 @@ var AuthenticationService = require("../business/AuthenticationService.js"),
 
 module.exports = function(agilogServer, passport) {
 
-    var User = agilogServer.get("models").User;
-
     /**
      * Route appelée lors de la soumissions du formulaire d'enregistrement
      * Permet de vérifier si l'utilisateur désirant s'enregistrer n'existe

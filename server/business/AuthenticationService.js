@@ -3,13 +3,10 @@ var UserDAS = require("./dataAccessServices/UserDAS.js"),
     errorMessageConstant = require("../technical/constants/ErrorMessageConstant.js"),
     successMessageConstant = require("../technical/constants/SuccessMessageConstant.js"),
     bcrypt = require('bcrypt-nodejs'),
-    jwt = require('jsonwebtoken'),
-    User;
+    jwt = require('jsonwebtoken');
 
 
 var passportRules = function(agilogServer, passport, LocalStrategy) {
-
-    User = agilogServer.get("models").User;
 
     passport.serializeUser(function(user, callback) {
         return callback(null, user.usrId);
@@ -19,7 +16,7 @@ var passportRules = function(agilogServer, passport, LocalStrategy) {
         var param = {
             "usrId": id
         };
-        UserDAS.getUserBy(User, param, function(error, user) {
+        UserDAS.getUserBy(param, function(error, user) {
             return callback(error, user);
         });
     });
@@ -46,7 +43,7 @@ var passportRules = function(agilogServer, passport, LocalStrategy) {
             console.log("[WORKING][AuthenticationService][register-strategy] Recherche d'utilisateur identique");
 
             // Vérification de la présence du login désiré en BDD
-            UserDAS.getUserBy(User, param, function(error, user) {
+            UserDAS.getUserBy(param, function(error, user) {
                 // Si un user existe déjà sous ce login, on renvoie une erreur
                 if (user) {
 
@@ -67,7 +64,7 @@ var passportRules = function(agilogServer, passport, LocalStrategy) {
 
                     console.log("[WORKING][AuthenticationService][register-strategy] Création de l'utilisateur");
                     // Insertion du nouveau user en BDD
-                    UserDAS.createUser(User, arrayOfUserData, function(error, user) {
+                    UserDAS.createUser(arrayOfUserData, function(error, user) {
                         // Si l'utilisateur a correctement été effectué
                         if (user) {
 
@@ -111,7 +108,7 @@ var passportRules = function(agilogServer, passport, LocalStrategy) {
             console.log("[WORKING][AuthenticationService][login-strategy] Recherche du User by login");
 
             // Vérification de la présence du login désiré en BDD
-            UserDAS.getUserBy(User, param, function(error, user) {
+            UserDAS.getUserBy(param, function(error, user) {
                 // Si un user existe déjà sous ce login, on renvoie une erreur
                 if (user) {
                     console.log("[WORKING][AuthenticationService][login-strategy] User trouvé, comparaison password");
@@ -182,7 +179,7 @@ var logout = function(request, callback) {
             var param = {
                 "token": token
             };
-            UserDAS.getUserBy(User, param, function(error, user) {
+            UserDAS.getUserBy(param, function(error, user) {
                 if (user) {
                     console.log("[WORKING][AuthenticationService][logout] user by token trouvé");
                     var arrayOfUserDataToUpdate = {};

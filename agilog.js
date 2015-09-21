@@ -3,7 +3,8 @@ var express = require("express"), // Framework minimalist offrant des utilitaire
     bodyParser = require("body-parser"), // Middleware permettant de parser le body de la HttpRequest
     passport = require('passport'), // Middleware offrant des services d'authentifcation
     localStrategy = require('passport-local').Strategy, // Strategy Passport pour authentifier un utilisateur via son identifiant/password
-    jwt = require('jsonwebtoken'); // JSON Web Token implementation
+    jwt = require('jsonwebtoken'), // JSON Web Token implementation
+    models = require("./server/new/model/Models.js");
 
 // Options de session
 var sessionOpts = {
@@ -40,15 +41,6 @@ agilogServer.use(function(req, res, next) {
 });
 
 
-var sequelizeConnection = require("./server/technical/database/DataBaseConnection.js").sequelizeConnection;
-sequelizeConnection.sync();
-agilogServer.set("models", require("./server/model/Models.js"));
-
-agilogServer.get("models").User.belongsToMany(
-    agilogServer.get("models").Project, {through: 'UserProject', foreignKey: 'projectId'});
-agilogServer.get("models").Project.belongsToMany(
-    agilogServer.get("models").User, {through: 'UserProject', foreignKey: 'userId'});
-
 // Chargement des strategy relatives à l'authentification
 require('./server/business/AuthenticationService.js').passportRules(agilogServer, passport, localStrategy);
 
@@ -57,6 +49,8 @@ require("./server/controller/AccountManageController.js")(agilogServer);
 require("./server/controller/ProjectManageController.js")(agilogServer);
 require("./server/controller/RootController.js")(agilogServer);
 
-agilogServer.listen(3131, function() {
-    console.log("Server Listening on port 3131");
+models.sequelize.sync().then(function () {
+  var server = agilogServer.listen(3131, function() {
+    console.log('Express server listening on port ' + server.address().port);
+  });
 });
