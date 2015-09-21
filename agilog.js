@@ -42,11 +42,11 @@ agilogServer.use(function(req, res, next) {
 
 
 // Chargement des strategy relatives à l'authentification
-require('./server/business/AuthenticationService.js').passportRules(agilogServer, passport, localStrategy);
+/*require('./server/business/AuthenticationService.js').passportRules(agilogServer, passport, localStrategy);
 
 require("./server/controller/AuthenticationController.js")(agilogServer, passport);
 require("./server/controller/AccountManageController.js")(agilogServer);
-require("./server/controller/ProjectManageController.js")(agilogServer);
+require("./server/controller/ProjectManageController.js")(agilogServer);*/
 require("./server/controller/RootController.js")(agilogServer);
 
 models.sequelize.sync().then(function () {
