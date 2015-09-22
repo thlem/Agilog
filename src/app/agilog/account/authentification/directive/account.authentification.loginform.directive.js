@@ -22,8 +22,8 @@
 
                 var loginForm = $(element[0]),
                     loginInputList = {
-                        usrLoginInput: $(loginForm.find('#usrLogin')),
-                        usrPasswordInput: $(loginForm.find('#usrPassword'))
+                        usrLoginInput: $(loginForm.find('#userLogin')),
+                        usrPasswordInput: $(loginForm.find('#userPassword'))
                     };
 
                 // On the page displayed if the usrLogin input contains
@@ -45,8 +45,8 @@
                         // Initialize the focus
                         var focusAlreadySet = false,
                             // Get different errors of the form
-                            loginRequiredError = scope.loginForm.usrLogin.$error.required,
-                            passwordRequiredError = scope.loginForm.usrPassword.$error.required;
+                            loginRequiredError = scope.loginForm.userLogin.$error.required,
+                            passwordRequiredError = scope.loginForm.userPassword.$error.required;
 
                         // Check if the login is missing
                         focusAlreadySet = handleInputError(loginRequiredError,
@@ -57,8 +57,8 @@
                     } else {
                         // Build of the json object that will be send to the server
                         var arrayOfUserData = {
-                            usrLogin: scope.user.usrLogin,
-                            usrPassword: scope.user.usrPassword
+                            userLogin: scope.user.userLogin,
+                            userPassword: scope.user.userPassword
                         };
 
                         // Start server submit

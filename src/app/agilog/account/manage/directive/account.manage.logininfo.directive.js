@@ -26,15 +26,15 @@
                     var doUpdate = false;
 
                     var arrayOfUserData = {},
-                        login = angular.element(document.querySelector('#usrLogin')),
-                        password = angular.element(document.querySelector('#usrPassword')),
-                        passwordConfirm = angular.element(document.querySelector('#usrPasswordConfirm'));
+                        login = angular.element(document.querySelector('#userLogin')),
+                        password = angular.element(document.querySelector('#userPassword')),
+                        passwordConfirm = angular.element(document.querySelector('#userPasswordConfirm'));
 
                     if (login && login.val() !== '') {
                         var userInLocalStorage = StorageFactory.getUserFromLocalStorage();
 
                         if (login.val() !== userInLocalStorage.usrLogin) {
-                            arrayOfUserData.usrLogin = login.val();
+                            arrayOfUserData.userLogin = login.val();
                             doUpdate = true;
                         }
 
@@ -42,7 +42,7 @@
                     if (password && password.val() !== '') {
                         if (passwordConfirm && passwordConfirm.val() !== '') {
                             if (password.val() === passwordConfirm.val()) {
-                                arrayOfUserData.usrPassword = password.val();
+                                arrayOfUserData.userPassword = password.val();
                                 doUpdate = true;
                             } else {
                                 scope.$apply(function() {

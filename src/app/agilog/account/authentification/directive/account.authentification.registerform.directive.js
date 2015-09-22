@@ -113,11 +113,11 @@
                         else {
                             // Build of the json object that will be send to the server
                             var arrayOfUserData = {
-                                usrLogin: scope.user.usrLogin,
-                                usrPassword: scope.user.usrPassword,
-                                usrMail: scope.user.usrMail,
-                                usrFirstName: scope.user.usrFirstName,
-                                usrLastName: scope.user.usrLastName
+                                userLogin: scope.user.userLogin,
+                                userPassword: scope.user.userPassword,
+                                userMail: scope.user.userMail,
+                                userFirstName: scope.user.userFirstName,
+                                userLastName: scope.user.userLastName
                             };
 
                             // Start server submit

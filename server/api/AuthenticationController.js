@@ -1,123 +1,140 @@
 var Api = require('./ApiConstant.js'),
-	AuthenticationService = require("../services/AuthenticationService.js"),
-	ErrorMessageConstant = require("../technical/constants/ErrorMessageConstant.js"),
-	SuccessMessageConstant = require("../technical/constants/SuccessMessageConstant.js"),
-	ResponseCodeConstant = require("../technical/constants/ResponseCodeConstant.js");
+    AuthenticationService = require("../services/AuthenticationService.js"),
+    ErrorMessageConstant = require("../technical/constants/ErrorMessageConstant.js"),
+    SuccessMessageConstant = require("../technical/constants/SuccessMessageConstant.js"),
+    ResponseCodeConstant = require("../technical/constants/ResponseCodeConstant.js");
 
 module.exports = function(agilogServer, passportService) {
 
-	//
-	//
-	// Call when Register Form is submited
-	//
-	//
-	agilogServer.post(Api.AUTHENTICATION_REGISTER, function(httpRequest, httpResponse, next) {
+    //
+    //
+    // Call when Register Form is submited
+    //
+    //
+    agilogServer.post(Api.AUTHENTICATION_REGISTER, function(httpRequest, httpResponse, next) {
 
-		passportService.authenticate('register-strategy', function(registeredUser, successMessage, errorMessage) {
+        passportService.authenticate('register-strategy', function(errorMessage, registeredUser, successMessage) {
 
-			if (registeredUser) {
+            if (registeredUser) {
 
-				httpRequest.login(registeredUser, function(httpRequestLoginError) {
+                httpRequest.login(registeredUser, function(httpRequestLoginError) {
 
-					if (httpRequestLoginError) {
+                    if (httpRequestLoginError) {
 
-						httpResponse.status(ResponseCodeConstant.INTERNAL_ERROR).json({
-							message: ErrorMessageConstant.INTERNAL_ERROR + ' : ' + httpRequestLoginError
-						});
+                        httpResponse.status(ResponseCodeConstant.INTERNAL_ERROR).json({
 
-					} else {
+                            message: ErrorMessageConstant.INTERNAL_ERROR + ' : ' + httpRequestLoginError
 
-						httpResponse.status(ResponseCodeConstant.SUCCESS).json({
-							message: successMessage,
-							user: registeredUser
-						});
+                        });
 
-					}
+                    } else {
 
-				});
+                        httpResponse.status(ResponseCodeConstant.SUCCESS).json({
 
-			} else {
+                            message: successMessage,
+                            user: registeredUser
 
-				if (errorMessage) {
+                        });
 
-					httpResponse.status(ResponseCodeConstant.BAD_REQUEST).json({
-						message: errorMessage
-					});
+                    }
 
-				} else {
+                });
 
-					httpResponse.status(ResponseCodeConstant.INTERNAL_ERROR).json({
-						message: ErrorMessageConstant.INTERNAL_ERROR
-					});
+            } else {
 
-				}
-			}
+                if (errorMessage) {
 
-		})(httpRequest, httpResponse, next);
+                    httpResponse.status(ResponseCodeConstant.BAD_REQUEST).json({
 
-	});
+                        message: errorMessage
 
-	//
-	//
-	// Call when Login Form is submited
-	//
-	//
-	agilogServer.post(Api.AUTHENTICATION_LOGIN, function(httpRequest, httpResponse, next) {
+                    });
 
-		passport.authenticate('login-strategy', function(loggedUser, successMessage, errorMessage) {
+                } else {
 
-			if (loggedUser) {
+                    httpResponse.status(ResponseCodeConstant.INTERNAL_ERROR).json({
 
-				httpRequest.login(loggedUser, function(httpRequestErrorMessage) {
+                        message: ErrorMessageConstant.INTERNAL_ERROR
 
-					if (httpRequestErrorMessage) {
+                    });
 
-						httpResponse.status(ResponseCodeConstant.INTERNAL_ERROR).json({
-							message: ErrorMessageConstant.INTERNAL_ERROR + ' : ' + httpRequestErrorMessage
-						});
+                }
+            }
 
-					} else {
+        })(httpRequest, httpResponse, next);
 
-						httpResponse.status(ResponseCodeConstant.SUCCESS).json({
-							message: successMessage,
-							user: loggedUser
-						});
+    });
 
-					}
-				});
-			} else {
+    //
+    //
+    // Call when Login Form is submited
+    //
+    //
+    agilogServer.post(Api.AUTHENTICATION_LOGIN, function(httpRequest, httpResponse, next) {
 
-				if (errorMessage) {
+        passportService.authenticate('login-strategy', function(errorMessage, loggedUser, successMessage) {
 
-					httpResponse.status(ResponseCodeConstant.BAD_REQUEST).json({
-						message: errorMessage
-					});
+            if (loggedUser) {
 
-				} else {
+                httpRequest.login(loggedUser, function(httpRequestErrorMessage) {
 
-					httpResponse.status(ResponseCodeConstant.INTERNAL_ERROR).json({
-						message: ErrorMessageConstant.INTERNAL_ERROR
-					});
+                    if (httpRequestErrorMessage) {
 
-				}
-			}
-		})(httpRequest, httpResponse, next);
-	});
+                        httpResponse.status(ResponseCodeConstant.INTERNAL_ERROR).json({
 
-	//
-	//
-	// Call when Logout is asked
-	//
-	//
-	agilogServer.get(Api.AUTHENTICATION_LOGOUT, function(request, response) {
+                            message: ErrorMessageConstant.INTERNAL_ERROR + ' : ' + httpRequestErrorMessage
 
-		AuthenticationService.logout(request, function() {
+                        });
 
-			response.status(200).json({
-				message: SuccessMessageConstant.SUCCESS_LOGOUT
-			});
+                    } else {
+                        httpResponse.status(ResponseCodeConstant.SUCCESS).json({
 
-		});
-	});
+                            message: successMessage,
+                            user: loggedUser
+
+                        });
+
+                    }
+                });
+            } else {
+
+                if (errorMessage) {
+
+                    httpResponse.status(ResponseCodeConstant.BAD_REQUEST).json({
+
+                        message: errorMessage
+
+                    });
+
+                } else {
+
+                    httpResponse.status(ResponseCodeConstant.INTERNAL_ERROR).json({
+
+                        message: ErrorMessageConstant.INTERNAL_ERROR
+
+                    });
+
+                }
+            }
+        })(httpRequest, httpResponse, next);
+    });
+
+    //
+    //
+    // Call when Logout is asked
+    //
+    //
+    agilogServer.get(Api.AUTHENTICATION_LOGOUT, function(request, response) {
+
+        AuthenticationService.logout(request, function() {
+
+            response.status(ResponseCodeConstant.SUCCESS).json({
+
+                message: SuccessMessageConstant.SUCCESS_LOGOUT
+
+            });
+
+        });
+    });
 
 }

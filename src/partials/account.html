@@ -3,28 +3,28 @@
 		<form name="userAccountLoginInfo" novalidate account-manage-login-info-dir>
 			<h2>Login informations</h2>
 			<p>
-				<label for="usrLogin">Login</label>
-				<input type="text" name="usrLogin" id="usrLogin" ng-model="user.usrLogin" />
+				<label for="userLogin">Login</label>
+				<input type="text" name="userLogin" id="userLogin" ng-model="user.userLogin" />
 			</p>
 			<p>
-				<label for="usrPassword">Password</label>
-				<input type="password" name="usrPassword" id="usrPassword" ng-model="user.usrPassword" />
+				<label for="userPassword">Password</label>
+				<input type="password" name="userPassword" id="userPassword" ng-model="user.userPassword" />
 			</p>
 			<p>
-				<label for="usrPasswordConfirm">Password Confirmation</label>
-				<input type="password" name="usrPasswordConfirm" id="usrPasswordConfirm" ng-model="user.usrPasswordConfirm" />
+				<label for="userPasswordConfirm">Password Confirmation</label>
+				<input type="password" name="userPasswordConfirm" id="userPasswordConfirm" ng-model="user.userPasswordConfirm" />
 			</p>
 			<input type="submit" value="Modifier" />
 		</form>
 
 		<form name="userAccountPersonalInfo" account-manage-personal-info-dir>
 			<h2>Personal informations</h2>
-			<label for="usrFirstName">First Name</label>
-			<input type="text" name="usrFirstName" id="usrFirstName" ng-model="user.usrFirstName" />
-			<label for="usrLastName">Last Name</label>
-			<input type="text" name="usrLastName" id="usrLastName" ng-model="user.usrLastName" />
-			<label for="usrMail">Mail</label>
-			<input type="mail" name="usrMail" id="usrMail" ng-model="user.usrMail" ng-pattern="/^[_a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$/" />
+			<label for="userFirstName">First Name</label>
+			<input type="text" name="userFirstName" id="userFirstName" ng-model="user.userFirstName" />
+			<label for="userLastName">Last Name</label>
+			<input type="text" name="userLastName" id="userLastName" ng-model="user.userLastName" />
+			<label for="userMail">Mail</label>
+			<input type="mail" name="userMail" id="userMail" ng-model="user.userMail" ng-pattern="/^[_a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$/" />
 			<input type="submit" value="Modifier" />
 		</form>
 	</div>

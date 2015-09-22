@@ -24,13 +24,13 @@
                 element.on('submit', function() {
 
                     var arrayOfUserData = {},
-                        firstName = angular.element(document.querySelector('#usrFirstName')),
-                        lastName = angular.element(document.querySelector('#usrLastName')),
-                        mail = angular.element(document.querySelector('#usrMail'));
+                        firstName = angular.element(document.querySelector('#userFirstName')),
+                        lastName = angular.element(document.querySelector('#userLastName')),
+                        mail = angular.element(document.querySelector('#userMail'));
 
-                    arrayOfUserData.usrFirstName = firstName.val();
-                    arrayOfUserData.usrLastName = lastName.val();
-                    arrayOfUserData.usrMail = mail.val();
+                    arrayOfUserData.userFirstName = firstName.val();
+                    arrayOfUserData.userLastName = lastName.val();
+                    arrayOfUserData.userMail = mail.val();
 
                     AccCtrl.submitAccountManagePersonalInfo(arrayOfUserData);
                 });
