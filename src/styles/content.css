@@ -69,12 +69,12 @@ div#topBanner div#topAddButton:hover:after{
   border:5px solid #577F7F;
   font-size:14px;
 }
-/**********************/
 
 /* PAGE CONTENT */
 section#content{
   padding-left:90px;
 }
+
 /** AUTHENTICATION PAGE **/
 .authForm h1{
     font-family:'Courier New';
@@ -167,7 +167,7 @@ section#content{
   left:5px;
   opacity:0.7;
 }
-/*************************/
+
 /** ACCOUNT MANAGE PAGE **/
 #userAccountManage>div{
     color:#111725;
@@ -191,5 +191,25 @@ section#content{
   display:block;
   margin:0 0 10px 23px;
 }
-/*************************/
-/****************/
+
+/** PROJECT LIST **/
+#userProjectList ul{
+  width:50%;
+  display:flex;
+  margin:auto;
+}
+#userProjectList ul li{
+  margin:10px;
+  flex-basis: auto; /* default value */
+  flex-grow: 1;
+  background:rgba(0,0,0,0.5);
+  min-width: 200px;
+  height:200px;
+  line-height:200px;
+  vertical-align: middle;
+  text-align:center;
+  border-radius: 8px;
+  box-shadow: 2px 2px 5px #000;
+  font-size: 24px;
+  cursor:pointer;
+}

@@ -13,13 +13,15 @@ module.exports = function(agilogServer) {
 	//
 	agilogServer.post(Api.ACCOUNT_MANAGE_UPDATE_LOGIN_INFO, function(httpRequest, httpResponse) {
 
-		AccountManageService.updateLoginInfo(httpRequest, function(updatedUser, sucessMessage, errorMessage) {
+		AccountManageService.updateLoginInfo(httpRequest, function(errorMessage, updatedUser, sucessMessage) {
 
 			if (updatedUser) {
 
 				httpResponse.status(ResponseCodeConstant.SUCCESS).json({
+
 					message: sucessMessage,
 					user: updatedUser
+
 				});
 
 			} else {
@@ -27,14 +29,18 @@ module.exports = function(agilogServer) {
 				if (errorMessage) {
 
 					httpResponse.status(ResponseCodeConstant.BAD_REQUEST).json({
+
 						message: errorMessage,
 						user: null
+
 					});
 
 				} else {
 					httpResponse.status(ResponseCodeConstant.INTERNAL_ERROR).json({
+
 						message: ErrorMessageConstant.INTERNAL_ERROR,
 						user: null
+
 					});
 				}
 
@@ -55,15 +61,19 @@ module.exports = function(agilogServer) {
 			if (user) {
 
 				response.status(ResponseCodeConstant.SUCCESS).json({
+
 					message: message,
 					user: user
+
 				});
 
 			} else {
 
 				response.status(ResponseCodeConstant.SUCCESS).json({
+
 					message: message,
 					user: null
+
 				});
 
 			}
@@ -82,8 +92,10 @@ module.exports = function(agilogServer) {
 			if (successMessage) {
 
 				response.status(ResponseCodeConstant.SUCCESS).json({
+
 					message: successMessage,
 					success: true
+
 				});
 
 			} else {
@@ -91,12 +103,16 @@ module.exports = function(agilogServer) {
 				if(errorMessage){
 
 					response.status(ResponseCodeConstant.INTERNAL_ERROR).json({
+
 						message: errorMessage
+
 					});
 
 				} else{
 					response.status(ResponseCodeConstant.INTERNAL_ERROR).json({
+
 						message: ErrorMessageConstant.INTERNAL_ERROR
+						
 					});
 				}
 

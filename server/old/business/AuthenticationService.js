@@ -167,47 +167,55 @@ var refreshToken = function(user, callback) {
 };
 
 var hidePasswordForResponse = function(user) {
-    user.password = '';
+    user.userPassword = '';
     return user;
 };
 
 var logout = function(request, callback) {
-    console.log("[START][AuthenticationService][logout]");
+
     RequestService.getTokenFromRequest(request, function(token) {
+
         if (token) {
-            console.log("[WORKING][AuthenticationService][logout] token trouvé, mise à jour BDD du user");
+
             var param = {
-                "token": token
+
+                "userToken": token
+
             };
+
             UserDAS.getUserBy(param, function(error, user) {
+
                 if (user) {
-                    console.log("[WORKING][AuthenticationService][logout] user by token trouvé");
+
                     var arrayOfUserDataToUpdate = {};
                     arrayOfUserDataToUpdate.token = "";
+
                     UserDAS.updateUser(user, arrayOfUserDataToUpdate, function(error, user) {
-                        if (error) {
-                            console.log("[WORKING][AuthenticationService][logout] Erreur lors de la mise à jour : " + error);
-                        }
-                        console.log("[END][AuthenticationService][logout] Mise à jour du token effectuée");
+
                         callback();
+
                     });
                 } else {
-                    console.log("[END][AuthenticationService][logout] user by token non trouvé, déconnexion auto");
+                    
                     callback();
+
                 }
             });
         } else {
-            console.log("[END][AuthenticationService][logout] token non trouvé, déconnexion auto");
+
             callback();
+
         }
     });
 };
 
 module.exports = {
+
     passportRules: passportRules,
     hashPassword: hashPassword,
     validPassword: validPassword,
     refreshToken: refreshToken,
     hidePasswordForResponse: hidePasswordForResponse,
     logout: logout
+
 }

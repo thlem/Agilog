@@ -16,41 +16,78 @@
     function getConfig($httpProvider, $stateProvider, $urlRouterProvider) {
 
         $urlRouterProvider.otherwise('/');
-        $stateProvider
-            .state('Home', {
-                url: '/',
-                templateUrl: 'partials/accueil.html',
-                title: 'Home',
-                public: true
-            })
-            .state('Login', {
-                url: '/login',
-                templateUrl: 'partials/loginForm.html',
-                public: true,
-                guestOnly: true
-            })
-            .state('Register', {
-                url: '/register',
-                templateUrl: 'partials/registerForm.html',
-                public: true,
-                guestOnly: true
-            })
-            .state('Logout', {
-                url: '/logout',
-                controller: 'AuthenticationLogoutController as AuthLogoutCtrl'
-            })
-            .state('Account', {
-                url: '/account',
-                templateUrl: 'partials/account.html',
-                controller: 'AccountManageController as AccMngCtrl',
-                title: 'Manage your account'
-            })
-            .state('Projects', {
-                url: '/projects',
-                templateUrl: 'partials/projects.html',
-                controller: 'ProjectManageProjectListController as PrjMngCtrl',
-                title: 'Your project list'
-            });
+
+        // Routes
+        $stateProvider.state('Home', {
+            url:'/',
+            templateUrl: 'partials/accueil.html',
+            title: 'Home',
+            public: true
+        });
+
+        $stateProvider.state('Login', {
+            url:'/login',
+            templateUrl: 'partials/account/authentication/loginForm.html',
+            public: true,
+            guestOnly: true
+        });
+
+         $stateProvider.state('Register', {
+            url:'/register',
+            templateUrl: 'partials/account/authentication/registerForm.html',
+            public: true,
+            guestOnly: true
+        });
+
+         $stateProvider.state('Logout', {
+            url:'/logout',
+            controller: 'AuthenticationLogoutController'
+        });
+
+        $stateProvider.state('Account', {
+            url:'/account',
+            templateUrl: 'partials/account/manage/account.html',
+            views: {
+                'update-login-info':{
+                    templateUrl: 'partials/account/manage/loginInfoForm.html',
+                    controller: 'AccountManageLoginInfoController as LoginInfoCtrl'
+                },
+                'update-personal-info':{
+                    templateUrl: 'partials/account/manage/personalInfoForm.html',
+                    controller: 'AccountManagePersonalInfoController as PersonalInfoCtrl'
+                },
+                'delete-account':{
+                    templateUrl: 'partials/account/manage/deleteAccount.html',
+                    controller: 'AccountManageController as AccMngCtrl'
+                }
+            }
+        });
+
+        $stateProvider.state('Project', {
+            abstract: true,
+            url: '/project',
+            template: '<ui-view />'
+        });
+
+         $stateProvider.state('Project.List', {
+            url: '/list',
+            templateUrl: 'partials/project/manage/projectList.html',
+            controller: 'ProjectManageProjectListController as ProjectListCtlr',
+            title: 'Your project list'
+        });
+
+        $stateProvider.state('Project.Create', {
+            url: '/create',
+            templateUrl: 'partials/project/manage/projectCreate.html',
+            controller: 'ProjectManageProjectCreateController as ProjectCreateCtlr',
+            title: 'Create a new Project'
+        });
+
+        $stateProvider.state('Project.Get', {
+            url: '/:projectId',
+            templateUrl: 'partials/project/projectDetail.html',
+            controller: 'AccountManageController as AccMngCtrl'
+        });
 
 
         /**********************************************************/
@@ -65,7 +102,7 @@
                         $rootScope.startLoading();
                         config.headers = config.headers || {};
                         if ($localStorage.user) {
-                            config.headers.Authorization = 'Bearer ' + $localStorage.user.token;
+                            config.headers.Authorization = 'Bearer ' + $localStorage.user.userToken;
                         }
                         return config;
                     },
