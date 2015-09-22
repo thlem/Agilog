@@ -1,8 +1,8 @@
-var Api = require('../new/api/ApiConstant.js'),
-	AuthenticationService = require("../../business/AuthenticationService.js"),
-	ErrorMessageConstant = require("../../technical/constants/ErrorMessageConstant.js"),
-	SuccessMessageConstant = require("../../technical/constants/SuccessMessageConstant.js"),
-	ResponseCodeConstant = require("../../technical/constants/ResponseCodeConstant.js");
+var Api = require('./ApiConstant.js'),
+	AuthenticationService = require("../services/AuthenticationService.js"),
+	ErrorMessageConstant = require("../technical/constants/ErrorMessageConstant.js"),
+	SuccessMessageConstant = require("../technical/constants/SuccessMessageConstant.js"),
+	ResponseCodeConstant = require("../technical/constants/ResponseCodeConstant.js");
 
 module.exports = function(agilogServer, passportService) {
 

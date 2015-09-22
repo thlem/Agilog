@@ -1,4 +1,4 @@
-var Api = require('../new/api/ApiConstant.js');
+var Api = require('./ApiConstant.js');
 
 module.exports = function(agilogServer) {
 

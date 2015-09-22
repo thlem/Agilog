@@ -4,7 +4,7 @@ var express = require("express"), // Framework minimalist offrant des utilitaire
     passport = require('passport'), // Middleware offrant des services d'authentifcation
     localStrategy = require('passport-local').Strategy, // Strategy Passport pour authentifier un utilisateur via son identifiant/password
     jwt = require('jsonwebtoken'), // JSON Web Token implementation
-    models = require("./server/new/model/Models.js");
+    models = require("./model/Models.js");
 
 // Options de session
 var sessionOpts = {
@@ -19,8 +19,8 @@ var sessionOpts = {
 
 var agilogServer = express();
 
-agilogServer.use(express.static(__dirname + '/public'));
-agilogServer.set('views', __dirname + '/server/views');
+agilogServer.use(express.static(__dirname + '/../public'));
+agilogServer.set('views', __dirname + '/views');
 agilogServer.set('view engine', 'jade');
 agilogServer.use(expressSession(sessionOpts)); // On affecte au middleware express-session les options créées plus tôt
 agilogServer.use(passport.initialize()); // Initialisation du module passport
@@ -47,7 +47,7 @@ agilogServer.use(function(req, res, next) {
 require("./server/controller/AuthenticationController.js")(agilogServer, passport);
 require("./server/controller/AccountManageController.js")(agilogServer);
 require("./server/controller/ProjectManageController.js")(agilogServer);*/
-require("./server/controller/RootController.js")(agilogServer);
+require("./api/RootController.js")(agilogServer);
 
 models.sequelize.sync().then(function () {
   var server = agilogServer.listen(3131, function() {

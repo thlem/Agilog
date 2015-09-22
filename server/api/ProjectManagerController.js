@@ -1,8 +1,8 @@
-var Api = require('../new/api/ApiConstant.js'),
-	ProjectManageService = require("../../business/ProjectManageService.js"),
-	ErrorMessageConstant = require("../../technical/constants/ErrorMessageConstant.js"),
-	SuccessMessageConstant = require("../../technical/constants/SuccessMessageConstant.js"),
-	ResponseCodeConstant = require("../../technical/constants/ResponseCodeConstant.js");
+var Api = require('./ApiConstant.js'),
+	ProjectManageService = require("../services/ProjectManageService.js"),
+	ErrorMessageConstant = require("../technical/constants/ErrorMessageConstant.js"),
+	SuccessMessageConstant = require("../technical/constants/SuccessMessageConstant.js"),
+	ResponseCodeConstant = require("../technical/constants/ResponseCodeConstant.js");
 
 module.exports = function(agilogServer) {
 

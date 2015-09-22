@@ -2,7 +2,7 @@
   "name": "AgiLog",
   "version": "0.0.0",
   "description": "Product Backlog for Agile Project",
-  "main": "agilog.js",
+  "main": "./server/server_start.js",
   "scripts": {},
   "dependencies": {
     "bcrypt-nodejs": "0.0.3",

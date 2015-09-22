@@ -1,40 +1,49 @@
-module.exports = function(sequelizeConnection, DataTypes) {
-    var User = sequelizeConnection.define("User", {
-        usrId: {
-            type: DataTypes.BIGINT,
-            primaryKey: true,
-            autoIncrement: true
-        },
-        usrLogin: {
-            type: DataTypes.STRING,
-            unique: true,
-            allowNull: false
-        },
-        usrPassword: {
-            type: DataTypes.STRING,
-            allowNull: false
-        },
-        usrFirstName: {
-            type: DataTypes.STRING,
-            allowNull: true
-        },
-        usrLastName: {
-            type: DataTypes.STRING,
-            allowNull: true
-        },
-        usrMail: {
-            type: DataTypes.STRING,
-            allowNull: true
-        },
-        token: {
-            type: DataTypes.STRING,
-            allowNull: true
-        }
-    }, {
-        createdAt: false,
-        updatedAt: false,
-        deletedAt: false
-    });
+module.exports = function(sequelize, DataTypes) {
 
-    return User;
-}
+  var User = sequelize.define("User", {
+    userId: {
+        type: DataTypes.BIGINT,
+        primaryKey: true,
+        autoIncrement: true
+    },
+    userLogin: {
+        type: DataTypes.STRING,
+        unique: true,
+        allowNull: false
+    },
+    userPassword: {
+        type: DataTypes.STRING,
+        allowNull: false
+    },
+    userFirstName: {
+        type: DataTypes.STRING,
+        allowNull: true
+    },
+    userLastName: {
+        type: DataTypes.STRING,
+        allowNull: true
+    },
+    userMail: {
+        type: DataTypes.STRING,
+        allowNull: true
+    },
+    userToken: {
+        type: DataTypes.STRING,
+        allowNull: true
+    }
+  },
+  {
+    createdAt: false,
+    updatedAt: false,
+    deletedAt: false
+  },
+  {
+    classMethods: {
+      associate: function(models) {
+        User.belongsToMany(models.Project, {through: 'UserProjects', foreignKey: {name: 'projectId'}});
+      }
+    }
+  });
+
+  return User;
+};
