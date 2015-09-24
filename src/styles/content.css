@@ -37,6 +37,7 @@ div#topBanner h1#pageTitle{
 color:#D5E3E3;
 margin-left:15px;
 font-size:24px;
+line-height:30px;
 float:left;
 }
 @media only screen and (max-width:768px){
@@ -77,9 +78,12 @@ section#content{
 
 /** AUTHENTICATION PAGE **/
 .authForm h1{
-    font-family:'Courier New';
-    letter-spacing:0;
+    letter-spacing:2px;
     font-size:2em;
+    padding:5px;
+    background:#319CCE;
+    text-align:center;
+    color:#F8F8F8;
 }
 .authForm input:not([type="submit"]){
   letter-spacing:2px;
@@ -112,28 +116,13 @@ section#content{
 .authForm{
   width:75%;
   margin:35px auto;
+  border:2px solid #319CCE;
+  min-width:280px;
 }
 @media only screen and (min-width:768px){
   .authForm{
     width:500px;
   }
-  .authForm .moustache{
-    position:relative;
-  }
-  .authForm .moustache:after{
-      content:'{';
-      position:absolute;
-      top:-110px;
-      left:-25px;
-      font-size:180px;
-      font-weight:normal;
-      transform: rotate(50deg);
-      font-family:"Times New Roman";
-  }
-}
-.authForm h1{
-  padding:5px;
-  border-bottom:3px solid #6D9E9E;
 }
 .authForm form{
   padding:8px;
@@ -146,7 +135,7 @@ section#content{
   margin-bottom:25px;
 }
 .authForm form p input:not([type="submit"]){
-  width:100%;
+  width:90%;
   height:35px;
   cursor:pointer;
   border:none;

@@ -22,15 +22,16 @@ nav#navigation > ul > li, nav#navigation img{
     margin:auto;    
 }
 nav#navigation ul li{
-    border-bottom:2px solid transparent;
     cursor:pointer;
     margin-bottom:10px;
     position:relative;
+    width:51px;
 }
 nav#navigation ul li:hover{
     animation-name:menu-element-hover;
     animation-duration:1s;
-    border-bottom:2px solid rgba(255,255,255,1);
+    background:#319CCE;
+    border-radius:5px;
 }
 nav#navigation ul li:after{
     opacity:0;
@@ -39,25 +40,26 @@ nav#navigation ul li:hover:after{
     content:attr(data-title);
     position:absolute;
     display:block;
-    left:47px;
-    top:45px;
+    left:53px;
+    top:0px;
     background:#111725;
     height:30px;
     z-index:13;
-    border:1px solid #D5E3E3;
+    border:2px solid #319CCE;
     text-align:center;
     white-space: nowrap;
     padding:5px;
     animation-name:menu-element-after-hover;
     animation-duration:1s;
     opacity:1;
+    box-shadow:0 0 5px 1px #111725;
 }
 @keyframes menu-element-hover{
     from {
-        border-bottom:2px solid rgba(255,255,255,0);
+        background:transparent;
     }
     to {
-        border-bottom:2px solid rgba(255,255,255,1);
+        background:#319CCE;
     }
 }
 @keyframes menu-element-after-hover{
@@ -128,13 +130,16 @@ nav#navigation-sub ul li a:hover{
     transform:translateX(-55px);
     opacity:0;
 }
+.state0 nav#navigation ul{
+    transform:translateY(0);
+}
 
 /**  state1 = Main menu is open **/
 .state1 .navigation-title{
     width:50px;
     height:125px;
     border-radius:0 8px 8px 0;
-    transform:translateX(55px);
+    transform:translateX(0);
 }
 .state1 .navigation-title span{
     opacity:1;
@@ -151,6 +156,9 @@ nav#navigation-sub ul li a:hover{
 .state1 nav#navigation-sub{
     transform:translateX(-55px);
     opacity:0;
+}
+.state1 nav#navigation ul{
+    transform:translateY(135px);
 }
 
 /**  state2 = Sub menu is open **/
@@ -200,7 +208,7 @@ nav#navigation-sub ul li a:hover{
         border-radius:0 0 8px 0;
     }
     to {
-        transform:translateX(55px);
+        transform:translateX(0);
         width:50px;
         height:125px;
         border-radius:0 8px 8px 0;
@@ -230,7 +238,18 @@ nav#navigation-sub ul li a:hover{
         transform:translateX(0);
     }
 }
-
+.state0to1 nav#navigation ul{
+    animation-name: state0-to-1-ul;
+    animation-duration: 0.8s;
+}
+@keyframes state0-to-1-ul{
+    from{
+        transform:translateY(0);
+    }
+    to{
+        transform:translateY(135px);
+    }
+}
 /** state1 to state0 **/
 .state1to0 .navigation-title{
     animation-name: state1-to-0-title;
@@ -241,7 +260,7 @@ nav#navigation-sub ul li a:hover{
         width:50px;
         height:125px;
         border-radius:0 8px 8px 0;
-        transform:translateX(55px);
+        transform:translateX(0);
     }
     to {
         width:75px;
@@ -274,54 +293,20 @@ nav#navigation-sub ul li a:hover{
         transform:translateX(-55px);
     }
 }
-
-/** state1 to state2 **/
-.state1to2 .navigation-title{
-    animation-name:state1-to-2-title;
-    animation-duration:0.8s;
+.state1to0 nav#navigation ul{
+    animation-name: state1-to-0-ul;
+    animation-duration: 0.8s;
 }
-@keyframes state1-to-2-title{
-    0% {
-        opacity:1;
-        transform:translateX(55px);
-    }
-    33% {
-        opacity:0;
-        transform:translateX(55px);
-        transform:translateY(-125px);
-    }
-    100%{
-        opacity:1;
-        transform:translateY(0);
-        transform:translateX(0);
-    }
-}
-.state1to2 nav#navigation ul{
-    animation-name:state1-to-2-ul;
-    animation-duration:0.8s;
-}
-@media only screen and (max-width:768px){
-    .state1to2 nav#navigation ul{
-        animation-name:state1-to-2-ul-mobile;
-        animation-duration:0.8s;
-    }
-}
-@keyframes state1-to-2-ul{
-    from {
-        transform:translateY(0);
-    }
-    to {
+@keyframes state1-to-0-ul{
+    from{
         transform:translateY(135px);
     }
-}
-@keyframes state1-to-2-ul-mobile{
-    from {
+    to{
         transform:translateY(0);
     }
-    to {
-        transform:translateY(45px);
-    }
 }
+
+/** state1 to state2 **/
 .state1to2 nav#navigation-sub{
     animation-name:state1-to-2-sub;
     animation-duration:0.8s;
@@ -337,35 +322,6 @@ nav#navigation-sub ul li a:hover{
     }
 }
 /** state2 to state1 **/
-.state2to1 .navigation-title{
-    animation-name:state2-to-1-title;
-    animation-duration:0.8s;
-}
-@keyframes state2-to-1-title{
-    0% {
-        opacity:1;
-        transform:translateY(0);
-    }
-    33% {
-        opacity:0;
-        transform:translateY(-125px);
-    }
-    100%{
-        opacity:1;
-    }
-}
-.state2to1 nav#navigation ul{
-    animation-name:state2-to-1-ul;
-    animation-duration:0.8s;
-}
-@keyframes state2-to-1-ul{
-    from {
-        transform:translateY(135px);
-    }
-    to {
-        transform:translateY(0);
-    }
-}
 .state2to1 nav#navigation-sub{
     animation-name:state2-to-1-sub;
     animation-duration:0.8s;

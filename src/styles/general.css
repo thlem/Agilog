@@ -13,19 +13,24 @@ html, body{
   position:relative;
 }
 body{
-  background:#D5E3E3;
-  color:#111725;
+  background:#F8F8F8;
+  color:#7C7C7C;
   overflow-x:hidden;
   font-size:14px;
-  font-family:'Times New Roman';
+  font-family:'open sans';
   letter-spacing:1px;
+  line-height:20px;
   z-index:0;
 }
 h1{font-size: 2em;}
 h2{font-size: 1.5em;}
 h3{font-size: 1.3em;}
 h4{font-size: 1.2em;}
-
+h1, h2, h3, h4 {
+	display:block;
+	line-height:40px;
+	color:#3B3B3B;
+}
 ul{
     list-style:none;
 }
