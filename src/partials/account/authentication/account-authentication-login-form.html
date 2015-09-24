@@ -1,0 +1,24 @@
+<div class="authForm">
+  
+  <form class="form-title-blue" name="loginForm" novalidate authentication-login-form-dir>
+    <h1>Formulaire de connexion</h1>
+    <div>
+      <p>
+        <input type="text" id="userLogin" name="userLogin" ng-model="user.userLogin" required auth-input-text-dir />
+        <label for="userLogin">
+          Login
+        </label>
+      </p>
+      <p>
+        <input type="password" id="userPassword" name="userPassword"  ng-model="user.userPassword"required auth-input-text-dir />
+        <label for="userPassword">
+          Password
+        </label>
+      </p>
+      <p>
+        <input type="submit" value="Se Connecter" />
+      </p>
+    </div>
+  </form>
+
+</div>

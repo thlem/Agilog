@@ -16,7 +16,7 @@
     function getNotificationDir() {
         return {
             restrict: 'E', // Element only
-            templateUrl: 'partials/notification.html',
+            templateUrl: 'partials/notification/notification.html',
             controller: 'NotificationController' // Controller
         };
     }

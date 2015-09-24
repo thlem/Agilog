@@ -16,7 +16,7 @@
     function getNavigationDir() {
         return {
             restrict: 'E',
-            templateUrl: '../../partials/navigation.html',
+            templateUrl: '../../partials/navigation/navigation.html',
             compile: function(scope, element) {
 
             }

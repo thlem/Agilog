@@ -77,14 +77,6 @@ section#content{
 }
 
 /** AUTHENTICATION PAGE **/
-.authForm h1{
-    letter-spacing:2px;
-    font-size:2em;
-    padding:5px;
-    background:#319CCE;
-    text-align:center;
-    color:#F8F8F8;
-}
 .authForm input:not([type="submit"]){
   letter-spacing:2px;
 }
@@ -124,10 +116,6 @@ section#content{
     width:500px;
   }
 }
-.authForm form{
-  padding:8px;
-  margin-top:25px;
-}
 .authForm form p{
   display:block;
   width:100%;
@@ -158,47 +146,14 @@ section#content{
 }
 
 /** ACCOUNT MANAGE PAGE **/
-#userAccountManage>div{
-    color:#111725;
-    display:flex;
+#account-manage{
+  margin-bottom:25px;
 }
-#userAccountManage form{
-    margin:10px;
-    padding-bottom:15px;
-    border:1px solid rgba(17,23,37,0.3);
-    flex:1;
+#account-manage > div{
+  margin:5px;
 }
-#userAccountManage form h2{
-    margin-bottom:10px;
-    padding:15px;
-    text-align:center;
-    letter-spacing:2.5px;
-}
-#userAccountManage form label{
-  letter-spacing:2px;
-  font-size:12px;
-  display:block;
-  margin:0 0 10px 23px;
-}
-
-/** PROJECT LIST **/
-#userProjectList ul{
-  width:50%;
-  display:flex;
-  margin:auto;
-}
-#userProjectList ul li{
-  margin:10px;
-  flex-basis: auto; /* default value */
-  flex-grow: 1;
-  background:rgba(0,0,0,0.5);
-  min-width: 200px;
-  height:200px;
-  line-height:200px;
-  vertical-align: middle;
-  text-align:center;
-  border-radius: 8px;
-  box-shadow: 2px 2px 5px #000;
-  font-size: 24px;
-  cursor:pointer;
+@media only screen and (max-width:768px){
+  #account-manage{
+    flex-direction: column;
+  }
 }

@@ -1,0 +1,18 @@
+<form class="form-title-blue" name="userAccountPersonalInfo" account-manage-personal-info-dir>
+	<h2>Personal informations</h2>
+	<div>
+		<p>
+			<label for="userFirstName">First Name</label>
+			<input type="text" name="userFirstName" id="userFirstName" ng-model="user.userFirstName" />
+		</p>
+		<p>
+			<label for="userLastName">Last Name</label>
+			<input type="text" name="userLastName" id="userLastName" ng-model="user.userLastName" />
+		</p>
+		<p>
+			<label for="userMail">Mail</label>
+			<input type="mail" name="userMail" id="userMail" ng-model="user.userMail" ng-pattern="/^[_a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$/" />
+		</p>
+		<input type="submit" value="Modifier" />
+	</div>
+</form>

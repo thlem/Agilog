@@ -20,21 +20,21 @@
         // Routes
         $stateProvider.state('Home', {
             url:'/',
-            templateUrl: 'partials/accueil.html',
+            templateUrl: 'partials/home/home.html',
             title: 'Home',
             public: true
         });
 
         $stateProvider.state('Login', {
             url:'/login',
-            templateUrl: 'partials/account/authentication/loginForm.html',
+            templateUrl: 'partials/account/authentication/account-authentication-login-form.html',
             public: true,
             guestOnly: true
         });
 
          $stateProvider.state('Register', {
             url:'/register',
-            templateUrl: 'partials/account/authentication/registerForm.html',
+            templateUrl: 'partials/account/authentication/account-authentication-register-form.html',
             public: true,
             guestOnly: true
         });
@@ -46,18 +46,20 @@
 
         $stateProvider.state('Account', {
             url:'/account',
-            templateUrl: 'partials/account/manage/account.html',
             views: {
-                'update-login-info':{
-                    templateUrl: 'partials/account/manage/loginInfoForm.html',
+                '': {
+                    templateUrl: 'partials/account/manage/account-manage.html'
+                },
+                'update-login-info@Account':{
+                    templateUrl: 'partials/account/manage/account-manage-login-info-form.html',
                     controller: 'AccountManageLoginInfoController as LoginInfoCtrl'
                 },
-                'update-personal-info':{
-                    templateUrl: 'partials/account/manage/personalInfoForm.html',
+                'update-personal-info@Account':{
+                    templateUrl: 'partials/account/manage/account-manage-personal-info-form.html',
                     controller: 'AccountManagePersonalInfoController as PersonalInfoCtrl'
                 },
-                'delete-account':{
-                    templateUrl: 'partials/account/manage/deleteAccount.html',
+                'delete-account@Account':{
+                    templateUrl: 'partials/account/manage/account-manage-delete-account.html',
                     controller: 'AccountManageController as AccMngCtrl'
                 }
             }
