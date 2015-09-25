@@ -50,14 +50,12 @@ var updateLoginInfo = function(request, callback) {
                                     reject(errorMessageConstant.UPDATE_ERROR_USERNAME_ALREADY_IN_USE);
 
                                 } else {
-
                                     arrayOfUserDataToUpdate.userLogin = arrayOfUserDataFromRequest.userLogin;
                                     resolve();
 
                                 }
                             });
                         } else {
-
                             resolve();
 
                         }
@@ -72,73 +70,72 @@ var updateLoginInfo = function(request, callback) {
                                 if (user) {
 
                                     user = AuthenticationService.hidePasswordForResponse(user);
-                                    callback(successMessageConstant.ACCOUNT_MANAGE_LOGIN_UPDATED, user);
+                                    callback(null, user, successMessageConstant.ACCOUNT_MANAGE_LOGIN_UPDATED);
 
                                 } else {
 
-                                    callback(errorMessageConstant.ACCOUNT_MANAGE_LOGIN_UPDATE_ERROR + ' : '+error, null);
+                                    callback(errorMessageConstant.ACCOUNT_MANAGE_LOGIN_UPDATE_ERROR + ' : '+error, null, null);
 
                                 }
                             });
                         } else {
 
-                            callback(null, null);
+                            callback(errorMessageConstant.ACCOUNT_MANAGE_NOTHING_TO_UPDATE, null, null);
 
                         }
                     }, function(message) {
 
-                        callback(errorMessageConstant.ACCOUNT_MANAGE_LOGIN_UPDATE_ERROR + ' '+message, null);
+                        callback(errorMessageConstant.ACCOUNT_MANAGE_LOGIN_UPDATE_ERROR + ' '+message, null, null);
 
                     });
                 } else {
 
-                    callback("this is not good user non trouvé", null);
+                    callback(errorMessageConstant.USER_NOT_FOUND, null, null);
 
                 }
             });
         } else {
 
-            callback("this is not good token non trouvé", null);
+            callback(errorMessageConstant.TOKEN_NOT_FOUND, null, null);
 
         }
     });
 };
 
-var updatePersonalInfo = function(request, User, callback) {
-    console.log("[START][AccountManageService][updateLoginInfo]");
+var updatePersonalInfo = function(request, callback) {
 
-    // Récupération du token depuis la request
     RequestService.getTokenFromRequest(request, function(token) {
 
         // Si le token a bien été récupéré
         if (token) {
-            console.log("[WORKING][AccountManageService][updateLoginInfo] token trouvé, mise à jour BDD du user");
 
-            // Récupération du user par son token
             var param = {
-                "token": token
+                "userToken": token
             };
-            UserDAS.getUserBy(param, function(error, user) {
-                // Si le user a bien été trouvé
-                if (user) {
-                    console.log("[WORKING][AccountManageService][updateLoginInfo] user by token trouvé");
+            UserDAS.getUserBy(param, function(error, userToUpdate) {
 
-                    // Récupération des données du formulaire
+                if (userToUpdate) {
+
                     var arrayOfUserDataFromRequest = request.body;
 
                     var arrayOfUserDataToUpdate = {};
-                    arrayOfUserDataToUpdate.usrFirstName = arrayOfUserDataFromRequest.usrFirstName;
-                    arrayOfUserDataToUpdate.usrLastName = arrayOfUserDataFromRequest.usrLastName;
-                    arrayOfUserDataToUpdate.usrMail = arrayOfUserDataFromRequest.usrMail;
+                    arrayOfUserDataToUpdate.userFirstName = arrayOfUserDataFromRequest.userFirstName;
+                    arrayOfUserDataToUpdate.userLastName = arrayOfUserDataFromRequest.userLastName;
+                    arrayOfUserDataToUpdate.userMail = arrayOfUserDataFromRequest.userMail;
 
-                    UserDAS.updateUser(user, arrayOfUserDataToUpdate, function(error, user) {
-                        if (user) {
-                            user.usrPassword = '';
-                            console.log("[WORKING][AccountManageService][updateLoginInfo] Mise à jour de l'utilisateur effectuée");
-                            callback("Mise à jour du prénom effectuée", user);
+                    UserDAS.updateUser(userToUpdate, arrayOfUserDataToUpdate, function(error, userUpdated) {
+
+                        if (userUpdated) {
+
+                            userUpdated = AuthenticationService.hidePasswordForResponse(userUpdated);
+                            callback(successMessageConstant.ACCOUNT_MANAGE_PERSONAL_UPDATED, userUpdated);
+
                         } else {
-                            callback("Mise à jour du prénom non effectuée " + error, null);
+
+                            callback(errorMessageConstant.ACCOUNT_MANAGE_PERSONAL_UPDATE_ERROR +' '+ error, null);
+
                         }
+
                     });
                 }
             });
@@ -146,16 +143,16 @@ var updatePersonalInfo = function(request, User, callback) {
     });
 };
 
-var deleteAccount = function(request, User, callback) {
+var deleteAccount = function(request, callback) {
     RequestService.getTokenFromRequest(request, function(token) {
         if (token) {
             var param = {
-                "token": token
+                "userToken": token
             };
             UserDAS.getUserBy(param, function(error, user) {
                 if (user) {
                     UserDAS.deleteUser(user, function() {
-                        callback("Account deleted", true);
+                        callback(successMessageConstant.ACCOUNT_MANAGE_DELETED, null);
                     });
                 }
             });

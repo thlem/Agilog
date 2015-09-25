@@ -23,10 +23,10 @@
         /*jshint validthis: true */
         var vm = this;
 
+        // Get the user from the localstorage
+        $scope.user = StorageFactory.getUserFromLocalStorage();
+
         vm.submitAccountManageLoginInfo = function(arrayOfUserData) {
-            var user = {
-                usrLogin: arrayOfUserData.usrLogin,
-            };
             AccountManageFactory.submitAccountManageLoginInfo(arrayOfUserData)
                 .then(function(responseData) {
                     // If the server returns the user correctly

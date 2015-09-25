@@ -23,6 +23,9 @@
         /*jshint validthis: true */
         var vm = this;
 
+        // Get the user from the localstorage
+        $scope.user = StorageFactory.getUserFromLocalStorage();
+
         vm.submitAccountManagePersonalInfo = function(arrayOfUserData) {
             AccountManageFactory.submitAccountManagePersonalInfo(arrayOfUserData)
                 .then(function(responseData) {

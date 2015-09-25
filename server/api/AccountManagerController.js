@@ -61,7 +61,6 @@ module.exports = function(agilogServer) {
 			if (user) {
 
 				response.status(ResponseCodeConstant.SUCCESS).json({
-
 					message: message,
 					user: user
 
@@ -93,8 +92,7 @@ module.exports = function(agilogServer) {
 
 				response.status(ResponseCodeConstant.SUCCESS).json({
 
-					message: successMessage,
-					success: true
+					message: successMessage
 
 				});
 
