@@ -1,9 +1,6 @@
 # Work in progress
- - [CURRENT] Refactor client side / clean code (account part)
- - [DONE]    Make a storage factory that manage localStorage add/update/delete
+ - [CURRENT] Refactor client side and server side / clean code
  - [CURRENT] CSS Refactor
- - [DONE]    Change brunch with gulp
- - [NEXT]    Refactor Server SIDE 
  - [NEXT]    Create / Join / Leave a project
  
 # Agilog
