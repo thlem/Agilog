@@ -157,3 +157,48 @@ section#content{
     flex-direction: column;
   }
 }
+
+/** PROJECTS **/
+#project-list{
+  height: 100%;
+}
+#project-list > div{
+  height:100%;
+}
+#project-list h2{
+  text-align: center;
+}
+.user-project-list{
+  background:#0084DB;
+  margin:10px;
+  height:75px;
+  min-width:200px;
+  line-height: 75px;
+  vertical-align: middle;
+  text-align: center;
+  font-weight: bold;
+  font-size: 18px;
+  border-radius: 8px;
+  cursor: pointer;
+  border: 1px solid transparent;
+}
+.user-project-list a{
+  color:#FFFFFF;
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.user-project-list:hover{
+  background:#FFFFFF;
+  border: 1px solid #0084DB;
+
+}
+.user-project-list:hover a{
+  color:#0084DB;
+}
+@media only screen and (max-width:768px){
+  .user-project-list{
+    font-size: 14px;
+    min-width:100px;min-width:100px;
+  }
+}

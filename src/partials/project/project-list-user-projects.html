@@ -1,0 +1,6 @@
+<h2>Your projects</h2>
+<ul id="user-project-list" class="flex-container flex-wrap">
+	<li class="flex-adjust user-project-list" ng-repeat="project in projects.userProjectList">
+		<a ui-sref="Project.Get({ projectId: project.projectId })">{{ project.projectName }}</a>
+	</li>
+</ul>

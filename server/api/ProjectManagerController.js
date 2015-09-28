@@ -13,7 +13,63 @@ module.exports = function(agilogServer) {
 	//
 	agilogServer.get(Api.PROJECT_MANAGE_GET_LIST, function(request, response) {
 
-       ProjectManageService.getProjectsByUserId(request.params.usrLogin, function(projects, errorMessage) {
+
+		var projects = [
+			{
+				'projectId':'1',
+				'projectName':'Test Project'
+			},
+			{
+				'projectId':'2',
+				'projectName':'Test Project2'
+			},
+			{
+				'projectId':'3',
+				'projectName':'Test Project3'
+			},
+			{
+				'projectId':'4',
+				'projectName':'Test Project4'
+			},
+			{
+				'projectId':'1',
+				'projectName':'Test Project'
+			},
+			{
+				'projectId':'2',
+				'projectName':'Test Project2'
+			},
+			{
+				'projectId':'3',
+				'projectName':'Test Project3'
+			},
+			{
+				'projectId':'4',
+				'projectName':'Test Project4'
+			},
+			{
+				'projectId':'1',
+				'projectName':'Test Project'
+			},
+			{
+				'projectId':'2',
+				'projectName':'Test Project2'
+			},
+			{
+				'projectId':'3',
+				'projectName':'Test Project3'
+			},
+			{
+				'projectId':'4',
+				'projectName':'Test Project4'
+			}
+		];
+
+		response.status(200).json({
+            projects: projects
+        });
+
+       /*ProjectManageService.getProjectsByUserId(request.params.usrLogin, function(projects, errorMessage) {
 
             if (projects) {
 
@@ -41,7 +97,7 @@ module.exports = function(agilogServer) {
 
             }
 
-        });
+        });*/
 
     });
 

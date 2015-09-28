@@ -73,7 +73,7 @@
 
          $stateProvider.state('Project.List', {
             url: '/list',
-            templateUrl: 'partials/project/manage/projectList.html',
+            templateUrl: 'partials/project/project-list.html',
             controller: 'ProjectManageProjectListController as ProjectListCtlr',
             title: 'Your project list'
         });

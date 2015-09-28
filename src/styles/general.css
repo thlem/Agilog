@@ -35,6 +35,9 @@ h1, h2, h3, h4 {
 ul{
     list-style:none;
 }
+a{
+  text-decoration: none;
+}
 
 /*FLEX-LAYOUT*/
 .flex-container{
@@ -42,6 +45,12 @@ ul{
 }
 .flex-full{
   flex:1 100%;
+}
+.flex-adjust{
+  flex:1;
+}
+.flex-wrap{
+  flex-flow: row wrap;
 }
 
 /*FORMS*/
@@ -101,4 +110,33 @@ label{
   font-size:12px;
 }
 
-/*********************/
+.strike{
+  text-align: center;
+  margin:25px 0 25px 0;
+}
+.strike span{
+  position: relative;
+  display: inline-block;
+  padding:15px;
+  width:55px;
+  border: 1px solid #52ACE7;
+  border-radius: 100px;
+  cursor:pointer;
+}
+.strike > span:before,
+.strike > span:after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    width: 9999px;
+    height: 1px;
+    background: #52ACE7;
+}
+
+.strike > span:before {
+    right: 100%;
+}
+
+.strike > span:after {
+    left: 100%;
+}

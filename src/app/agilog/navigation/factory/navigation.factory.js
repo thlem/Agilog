@@ -64,7 +64,7 @@
                 subElements: null
             }, {
                 title: 'Projects',
-                link: 'Projects',
+                link: 'Project.List',
                 imgSrc: './images/projectsIco.png',
                 hide: '!root.user',
                 subElements: null

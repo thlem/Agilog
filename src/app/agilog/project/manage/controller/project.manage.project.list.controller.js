@@ -10,9 +10,11 @@
     function getProjectManageProjectListController($scope, ProxyFactory){
 
     	var vm = this;
+        $scope.projects = {}
+        $scope.projects.userProjectList = {};
 		ProxyFactory.sendGetRequest('/project/getlist/thomas', null)
-		.then(function(response){
-			
+		.then(function(responseData){
+			$scope.projects.userProjectList = responseData.projects;
 		});
     	$scope.projectList = {};
 
